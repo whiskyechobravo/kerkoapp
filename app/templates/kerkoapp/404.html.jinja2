@@ -1,0 +1,7 @@
+{%- set title = _("Page not found") %}
+{%- extends "kerko/layout.html.jinja2" %}
+
+{%- block content_inner %}
+    <p>{{ _("The required page does not exists or has moved.") }}</p>
+    <p>{% trans url=url_for('kerko.search') %}You might want to use our <a href="{{ url }}">search engine</a> to try finding the desired resource.{% endtrans %}</p>
+{%- endblock content_inner %}

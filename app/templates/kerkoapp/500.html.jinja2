@@ -1,0 +1,6 @@
+{%- set title = _("Internal server error") %}
+{%- extends "kerko/layout.html.jinja2" %}
+
+{%- block content_inner %}
+    <p>{{ _("The required page could not be loaded because of an internal server error. Please try again later. If the error persists, please contact the site's administrators.") }}</p>
+{%- endblock content_inner %}
