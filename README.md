@@ -132,7 +132,8 @@ Another KerkoApp variable, `KERKOAPP_COLLECTION_FACETS`, may be used in the
 `.env` file to define facets modeled on Zotero collections. It takes a list of
 semicolon-delimited triples (collection key, facet weight and facet title,
 separated by colons). Each specified collection is then represented as a facet
-where subcollections are represented as values within the facet.
+where subcollections are represented as values within the facet. The weight
+determines a facet's position relative to the other facets.
 
 These variables cause changes to Kerko's search index. Changing any of those
 values require that you rebuild Kerko's search index and restart your
