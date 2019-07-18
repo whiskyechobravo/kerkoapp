@@ -34,7 +34,7 @@ demo site.
 
 KerkoApp requires Python 3.6 or later.
 
-It has only been tested under Linux (so far). If you run it on other platforms,
+It has only been tested under Linux (so far). If you run it on other platforms
 (with or without encountering compatibility issues), please [let us
 know][KerkoApp_issues].
 
@@ -67,7 +67,7 @@ know][KerkoApp_issues].
 
    The `SECRET_KEY` variable is required for generating secure tokens in web
    forms. It should be a secure, random value and it really has to be secret.
-   Never add your `.env` file to a code repository.
+   For this reason, never add your `.env` file to a code repository.
 
    The `KERKO_ZOTERO_API_KEY`, `KERKO_ZOTERO_LIBRARY_ID` and
    `KERKO_ZOTERO_LIBRARY_TYPE` variables are required for Kerko to be able to
@@ -75,16 +75,15 @@ know][KerkoApp_issues].
    variables][Kerko_variables] for more details. See also the **Example
    configuration** section below.
 
-3. Have Kerko retrieve your bibliographic data from zotero.org. If you have a
-   large bibliography, this may take a while (and there is no progress
-   indicator):
+3. Have Kerko retrieve your bibliographic data from zotero.org:
 
    ```bash
    flask kerko index
    ```
 
-   In production use, that command is usually added to the crontab file for
-   regular execution.
+   If you have a large bibliography, this may take a while (and there is no
+   progress indicator). In production use, that command is usually added to the
+   crontab file for regular execution.
 
 4. Run your application:
 
