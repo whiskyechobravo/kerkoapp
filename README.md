@@ -17,9 +17,9 @@ list of features.
 
 The main features added by KerkoApp are:
 
-* Kerko configuration settings are read from environment variables.
-* Configuration settings may be stored in a `.env` file. Configuration therefore
-  adheres to the [Twelve-factor App](https://12factor.net/config) methodology.
+* Configuration settings are read from environment variables or a `.env` file,
+  thus adhering to the [Twelve-factor App](https://12factor.net/config)
+  methodology.
 * Templates for common HTTP errors.
 
 
