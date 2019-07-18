@@ -159,5 +159,6 @@ additional facets.
 [KerkoApp_demo]: https://demo.kerko.whiskyechobravo.com
 [KerkoApp_issues]: https://github.com/whiskyechobravo/kerkoapp/issues
 [Python]: https://www.python.org/
+[virtualenv]: https://virtualenv.pypa.io/en/latest/
 [Zotero]: https://www.zotero.org/
 [Zotero_demo]: https://www.zotero.org/groups/2348869/kerko_demo/items
