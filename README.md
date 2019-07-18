@@ -133,7 +133,14 @@ Another KerkoApp variable, `KERKOAPP_COLLECTION_FACETS`, may be used in the
 semicolon-delimited triples (collection key, facet weight and facet title,
 separated by colons). Each specified collection is then represented as a facet
 where subcollections are represented as values within the facet. The weight
-determines a facet's position relative to the other facets.
+determines a facet's position relative to the other facets. In the above
+example, "7H2Q7L6I:120:Field of study" defines a facet based on the collection
+whose key on zotero.org is _7H2Q7L6I_. That facet is given a weight of _120_,
+which will position it under facets that have a lighter weight (smaller number),
+and above those that have a heavier weight (larger number). The facet is also
+given the title _Field of study_. The value of `KERKOAPP_COLLECTION_FACETS` is
+defined within a single string (delimited by double-quotes in the example),
+because it has to be passed as a single value that will be parsed by KerkoApp.
 
 These variables cause changes to Kerko's search index. Changing any of those
 values require that you rebuild Kerko's search index and restart your
