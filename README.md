@@ -1,12 +1,15 @@
 # KerkoApp
 
-[KerkoApp] is a sample web application using [Kerko] to provide a user-friendly
+[KerkoApp] is a web application using [Kerko] to provide a user-friendly
 search and browsing interface for sharing a bibliography managed with the
 [Zotero] reference manager. Built in [Python] with the [Flask] framework.
 
-This application is meant to serve as an example on how to integrate the Kerko
-blueprint in a Flask application. It also shows how to create additional facets
-not provided by Kerko, such as facets based on Zotero collections.
+Although this application may be deployed as is on a web server, it is primarily
+meant to serve as an example on how to integrate the Kerko blueprint in a Flask
+application.
+
+Basic configuration options can be set with environment variables, but for more
+advanced customizations one should consider using Kerko's Python interface.
 
 
 ## Features
@@ -17,9 +20,15 @@ list of features.
 
 The main features added by KerkoApp are:
 
-* Configuration settings are read from environment variables or a `.env` file,
-  thus adhering to the [Twelve-factor App](https://12factor.net/config)
+* Kerko configuration settings are read from environment variables or a `.env`
+  file, adhering to the [Twelve-factor App](https://12factor.net/config)
   methodology.
+* Extra environment variables provide quick shortcuts for:
+    * defining facets based on Zotero collections;
+    * filtering tags and notes (regular expressions for blacklisting and/or
+      whitelisting);
+    * excluding fields, facets, sort options or search scopes from Kerko's
+      defaults.
 * Templates for common HTTP errors.
 
 
@@ -151,12 +160,11 @@ flask kerko clean
 flask kerko index
 ```
 
-KerkoApp variables are just shortcuts for those who wish to use KerkoApp as is,
-without changing any Python code. If you are building your own Kerko
+Environment variables are just shortcuts for those who wish to use KerkoApp as
+is, without changing any Python code. If you are building your own Kerko
 application, you don't really need those variables. Instead, you may directly
-specify arguments when instanciating the `kerko.composer.Composer` class, or
-directly call `kerko.composer.Composer.add_facet()` on the instance to specify
-additional facets.
+specify arguments when instanciating the `kerko.composer.Composer` class, and
+call `add_facet()` on the instance to specify additional facets.
 
 
 
