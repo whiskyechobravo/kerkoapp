@@ -3,5 +3,10 @@
 set -x
 set -e
 
-[ "$KERKO_CLEAN" = "True" ] && flask kerko clean
-[ "$KERKO_CLEAN" = "True" -o "$KERKO_INDEX" = "True" ] && flask kerko index
+if [ "$KERKO_CLEAN" = "True" ]; then 
+  flask kerko clean
+fi
+
+if [ "$KERKO_CLEAN" = "True" -o "$KERKO_INDEX" = "True" ]; then
+  flask kerko index
+fi
