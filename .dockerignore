@@ -1,0 +1,37 @@
+.git
+.cache
+.dockerignore
+
+# Unit test / coverage reports.
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+nosetests.xml
+coverage.xml
+*.cover
+
+# Logs.
+*.log
+
+# Sphinx documentation.
+docs/_build/
+
+# DotEnv configuration.
+.env
+
+# Development tools / IDEs.
+.idea
+.vscode/
+*.code-workspace
+.spyproject/
+*.swo
+*.swp
+
+# OS-specific files.
+.DS_Store
+
+# Backup files.
+*~
+*.bak
+*.old
