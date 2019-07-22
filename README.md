@@ -71,7 +71,7 @@ know][KerkoApp_issues].
    KERKO_ZOTERO_API_KEY=xxxxxxxxxxxxxxxxxxxxxxxx
    KERKO_ZOTERO_LIBRARY_ID=9999999
    KERKO_ZOTERO_LIBRARY_TYPE=group
-   KERKO_TITLE="My bibliography"
+   KERKO_TITLE=My bibliography
    ```
 
    The `SECRET_KEY` variable is required for generating secure tokens in web
