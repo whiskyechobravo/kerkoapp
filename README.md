@@ -116,7 +116,7 @@ except for the private keys:
 FLASK_APP=kerkoapp.py
 FLASK_ENV=production
 SECRET_KEY=XXXXX
-KERKO_TITLE="Kerko Demo"
+KERKO_TITLE=Kerko Demo
 KERKO_ZOTERO_API_KEY=XXXXX
 KERKO_ZOTERO_LIBRARY_ID=2348869
 KERKO_ZOTERO_LIBRARY_TYPE=group
@@ -124,7 +124,7 @@ KERKO_CSL_STYLE=apa
 KERKO_PRINT_ITEM_LINK=True
 KERKO_PRINT_CITATIONS_LINK=True
 KERKOAPP_EXCLUDE_DEFAULT_FACETS=facet_tag,facet_link
-KERKOAPP_COLLECTION_FACETS="KY3BNA6T:110:Topic; 7H2Q7L6I:120:Field of study; JFQRH4X2:130:Type of contribution"
+KERKOAPP_COLLECTION_FACETS=KY3BNA6T:110:Topic; 7H2Q7L6I:120:Field of study; JFQRH4X2:130:Type of contribution
 ```
 
 The variables prefixed with `KERKO_` are described in [Kerko's
@@ -152,8 +152,7 @@ whose key on zotero.org is _7H2Q7L6I_. That facet is given a weight of _120_,
 which will position it under facets that have a lighter weight (smaller number),
 and above those that have a heavier weight (larger number). The facet is also
 given the title _Field of study_. The value of `KERKOAPP_COLLECTION_FACETS` is
-defined within a single string (delimited by double-quotes in the example),
-because it has to be passed as a single value that will be parsed by KerkoApp.
+defined within a single string that will be parsed by KerkoApp.
 
 These variables cause changes to Kerko's search index. Changing any of those
 values require that you rebuild Kerko's search index and restart your
