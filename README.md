@@ -102,6 +102,10 @@ know][KerkoApp_issues].
 
 5. Open http://127.0.0.1:5000/ in your browser and explore the bibliography.
 
+Note that Flask's built-in server is **not suitable for production** as it
+doesn’t scale well. You'll want to consider better options, such as the [WSGI
+servers suggested in Flask's documentation][Flask_production].
+
 
 ## Example configuration
 
@@ -169,6 +173,7 @@ call `add_facet()` on the instance to specify additional facets.
 
 
 [Flask]: https://pypi.org/project/Flask/
+[Flask_production]: https://flask.palletsprojects.com/en/1.1.x/deploying/
 [Kerko]: https://github.com/whiskyechobravo/kerko
 [Kerko_variables]: https://github.com/whiskyechobravo/kerko#configuration-variables
 [KerkoApp]: https://github.com/whiskyechobravo/kerkoapp
