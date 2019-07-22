@@ -21,6 +21,7 @@ class Config():
     SECRET_KEY = env.str('SECRET_KEY')
     LOGGING_HANDLER = 'default'
     EXPLAIN_TEMPLATE_LOADING = False
+    PROXY_FIX = env.bool('PROXY_FIX', False)
     BABEL_DEFAULT_LOCALE = env.str('BABEL_DEFAULT_LOCALE', 'en')
     KERKO_TITLE = env.str('KERKO_TITLE', _("Kerko App"))
     KERKO_WHOOSH_LANGUAGE = env.str('KERKO_WHOOSH_LANGUAGE', 'en')

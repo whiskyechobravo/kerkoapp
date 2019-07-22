@@ -1,6 +1,5 @@
 from environs import Env
 from flask import redirect, url_for
-from werkzeug.contrib.fixers import ProxyFix
 
 from app import create_app
 
@@ -13,11 +12,13 @@ def home():
     return redirect(url_for('kerko.search'))
 
 
-# CAUTION: It is a security issue to use this middleware in a non-proxy setup
-# because it will blindly trust the incoming headers which might be forged by
-# malicious clients.
-# Ref: http://flask.pocoo.org/docs/1.0/deploying/wsgi-standalone/#proxy-setups
-app.wsgi_app = ProxyFix(app.wsgi_app)
+if app.config['PROXY_FIX']:
+    # CAUTION: It is a security issue to use this middleware in a non-proxy
+    # setup because it will blindly trust the incoming headers which might be
+    # forged by malicious clients.
+    # Ref: https://flask.palletsprojects.com/en/1.1.x/deploying/wsgi-standalone/#proxy-setups
+    from werkzeug.contrib.fixers import ProxyFix
+    app.wsgi_app = ProxyFix(app.wsgi_app)
 
 
 @app.shell_context_processor
