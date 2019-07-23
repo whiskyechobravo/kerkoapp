@@ -1,5 +1,6 @@
 FLASK_APP=kerkoapp.py
 FLASK_ENV=development
+MODULE_NAME=kerkoapp
 SECRET_KEY=SECRET_KEY
 KERKO_CLEAN=False
 KERKO_INDEX=True
