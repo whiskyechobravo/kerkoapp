@@ -43,10 +43,6 @@ demo site.
 
 KerkoApp requires Python 3.6 or later.
 
-It has only been tested under Linux (so far). If you run it on other platforms
-(with or without encountering compatibility issues), please [let us
-know][KerkoApp_issues].
-
 
 ## Installation
 
@@ -169,6 +165,44 @@ application, you don't really need those variables. Instead, you may directly
 specify arguments when instanciating the `kerko.composer.Composer` class, and
 call `add_facet()` on the instance to specify additional facets.
 
+
+## Troubleshooting
+
+### Conflicting package versions when installing the requirements
+
+The `requirements/run.txt` file specifies a precise version for each required
+package, ensuring consistent results with the last environment KerkoApp was
+tested with. If some of these packages are already present in your Python
+environment, their versions are likely to be different and some Python code
+outside KerkoApp might require those versions. In that case, try replacing
+`run.txt` with `run.in` in the install command:
+
+```bash
+pip install -r requirements/run.in
+```
+
+Requirements in `run.in` are more flexible regarding the versions. If you still
+have version conflicts with those requirements, you'll have to decide which
+version to use and verify that it is compatible with both KerkoApp and your
+other Python code.
+
+### No such command "kerko" error when running flask
+
+You might have to set the `FLASK_APP` variable. Its value is normally picked up
+from the `.env` file in the current working directory, but if that's not the
+case you might need to set it directly in the environment.
+
+Under Linux:
+
+```bash
+export FLASK_APP=kerkoapp.py
+```
+
+Under Windows:
+
+```
+set FLASK_APP=kerkoapp.py
+```
 
 
 [Flask]: https://pypi.org/project/Flask/
