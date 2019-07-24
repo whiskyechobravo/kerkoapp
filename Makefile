@@ -1,3 +1,5 @@
+REPOSITORY = whiskyechobravo/kerkoapp
+
 run:
 	docker run --env-file ./.env --rm -p 8080:80 -v `pwd`/data:/app/data -v /tmp/kerkoapp-dev-log:/dev/log kerkoapp
 
@@ -14,6 +16,5 @@ shell:
 	docker run -it --env-file ./.env --rm -p 8080:80 -v `pwd`/data:/app/data -v /tmp/kerkoapp-dev-log:/dev/log kerkoapp bash
 
 publish:
-	git commit -m kerkoapp`git describe --tags --abbrev=0`
-	docker tag kerkoapp retorquere/kerkoapp:`git describe --tags --abbrev=0`
-	docker push retorquere/kerkoapp:`git describe --tags --abbrev=0`
+	docker tag kerkoapp $(REPOSITORY):`git describe --tags`
+	docker push $(REPOSITORY):`git describe --tags`
