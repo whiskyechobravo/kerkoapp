@@ -39,12 +39,16 @@ view the [Zotero library][Zotero_demo] that contains the source data for the
 demo site.
 
 
-## Requirements
+## Getting started
 
-KerkoApp requires Python 3.6 or later.
+This section presents two approaches to getting started with KerkoApp: running
+from a standard installation of KerkoApp, or running from a Docker container
+pre-built with KerkoApp. You may choose the one you are more comfortable with.
 
 
-## Installation
+### Standard installation
+
+This procedure requires Python 3.6 or later.
 
 1. The first step is to install the software. As with any Python package, it is
    highly recommended to install it within a [virtualenv].
@@ -57,30 +61,22 @@ KerkoApp requires Python 3.6 or later.
 
    This will install many packages required by Kerko or KerkoApp.
 
-2. In the same directory (the one that contains `kerkoapp.py`), create a `.env`
-   file with the desired settings. For example:
+2. Copy `dotenv.sample` to `.env`. Open `.env` in a text editor to assign proper
+   values to the variables outlined below.
 
-   ```
-   FLASK_APP=kerkoapp.py
-   FLASK_ENV=development
-   SECRET_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-   KERKO_ZOTERO_API_KEY=xxxxxxxxxxxxxxxxxxxxxxxx
-   KERKO_ZOTERO_LIBRARY_ID=9999999
-   KERKO_ZOTERO_LIBRARY_TYPE=group
-   KERKO_TITLE=My bibliography
-   ```
+   * `KERKO_TITLE`: The title to display in web pages.
+   * `SECRET_KEY`: This variable is required for generating secure tokens in web
+     forms. It should have a secure, random value and it really has to be
+     secret. For this reason, never add your `.env` file to a code repository.
+   * `KERKO_ZOTERO_API_KEY`, `KERKO_ZOTERO_LIBRARY_ID` and
+     `KERKO_ZOTERO_LIBRARY_TYPE`: These variables are required for Kerko to be
+     able to access your Zotero library. See [Kerko's documentation on
+     configuration variables][Kerko_variables] for details on how to properly
+     set these variables.
 
-   The `SECRET_KEY` variable is required for generating secure tokens in web
-   forms. It should be a secure, random value and it really has to be secret.
-   For this reason, never add your `.env` file to a code repository.
+   The **Example configuration** section below might give you additional tips.
 
-   The `KERKO_ZOTERO_API_KEY`, `KERKO_ZOTERO_LIBRARY_ID` and
-   `KERKO_ZOTERO_LIBRARY_TYPE` variables are required for Kerko to be able to
-   access your Zotero library. See [Kerko's documentation on configuration
-   variables][Kerko_variables] for more details. See also the **Example
-   configuration** section below.
-
-3. Have Kerko retrieve your bibliographic data from zotero.org:
+4. Have KerkoApp retrieve your bibliographic data from zotero.org:
 
    ```bash
    flask kerko index
@@ -90,17 +86,76 @@ KerkoApp requires Python 3.6 or later.
    progress indicator). In production use, that command is usually added to the
    crontab file for regular execution.
 
-4. Run your application:
+5. Run KerkoApp:
 
    ```bash
    flask run
    ```
 
-5. Open http://127.0.0.1:5000/ in your browser and explore the bibliography.
+6. Open http://localhost:5000/ in your browser and explore the bibliography.
 
 Note that Flask's built-in server is **not suitable for production** as it
 doesn’t scale well. You'll want to consider better options, such as the [WSGI
 servers suggested in Flask's documentation][Flask_production].
+
+
+### Running from Docker
+
+This procedure requires that [Docker] is installed on your computer.
+
+1. Copy the `Makefile` and `dotenv.sample` files from [KerkoApp's
+   repository][KerkoApp] to an empty directory on your computer.
+
+2. Rename `dotenv.sample` to `.env`. Open `.env` in a text editor to assign
+   proper values to the variables outlined below.
+
+   * `KERKO_TITLE`: The title to display in web pages.
+   * `SECRET_KEY`: This variable is required for generating secure tokens in web
+     forms. It should have a secure, random value and it really has to be
+     secret. For this reason, never add your `.env` file to a code repository.
+   * `KERKO_ZOTERO_API_KEY`, `KERKO_ZOTERO_LIBRARY_ID` and
+     `KERKO_ZOTERO_LIBRARY_TYPE`: These variables are required for Kerko to be
+     able to access your Zotero library. See [Kerko's documentation on
+     configuration variables][Kerko_variables] for details on how to properly
+     set these variables.
+
+   The **Example configuration** section below might give you additional tips.
+
+   **Do not** assign a value to the `KERKO_DATA_DIR` variable. If you do, the
+   volume bindings defined within the `Makefile` won't work.
+
+3. Pull the latest KerkoApp Docker image. In the same directory as the
+   `Makefile`, run the following command:
+
+   ```bash
+   make pull
+   ```
+
+4. Have KerkoApp retrieve your bibliographic data from zotero.org:
+
+   ```bash
+   make index
+   ```
+
+   If you have a large bibliography, this may take a while (and there is no
+   progress indicator).
+
+   Kerko's index will be stored in the `data` subdirectory.
+
+5. Run KerkoApp:
+
+   ```
+   make run
+   ```
+
+6. Open http://localhost:8080/ in your browser and explore the bibliography.
+
+Keep in mind that the `dotenv.sample` and `Makefile` provide only examples on
+how to run the dockerized KerkoApp. Also, **we have not made any special effort
+to harden the KerkoApp image for production use**; for such use, you will have
+to build an image that is up to your standards. For full documentation on how to
+run Docker containers, including the port mapping and volume binding required to
+run containers, see the [Docker documentation][Docker_docs].
 
 
 ## Example configuration
@@ -165,33 +220,10 @@ application, you don't really need those variables. Instead, you may directly
 specify arguments when instanciating the `kerko.composer.Composer` class, and
 call `add_facet()` on the instance to specify additional facets.
 
-## Running from Docker
-
-After installing docker on your system, you can pull the latest image using
-
-```
-docker pull whiskyechobravo/kerkoapp
-```
-
-Copy the `Makefile` and `dotenv.sample` file from this github repo, and rename `dotenv.sample` to `.env`. Inspect `.env` and set the variables outlined above to their appropriate values. You can now run
-
-```
-make index
-```
-
-to have kerkoapp start indexing, and later
-
-```
-make run
-```
-
-to start kerkoapp. Kerkoapp can then be found on http://localhost:8080 .
-
-Keep in mind that the `dotenv.sample` and `Makefile` provide only examples on how to run the dockerized kerkoapp. For full documentation on how to run docker containers, including the portmapping and volume binding required to run containers, see the Docker documentation.
 
 ## Troubleshooting
 
-### Conflicting package versions when installing the requirements
+### Conflicting package versions with standard installation
 
 The `requirements/run.txt` file specifies a precise version for each required
 package, ensuring consistent results with the last environment KerkoApp was
@@ -228,6 +260,8 @@ set FLASK_APP=kerkoapp.py
 ```
 
 
+[Docker]: https://www.docker.com/
+[Docker_docs]: https://docs.docker.com/
 [Flask]: https://pypi.org/project/Flask/
 [Flask_production]: https://flask.palletsprojects.com/en/1.1.x/deploying/
 [Kerko]: https://github.com/whiskyechobravo/kerko
