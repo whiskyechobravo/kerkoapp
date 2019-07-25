@@ -128,7 +128,7 @@ This procedure requires that [Docker] is installed on your computer.
    `Makefile`, run the following command:
 
    ```bash
-   make pull
+   docker pull whiskyechobravo/kerkoapp
    ```
 
 4. Have KerkoApp retrieve your bibliographic data from zotero.org:
