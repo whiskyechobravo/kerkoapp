@@ -165,6 +165,29 @@ application, you don't really need those variables. Instead, you may directly
 specify arguments when instanciating the `kerko.composer.Composer` class, and
 call `add_facet()` on the instance to specify additional facets.
 
+## Running from Docker
+
+After installing docker on your system, you can pull the latest image using
+
+```
+docker pull whiskyechobravo/kerkoapp
+```
+
+Copy the `Makefile` and `dotenv.sample` file from this github repo, and rename `dotenv.sample` to `.env`. Inspect `.env` and set the variables outlined above to their appropriate values. You can now run
+
+```
+make index
+```
+
+to have kerkoapp start indexing, and later
+
+```
+make run
+```
+
+to start kerkoapp. Kerkoapp can then be found on http://localhost:8080 .
+
+Keep in mind that the `dotenv.sample` and `Makefile` provide only examples on how to run the dockerized kerkoapp. For full documentation on how to run docker containers, including the portmapping and volume binding required to run containers, see the Docker documentation.
 
 ## Troubleshooting
 

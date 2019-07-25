@@ -18,3 +18,5 @@ shell:
 publish:
 	docker tag kerkoapp $(REPOSITORY):`git describe --tags`
 	docker push $(REPOSITORY):`git describe --tags`
+	docker tag kerkoapp $(REPOSITORY):latest
+	docker push $(REPOSITORY):latest
