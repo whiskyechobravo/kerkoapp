@@ -43,6 +43,7 @@ class Config():
         exclude_default_fields=env.list('KERKOAPP_EXCLUDE_DEFAULT_FIELDS', []),
         exclude_default_facets=env.list('KERKOAPP_EXCLUDE_DEFAULT_FACETS', []),
         exclude_default_sorts=env.list('KERKOAPP_EXCLUDE_DEFAULT_SORTS', []),
+        exclude_default_citation_formats=env.list('KERKOAPP_EXCLUDE_DEFAULT_CITATION_FORMATS', []),
         default_tag_whitelist_re=env.str('KERKOAPP_TAG_WHITELIST_RE', ''),
         default_tag_blacklist_re=env.str('KERKOAPP_TAG_BLACKLIST_RE', ''),
         default_note_whitelist_re=env.str('KERKOAPP_NOTE_WHITELIST_RE', ''),

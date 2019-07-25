@@ -129,8 +129,9 @@ specific to KerkoApp.
 
 KerkoApp variables can be used in the `.env` file to exclude elements from
 Kerko's default scopes (`KERKOAPP_EXCLUDE_DEFAULT_SCOPES`), fields
-(`KERKOAPP_EXCLUDE_DEFAULT_FIELDS`), facets (`KERKOAPP_EXCLUDE_DEFAULT_FACETS`)
-or sort options (`KERKOAPP_EXCLUDE_DEFAULT_SORTS`). Please refer to the
+(`KERKOAPP_EXCLUDE_DEFAULT_FIELDS`), facets (`KERKOAPP_EXCLUDE_DEFAULT_FACETS`),
+sort options (`KERKOAPP_EXCLUDE_DEFAULT_SORTS`) or citation download links
+(`KERKOAPP_EXCLUDE_DEFAULT_CITATION_FORMATS`). Please refer to the
 implementation of `kerko.composer.Composer` for more details on the defaults;
 changing the default scopes and fields, in particular, should be done with care.
 In the above example, `KERKOAPP_EXCLUDE_DEFAULT_FACETS` is used to exclude the
@@ -203,6 +204,12 @@ Under Windows:
 ```
 set FLASK_APP=kerkoapp.py
 ```
+
+### Errors when using the HEAD version of Kerko
+
+The `master` branch of KerkoApp is meant to work with the latest published
+release of Kerko. If you have installed the HEAD version of Kerko, use the
+`kerko-head` branch of KerkoApp instead of `master`.
 
 
 [Flask]: https://pypi.org/project/Flask/
