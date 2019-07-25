@@ -1,6 +1,6 @@
 REPOSITORY = whiskyechobravo/kerkoapp
-IMAGE = kerkoapp # local
-IMAGE = whiskyechobravo/kerkoapp:0.3alpha1-18-gf8b5603 # remote
+IMAGE = whiskyechobravo/kerkoapp
+# IMAGE = kerkoapp  # Uncomment this line to work with your local image.
 
 run:
 	docker run --env-file ./.env --rm -p 8080:80 -v `pwd`/data:/app/data -v /tmp/kerkoapp-dev-log:/dev/log $(IMAGE)
