@@ -43,7 +43,7 @@ demo site.
 
 This section presents two approaches to getting started with KerkoApp: running
 from a standard installation of KerkoApp, or running from a Docker container
-pre-built with KerkoApp. You may choose the one you are more comfortable with.
+pre-built with KerkoApp. You may choose the one you are most comfortable with.
 
 
 ### Standard installation
@@ -122,7 +122,8 @@ This procedure requires that [Docker] is installed on your computer.
    The **Example configuration** section below might give you additional tips.
 
    **Do not** assign a value to the `KERKO_DATA_DIR` variable. If you do, the
-   volume bindings defined within the `Makefile` won't work.
+   volume bindings defined within the `Makefile` won't be of any use to the
+   application running within the container.
 
 3. Pull the latest KerkoApp Docker image. In the same directory as the
    `Makefile`, run the following command:
