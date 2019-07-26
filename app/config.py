@@ -1,4 +1,5 @@
 import logging
+import pathlib
 
 from environs import Env
 from flask_babelex import lazy_gettext as _
@@ -18,24 +19,35 @@ def collection_spec_parser(value):
 
 
 class Config():
+    app_dir = pathlib.Path(env.str('FLASK_APP')).parent.absolute()
+
     SECRET_KEY = env.str('SECRET_KEY')
     LOGGING_HANDLER = 'default'
     EXPLAIN_TEMPLATE_LOADING = False
     PROXY_FIX = env.bool('PROXY_FIX', False)
     BABEL_DEFAULT_LOCALE = env.str('BABEL_DEFAULT_LOCALE', 'en')
+
+    # Set Kerko variables from the environment. Some are deliberately omitted
+    # because it would make more sense to set them in the app's Config object
+    # directly.
     KERKO_TITLE = env.str('KERKO_TITLE', _("Kerko App"))
+    KERKO_DATA_DIR = pathlib.Path(env.str('KERKO_DATA_DIR', str(app_dir / 'data' / 'kerko')))
     KERKO_WHOOSH_LANGUAGE = env.str('KERKO_WHOOSH_LANGUAGE', 'en')
     KERKO_ZOTERO_LOCALE = env.str('KERKO_ZOTERO_LOCALE', 'en-US')
     KERKO_ZOTERO_API_KEY = env.str('KERKO_ZOTERO_API_KEY')
     KERKO_ZOTERO_LIBRARY_ID = env.str('KERKO_ZOTERO_LIBRARY_ID')
     KERKO_ZOTERO_LIBRARY_TYPE = env.str('KERKO_ZOTERO_LIBRARY_TYPE')
-    KERKO_PRINT_ITEM_LINK = env.bool('KERKO_PRINT_ITEM_LINK', False)
-    KERKO_PRINT_CITATIONS_LINK = env.bool('KERKO_PRINT_CITATIONS_LINK', False)
+    KERKO_ZOTERO_MAX_ATTEMPTS = env.int('KERKO_ZOTERO_MAX_ATTEMPTS', 10)
+    KERKO_ZOTERO_WAIT = env.int('KERKO_ZOTERO_WAIT', 120)  # In seconds.
+    KERKO_ZOTERO_BATCH_SIZE = env.int('KERKO_ZOTERO_BATCH_SIZE', 100)
     KERKO_PAGE_LEN = env.int('KERKO_PAGE_LEN', 20)
     KERKO_PAGER_LINKS = env.int('KERKO_PAGER_LINKS', 4)
     KERKO_CSL_STYLE = env.str('KERKO_CSL_STYLE', 'apa')
     KERKO_RESULTS_ABSTRACT = env.bool('KERKO_RESULTS_ABSTRACT', False)
     KERKO_FACET_COLLAPSING = env.bool('KERKO_FACET_COLLAPSING', False)
+    KERKO_PRINT_ITEM_LINK = env.bool('KERKO_PRINT_ITEM_LINK', False)
+    KERKO_PRINT_CITATIONS_LINK = env.bool('KERKO_PRINT_CITATIONS_LINK', False)
+    KERKO_PRINT_CITATIONS_MAX_COUNT = env.int('KERKO_PRINT_CITATIONS_MAX_COUNT', 0)
 
     KERKO_COMPOSER = Composer(
         whoosh_language=KERKO_WHOOSH_LANGUAGE,
