@@ -31,7 +31,7 @@ class Config():
     # because it would make more sense to set them in the app's Config object
     # directly.
     KERKO_TITLE = env.str('KERKO_TITLE', _("Kerko App"))
-    KERKO_DATA_DIR = pathlib.Path(env.str('KERKO_DATA_DIR', str(app_dir / 'data' / 'kerko')))
+    KERKO_DATA_DIR = env.path('KERKO_DATA_DIR', str(app_dir / 'data' / 'kerko'))
     KERKO_WHOOSH_LANGUAGE = env.str('KERKO_WHOOSH_LANGUAGE', 'en')
     KERKO_ZOTERO_LOCALE = env.str('KERKO_ZOTERO_LOCALE', 'en-US')
     KERKO_ZOTERO_API_KEY = env.str('KERKO_ZOTERO_API_KEY')
