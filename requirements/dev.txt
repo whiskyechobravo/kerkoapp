@@ -8,10 +8,10 @@ astroid==2.2.5            # via pylint
 babel==2.6.0
 bibtexparser==1.1.0       # via pyzotero
 bootstrap-flask==1.0.10
-certifi==2019.3.9         # via requests
+certifi==2019.6.16        # via requests
 chardet==3.0.4            # via requests
 click==7.0                # via flask, pip-tools
-environs==4.1.0
+environs==5.2.0
 feedparser==5.2.1         # via pyzotero
 flask-babelex==0.9.3
 flask-wtf==0.14.2         # via kerko
@@ -28,12 +28,12 @@ marshmallow==2.19.2       # via environs
 mccabe==0.6.1             # via pylint
 pathlib==1.0.1            # via pyzotero
 pep8==1.7.1
-pip-tools==3.7.0
+pip-tools==4.0.0
 pipdeptree==0.13.2
 pydocstyle==3.0.0
 pylint==2.3.1
 pyparsing==2.4.0          # via bibtexparser
-python-dotenv==0.10.1
+python-dotenv==0.10.3
 pytz==2019.1              # via babel, pyzotero
 pyzotero==1.4.1           # via kerko
 requests==2.21.0          # via pyzotero
@@ -45,6 +45,9 @@ typed-ast==1.3.5          # via astroid
 urllib3==1.24.2           # via requests
 werkzeug==0.15.2          # via flask, kerko
 whoosh==2.7.4             # via kerko
-wrapt==1.11.1             # via astroid, kerko
+wrapt==1.11.2             # via astroid, kerko
 wtforms==2.2.1            # via flask-wtf, kerko
 yapf==0.27.0
+
+# The following packages are considered to be unsafe in a requirements file:
+# pip==19.2.1               # via pipdeptree
