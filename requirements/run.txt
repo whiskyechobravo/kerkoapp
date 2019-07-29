@@ -19,7 +19,7 @@ future==0.17.1            # via bibtexparser
 idna==2.8                 # via requests
 itsdangerous==1.1.0       # via flask
 jinja2==2.10.1            # via flask, flask-babelex, kerko
-kerko==0.3a1
+kerko==0.3
 markupsafe==1.1.1         # via jinja2
 marshmallow==2.19.2       # via environs
 pathlib==1.0.1            # via pyzotero
