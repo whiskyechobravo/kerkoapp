@@ -235,7 +235,8 @@ The following commands should be executed from the directory that contains
 `babel.cfg`, and the appropriate [virtualenv] must have been activated
 beforehand.
 
-Create or update the PO file template (POT):
+Create or update the PO file template (POT). Replace `CURRENT_VERSION` with your
+current KerkoApp version:
 
 ```bash
 pybabel extract -F babel.cfg -o app/translations/messages.pot --project=KerkoApp --version=CURRENT_VERSION --copyright-holder="Kerko Contributors" app
