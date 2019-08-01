@@ -223,6 +223,104 @@ specify arguments when instanciating the `kerko.composer.Composer` class, and
 call `add_facet()` on the instance to specify additional facets.
 
 
+## Translating KerkoApp
+
+Note that Kerko and KerkoApp have separate translation files and that most
+messages actually come from Kerko. For translating Kerko's messages, please
+refer to [Kerko's documentation][Kerko].
+
+KerkoApp can be translated with [Babel](http://babel.pocoo.org).
+
+The following commands should be executed from the directory that contains
+`babel.cfg`, and the appropriate [virtualenv] must have been activated
+beforehand.
+
+Create or update the PO file template (POT):
+
+```bash
+pybabel extract -F babel.cfg -o app/translations/messages.pot --project=KerkoApp --version=CURRENT_VERSION --copyright-holder="Kerko Contributors" app
+```
+
+Create a new PO file (for a new locale) based on the POT file. Replace
+`YOUR_LOCALE` with the appropriate language code, e.g., `de`, `es`, `it`:
+
+```bash
+pybabel init -l YOUR_LOCALE -i app/translations/messages.pot -d app/translations
+```
+
+Update an existing PO file based on the POT file:
+
+```bash
+pybabel update -l YOUR_LOCALE -i app/translations/messages.pot -d app/translations
+```
+
+Compile MO files:
+
+```bash
+pybabel compile -l YOUR_LOCALE -d app/translations
+```
+
+
+## Contributing
+
+### Reporting issues
+
+For reporting an issue, please consider the following guidelines:
+
+* Try to identify whether the issue belongs to [KerkoApp] or to [Kerko]. If
+  unsure, check the list of features related to each package and try to
+  determine which feature is the most related to the issue. Then you may submit
+  the issue to [KerkoApp's issue tracker][KerkoApp_issues] if it is related to
+  KerkoApp, or to [Kerko's issue tracker][Kerko_issues] otherwise.
+* Make sure that the same issue has not already been reported or fixed in the
+  repository.
+* Describe what you expected to happen.
+* If possible, include a minimal reproducible example to help others identify
+  the issue.
+* Describe what actually happened. Include the full traceback if there was an
+  exception.
+
+
+### Submitting code changes
+
+Pull requests may be submitted against [KerkoApp's repository][KerkoApp]. Please
+consider the following guidelines:
+
+* Use [Yapf](https://github.com/google/yapf) to autoformat your code (with
+  option `--style='{based_on_style: facebook, column_limit: 100}'`). Many
+  editors provide Yapf integration.
+* Include a string like "Fixes #123" in your commit message (where 123 is the
+  issue you fixed). See [Closing issues using
+  keywords](https://help.github.com/en/articles/closing-issues-using-keywords).
+
+
+### Submitting a translation
+
+Some guidelines:
+
+* The PO file encoding must be UTF-8.
+* The header of the PO file must be filled out appropriately.
+* All messages of the PO file must be translated.
+
+Please submit your translation as a pull request against [KerkoApp's
+repository][KerkoApp], or by [e-mail][Kerko_email], with the PO file included as
+an attachment (**do not** copy the PO file's content into an e-mail's body,
+since that could introduce formatting or encoding issues).
+
+
+### Supporting the project
+
+Nurturing an open source project such as Kerko, following up on issues and
+helping others in working with the system is a lot of work, but hiring the
+original developers of Kerko can do a lot in ensuring continued support and
+development of the project.
+
+If you need professionnal support related to Kerko, have requirements not
+currently implemented in Kerko, want to make sure that some Kerko issue
+important to you gets resolved, or if you just like our work and would like to
+hire us for an unrelated project, please [e-mail us][Kerko_email].
+
+
 ## Troubleshooting
 
 ### Conflicting package versions with standard installation
@@ -273,6 +371,8 @@ release of Kerko. If you have installed the HEAD version of Kerko, use the
 [Flask]: https://pypi.org/project/Flask/
 [Flask_production]: https://flask.palletsprojects.com/en/1.1.x/deploying/
 [Kerko]: https://github.com/whiskyechobravo/kerko
+[Kerko_email]: mailto:kerko@whiskyechobravo.com
+[Kerko_issues]: https://github.com/whiskyechobravo/kerko/issues
 [Kerko_variables]: https://github.com/whiskyechobravo/kerko#configuration-variables
 [KerkoApp]: https://github.com/whiskyechobravo/kerkoapp
 [KerkoApp_demo]: https://demo.kerko.whiskyechobravo.com
