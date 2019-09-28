@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.4 (2019-09-28)
+
+Features:
+
+* Upgrade Kerko to version
+  [0.4](https://github.com/whiskyechobravo/kerko/blob/master/CHANGELOG.md#04-2019-09-28).
+
+Other changes:
+
+* Update versions of pinned dependencies.
+* Improve documentation.
+
 ## 0.3 (2019-07-29)
 
 Features:
@@ -18,4 +30,4 @@ Other changes:
 
 ## 0.3alpha1 (2019-07-17)
 
-First PyPI release.
+* First PyPI release.
