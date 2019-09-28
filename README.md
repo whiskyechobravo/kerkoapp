@@ -176,7 +176,7 @@ KERKO_CSL_STYLE=apa
 KERKO_PRINT_ITEM_LINK=True
 KERKO_PRINT_CITATIONS_LINK=True
 KERKOAPP_EXCLUDE_DEFAULT_FACETS=facet_tag,facet_link
-KERKOAPP_COLLECTION_FACETS=KY3BNA6T:110:Topic; 7H2Q7L6I:120:Field of study; JFQRH4X2:130:Type of contribution
+KERKOAPP_COLLECTION_FACETS=KY3BNA6T:110:Topic; 7H2Q7L6I:120:Field of study; JFQRH4X2:130:Contribution
 ```
 
 The variables prefixed with `KERKO_` are described in [Kerko's
