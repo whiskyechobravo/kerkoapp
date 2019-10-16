@@ -27,7 +27,7 @@ markupsafe==1.1.1         # via jinja2
 marshmallow==3.2.0        # via environs
 mccabe==0.6.1             # via pylint
 pathlib==1.0.1            # via pyzotero
-pip-tools==4.1.0
+pip-tools==4.2.0
 pipdeptree==0.13.2
 pycodestyle==2.5.0
 pydocstyle==4.0.1
@@ -50,4 +50,4 @@ wtforms==2.2.1            # via flask-wtf, kerko
 yapf==0.28.0
 
 # The following packages are considered to be unsafe in a requirements file:
-# pip==19.2.3               # via pipdeptree
+# pip==19.3                 # via pipdeptree
