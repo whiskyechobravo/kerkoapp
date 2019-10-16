@@ -27,9 +27,9 @@ markupsafe==1.1.1         # via jinja2
 marshmallow==3.2.0        # via environs
 mccabe==0.6.1             # via pylint
 pathlib==1.0.1            # via pyzotero
-pep8==1.7.1
 pip-tools==4.1.0
 pipdeptree==0.13.2
+pycodestyle==2.5.0
 pydocstyle==4.0.1
 pylint==2.4.1
 pyparsing==2.4.2          # via bibtexparser

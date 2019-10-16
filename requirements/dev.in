@@ -1,7 +1,7 @@
 -r run.in
-pep8
 pip-tools>=4.0.0
 pipdeptree
+pycodestyle
 pydocstyle
 pylint
 rope
