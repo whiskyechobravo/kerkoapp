@@ -14,7 +14,7 @@ env = Env()  # pylint: disable=invalid-name
 def collection_spec_parser(value):
     try:
         return [tuple(i.strip() for i in v.split(':', maxsplit=2)) for v in value.split(';')]
-    except:  # pylint: disable=bare-except
+    except:  # noqa  # pylint: disable=bare-except
         return value
 
 
