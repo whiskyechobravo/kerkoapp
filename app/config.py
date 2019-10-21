@@ -59,9 +59,9 @@ class Config():
         exclude_default_sorts=env.list('KERKOAPP_EXCLUDE_DEFAULT_SORTS', []),
         exclude_default_citation_formats=env.list('KERKOAPP_EXCLUDE_DEFAULT_CITATION_FORMATS', []),
         default_tag_whitelist_re=env.str('KERKOAPP_TAG_WHITELIST_RE', ''),
-        default_tag_blacklist_re=env.str('KERKOAPP_TAG_BLACKLIST_RE', ''),
+        default_tag_blacklist_re=env.str('KERKOAPP_TAG_BLACKLIST_RE', '^_'),
         default_note_whitelist_re=env.str('KERKOAPP_NOTE_WHITELIST_RE', ''),
-        default_note_blacklist_re=env.str('KERKOAPP_NOTE_BLACKLIST_RE', '')
+        default_note_blacklist_re=env.str('KERKOAPP_NOTE_BLACKLIST_RE', '^_')
     )
 
     # Add collection facets.
