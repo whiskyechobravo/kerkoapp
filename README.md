@@ -25,8 +25,8 @@ The main features added by KerkoApp are:
   methodology.
 * Extra environment variables provide quick shortcuts for:
     * defining facets based on Zotero collections;
-    * filtering tags and notes (regular expressions for blacklisting and/or
-      whitelisting);
+    * filtering tags, or notes and attachments (regular expressions for
+      blacklisting and/or whitelisting);
     * excluding fields, facets, sort options or search scopes from Kerko's
       defaults.
 * Templates for common HTTP errors.
@@ -76,23 +76,24 @@ This procedure requires Python 3.6 or later.
 
    The **Example configuration** section below might give you additional tips.
 
-4. Have KerkoApp retrieve your bibliographic data from zotero.org:
+3. Have KerkoApp retrieve your data from zotero.org:
 
    ```bash
-   flask kerko index
+   flask kerko sync
    ```
 
-   If you have a large bibliography, this may take a while (and there is no
-   progress indicator). In production use, that command is usually added to the
-   crontab file for regular execution.
+   If you have a large bibliography and/or large file attachments, that command
+   may take a while to complete (and there is no progress indicator). In
+   production use, that command is usually added to the crontab file for regular
+   execution.
 
-5. Run KerkoApp:
+4. Run KerkoApp:
 
    ```bash
    flask run
    ```
 
-6. Open http://localhost:5000/ in your browser and explore the bibliography.
+5. Open http://localhost:5000/ in your browser and explore the bibliography.
 
 Note that Flask's built-in server is **not suitable for production** as it
 doesn’t scale well. You'll want to consider better options, such as the [WSGI
@@ -213,7 +214,7 @@ application. To rebuild the index:
 
 ```bash
 flask kerko clean
-flask kerko index
+flask kerko sync
 ```
 
 Environment variables are just shortcuts for those who wish to use KerkoApp as

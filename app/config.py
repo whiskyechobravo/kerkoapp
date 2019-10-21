@@ -51,6 +51,14 @@ class Config():
     KERKO_DOWNLOAD_CITATIONS_LINK = env.bool('KERKO_DOWNLOAD_CITATIONS_LINK', True)
     KERKO_DOWNLOAD_CITATIONS_MAX_COUNT = env.int('KERKO_DOWNLOAD_CITATIONS_MAX_COUNT', 0)
 
+    if env.str('KERKOAPP_NOTE_WHITELIST_RE', '') or env.str('KERKOAPP_NOTE_BLACKLIST_RE', ''):
+        # Obsolete after version 0.4.
+        raise SystemExit(
+            "ERROR: The 'KERKOAPP_NOTE_WHITELIST_RE' and 'KERKOAPP_NOTE_BLACKLIST_RE'"
+            " environment variables are no longer supported. Please use"
+            " 'KERKOAPP_CHILD_WHITELIST_RE' and 'KERKOAPP_CHILD_BLACKLIST_RE' instead."
+        )
+
     KERKO_COMPOSER = Composer(
         whoosh_language=KERKO_WHOOSH_LANGUAGE,
         exclude_default_scopes=env.list('KERKOAPP_EXCLUDE_DEFAULT_SCOPES', []),
@@ -59,9 +67,9 @@ class Config():
         exclude_default_sorts=env.list('KERKOAPP_EXCLUDE_DEFAULT_SORTS', []),
         exclude_default_citation_formats=env.list('KERKOAPP_EXCLUDE_DEFAULT_CITATION_FORMATS', []),
         default_tag_whitelist_re=env.str('KERKOAPP_TAG_WHITELIST_RE', ''),
-        default_tag_blacklist_re=env.str('KERKOAPP_TAG_BLACKLIST_RE', '^_'),
-        default_note_whitelist_re=env.str('KERKOAPP_NOTE_WHITELIST_RE', ''),
-        default_note_blacklist_re=env.str('KERKOAPP_NOTE_BLACKLIST_RE', '^_')
+        default_tag_blacklist_re=env.str('KERKOAPP_TAG_BLACKLIST_RE', r'^_'),
+        default_child_whitelist_re=env.str('KERKOAPP_CHILD_WHITELIST_RE', ''),
+        default_child_blacklist_re=env.str('KERKOAPP_CHILD_BLACKLIST_RE', r'^_')
     )
 
     # Add collection facets.

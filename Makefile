@@ -14,8 +14,8 @@ run:
 pull:
 	docker pull $(IMAGE)
 
-index:
-	docker run --env-file $(ENV_FILE) --rm -p $(HOST_PORT):80 -v $(HOST_DATA_DIR):/app/data -v $(HOST_DEV_LOG):/dev/log $(IMAGE) flask kerko index
+sync:
+	docker run --env-file $(ENV_FILE) --rm -p $(HOST_PORT):80 -v $(HOST_DATA_DIR):/app/data -v $(HOST_DEV_LOG):/dev/log $(IMAGE) flask kerko sync
 
 clean:
 	docker run --env-file $(ENV_FILE) --rm -p $(HOST_PORT):80 -v $(HOST_DATA_DIR):/app/data -v $(HOST_DEV_LOG):/dev/log $(IMAGE) flask kerko clean
