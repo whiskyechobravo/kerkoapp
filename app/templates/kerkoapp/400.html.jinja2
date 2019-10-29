@@ -1,5 +1,5 @@
 {%- set title = _("Bad request") %}
-{%- extends "kerko/layout.html.jinja2" %}
+{%- extends config.KERKO_TEMPLATE_LAYOUT %}
 
 {%- block content_inner %}
     <p>{{ _("The browser (or a proxy) sent a request that this site could not understand.") }}</p>
