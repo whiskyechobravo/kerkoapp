@@ -5,8 +5,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: KerkoApp 0.3.dev0\n"
-"Report-Msgid-Bugs-To: kerko@whiskyechobravo.com\n"
+"Project-Id-Version: KerkoApp\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-21 16:47-0400\n"
 "PO-Revision-Date: 2019-10-21 16:47-0400\n"
 "Last-Translator: David Lesieur <kerko@whiskyechobravo.com>\n"
