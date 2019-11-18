@@ -9,7 +9,16 @@ meant to serve as an example on how to integrate the Kerko blueprint in a Flask
 application.
 
 Basic configuration options can be set with environment variables, but for more
-advanced customizations one should consider using Kerko's Python interface.
+advanced customizations one should consider building a custom application,
+possibly using KerkoApp as a starting point, and configuring Kerko through its
+Python interface.
+
+
+## Demo site
+
+A [KerkoApp demo site][KerkoApp_demo] is available for you to try. You may also
+view the [Zotero library][Zotero_demo] that contains the source data for the
+demo site.
 
 
 ## Features
@@ -18,25 +27,18 @@ KerkoApp is just a thin container around Kerko. As such, almost all of its
 features are inherited from Kerko. See [Kerko's documentation][Kerko] for the
 list of features.
 
-The main features added by KerkoApp are:
+The main features added by KerkoApp over Kerko's are:
 
-* Kerko configuration settings are read from environment variables or a `.env`
-  file, adhering to the [Twelve-factor App](https://12factor.net/config)
-  methodology.
+* Most of Kerko's configuration settings are read from environment variables or
+  a `.env` file, adhering to the [Twelve-factor
+  App](https://12factor.net/config) methodology.
 * Extra environment variables provide quick shortcuts for:
     * defining facets based on Zotero collections;
     * filtering tags, or notes and attachments (regular expressions for
       blacklisting and/or whitelisting);
-    * excluding fields, facets, sort options or search scopes from Kerko's
-      defaults.
+    * excluding fields, facets, sort options, search scopes, citation download
+      formats, or badges from Kerko's defaults.
 * Templates for common HTTP errors.
-
-
-## Demo site
-
-A [KerkoApp demo site][KerkoApp_demo] is available for you to try. You may also
-view the [Zotero library][Zotero_demo] that contains the source data for the
-demo site.
 
 
 ## Getting started
@@ -70,11 +72,8 @@ This procedure requires Python 3.6 or later.
      secret. For this reason, never add your `.env` file to a code repository.
    * `KERKO_ZOTERO_API_KEY`, `KERKO_ZOTERO_LIBRARY_ID` and
      `KERKO_ZOTERO_LIBRARY_TYPE`: These variables are required for Kerko to be
-     able to access your Zotero library. See [Kerko's documentation on
-     configuration variables][Kerko_variables] for details on how to properly
-     set these variables.
-
-   The **Example configuration** section below might give you additional tips.
+     able to access your Zotero library. See the **Environment variables**
+     section below for details.
 
 3. Have KerkoApp retrieve your data from zotero.org:
 
@@ -116,11 +115,8 @@ This procedure requires that [Docker] is installed on your computer.
      secret. For this reason, never add your `.env` file to a code repository.
    * `KERKO_ZOTERO_API_KEY`, `KERKO_ZOTERO_LIBRARY_ID` and
      `KERKO_ZOTERO_LIBRARY_TYPE`: These variables are required for Kerko to be
-     able to access your Zotero library. See [Kerko's documentation on
-     configuration variables][Kerko_variables] for details on how to properly
-     set these variables.
-
-   The **Example configuration** section below might give you additional tips.
+     able to access your Zotero library. See the **Environment variables**
+     section below for details.
 
    **Do not** assign a value to the `KERKO_DATA_DIR` variable. If you do, the
    volume bindings defined within the `Makefile` won't be of any use to the
@@ -160,6 +156,151 @@ run Docker containers, including the port mapping and volume binding required to
 run containers, see the [Docker documentation][Docker_docs].
 
 
+## Environment variables
+
+KerkoApp supports a number of environment variables which may be useful to those
+who wish to use KerkoApp as is, without touching any Python code.
+
+Many of these variables cause changes to Kerko's search index. Changing them
+require that you rebuild Kerko's search index and restart the application. To
+rebuild the index:
+
+```bash
+flask kerko clean index
+flask kerko sync
+```
+
+The environment variables below are required and have no default values:
+
+* `KERKO_ZOTERO_API_KEY`: The API key associated to the library on zotero.org.
+  You have to [create that key](https://www.zotero.org/settings/keys/new).
+* `KERKO_ZOTERO_LIBRARY_ID`: Your personal _userID_ for API calls, as given
+  [on zotero.org](https://www.zotero.org/settings/keys) (you must be logged-in
+  on zotero.org).
+* `KERKO_ZOTERO_LIBRARY_TYPE`: The type of library on zotero.org (either
+  `'user'` for your main personal library, or `'group'` for a group library).
+
+The following environment variables are supported by KerkoApp and may be added
+to your `.env` file if you wish to override their default values:
+
+* `KERKO_CSL_STYLE`: The citation style to use for formatted references. Can be
+  either the file name (without the `.csl` extension) of one of the styles in the
+  [Zotero Styles Repository][Zotero_styles] (e.g., `apa`) or the URL of a remote
+  CSL file. Defaults to `'apa'`.
+* `KERKO_DATA_DIR`: The directory where to store the search index and the file
+  attachments. Defaults to `data/kerko`. Subdirectories `index` and
+  `attachments` will be created if they don't already exist.
+* `KERKO_DOWNLOAD_CITATIONS_LINK`: Provide a citation download button on search
+  results pages. Defaults to `True`.
+* `KERKO_DOWNLOAD_CITATIONS_MAX_COUNT`: Limit over which the citation download
+  button should be hidden from search results pages. Defaults to `0` (i.e. no
+  limit).
+* `KERKO_FACET_COLLAPSING`: Allow collapsible facets. Defaults to `False`.
+* `KERKO_PAGE_LEN`: The number of search results per page. Defaults to `20`.
+* `KERKO_PAGER_LINKS`: Number of pages to show in the pager (not counting the
+  current page). Defaults to `8`.
+* `KERKO_PRINT_ITEM_LINK`: Provide a print button on item pages. Defaults to
+  `False`.
+* `KERKO_PRINT_CITATIONS_LINK`: Provide a print button on search results
+  pages. Defaults to `False`.
+* `KERKO_PRINT_CITATIONS_MAX_COUNT`: Limit over which the print button should
+  be hidden from search results pages. Defaults to `0` (i.e. no limit).
+* `KERKO_RESULTS_ABSTRACT`: Show abstracts in search result pages. Defaults to
+  `False`.
+* `KERKO_TITLE`: The title to display in web pages. Defaults to `'Kerko App'`.
+* `KERKO_ZOTERO_BATCH_SIZE`: Number of items to request on each call to the
+  Zotero API. Defaults to `100` (which is the maximum currently allowed by the
+  API).
+* `KERKO_ZOTERO_MAX_ATTEMPTS`: Maximum number of tries after the Zotero API
+  has returned an error or not responded during indexing. Defaults to `10`.
+* `KERKO_ZOTERO_WAIT`: Time to wait (in seconds) between failed attempts to
+  call the Zotero API. Defaults to `120`.
+* Localization-related variables:
+  * `BABEL_DEFAULT_LOCALE`: The default language of the user interface. Defaults
+    to `'en'`.
+  * `KERKO_WHOOSH_LANGUAGE`: The language of search requests. Defaults to
+    `'en'`. You may refer to Whoosh's source to get the list of supported
+    languages (`whoosh.lang.languages`) and the list of languages that support
+    stemming (`whoosh.lang.has_stemmer()`).
+  * `KERKO_ZOTERO_LOCALE`: The locale to use with Zotero API calls. This
+    dictates the locale of Zotero item types, field names, creator types and
+    citations. Defaults to `'en-US'`. Supported locales are listed at
+    https://api.zotero.org/schema, under "locales".
+* `KERKOAPP_COLLECTION_FACETS`: Defines facets modeled on Zotero collections.
+  This variable should be a list of semicolon-delimited triples (collection key,
+  facet weight and facet title, separated by colons). Each specified collection
+  will appear in Kerko as a facet where subcollections will be represented as
+  values within the facet. The weight determines a facet's position relative to
+  the other facets. The value of `KERKOAPP_COLLECTION_FACETS` should be defined
+  within a single string, on a single line.
+* `KERKOAPP_EXCLUDE_DEFAULT_BADGES`: List of badges (identified by key) to
+  exclude from those created by default. If that list contains the value '*', no
+  badge will be created by default. Please refer to the implementation of
+  `kerko.composer.Composer.init_default_badges()` for the list of default
+  badges.
+* `KERKOAPP_EXCLUDE_DEFAULT_CITATION_FORMATS`: List of citation download formats
+  (identified by key) to exclude from those created by default. If that list
+  contains the value '*', no citation format will be created by default. Please
+  refer to the implementation of
+  `kerko.composer.Composer.init_default_citation_formats()` for the list of
+  default citation formats.
+* `KERKOAPP_EXCLUDE_DEFAULT_FACETS`: List of facets (identified by key) to
+  exclude from those created by default. If that list contains the value '*', no
+  facet will be created by default. Please refer to the implementation of
+  `kerko.composer.Composer.init_default_facets()` for the list of default
+  facets.
+* `KERKOAPP_EXCLUDE_DEFAULT_FIELDS`: List of fields (identified by key) to
+  exclude from those created by default. If that list contains the value '*', no
+  field will be created by default. Caution: some default fields are required by
+  Kerko or by badges. If required fields are excluded, the application probably
+  won't start. Please refer to the implementation of
+  `kerko.composer.Composer.init_default_fields()` for the list of default
+  fields.
+* `KERKOAPP_EXCLUDE_DEFAULT_SCOPES`: List of scopes (identified by key) to
+  exclude from those created by default. If that list contains the value '*', no
+  scope will be added by default. Caution: most default fields are expecting one
+  or more of those scopes to exist. If required scopes are excluded, the
+  application probably won't start. Please refer to the implementation of
+  `kerko.composer.Composer.init_default_scopes()` for the list of default
+  scopes.
+* `KERKOAPP_EXCLUDE_DEFAULT_SORTS`: List of sorts (identified by key) to exclude
+  from those created by default. Caution: at least one sort must remain for the
+  application to start. Please refer to the implementation of
+  `kerko.composer.Composer.init_default_sorts()` for the list of default sorts.
+* `KERKOAPP_MIME_TYPES`: List of allowed MIME types for attachments. Defaults to
+  `"application/pdf"`.
+* `KERKOAPP_TAG_BLACKLIST_RE`: Regex to use to blacklist tags. The default value
+  causes any tag that begins with an underscore ('_') to be ignored by Kerko.
+  Note that citation exports (downloads) always include all tags regardless of
+  this parameter, which only applies to information displayed by Kerko (exports
+  are generated by the Zotero API, not by Kerko).
+* `KERKOAPP_TAG_WHITELIST_RE`: Regex to use to whitelist tags. By default, all
+  tags are accepted. Note that citation exports (downloads) always include all
+  tags regardless of this parameter, which only applies to information displayed
+  by Kerko (exports are generated by the Zotero API, not by Kerko).
+* `KERKOAPP_CHILD_BLACKLIST_RE`: Regex to use to blacklist children (e.g. notes,
+  attachments) based on their tags. Any child that have a tag that matches this
+  regular expression will be ignored. If empty, no children will be rejected
+  unless `KERKOAPP_CHILD_WHITELIST_RE` is set and the tags of those children
+  don't match it. By default, any child having at least one tag that begins with
+  an underscore ('_') is rejected.
+* `KERKOAPP_CHILD_WHITELIST_RE`: Regex to use to whitelist children (e.g. notes,
+  attachments) based on their tags. Any child which does not have a tag that
+  matches this regular expression will be ignored. If empty, all children will
+  be accepted unless `KERKOAPP_CHILD_BLACKLIST_RE` is set and causes some to be
+  rejected.
+
+Note that some of Kerko's variables do not have a corresponding environment
+variable in KerkoApp and therefore can only be set in Python from a custom
+application.
+
+If you are building your own application, you don't really need the above
+environment variables. Instead, you could directly set Kerko variables in your
+application's `Config` object and set arguments to `kerko.composer.Composer`'s
+init method. In that case, please refer to [Kerko's documentation][Kerko] rather
+than KerkoApp's.
+
+
 ## Example configuration
 
 The `.env` file of the [demo site][KerkoApp_demo] looks like the following,
@@ -180,48 +321,16 @@ KERKOAPP_EXCLUDE_DEFAULT_FACETS=facet_tag,facet_link
 KERKOAPP_COLLECTION_FACETS=KY3BNA6T:110:Topic; 7H2Q7L6I:120:Field of study; JFQRH4X2:130:Contribution
 ```
 
-The variables prefixed with `KERKO_` are described in [Kerko's
-documentation][Kerko_variables], while those prefixed with `KERKOAPP_` are
-specific to KerkoApp.
-
-KerkoApp variables can be used in the `.env` file to exclude elements from
-Kerko's default scopes (`KERKOAPP_EXCLUDE_DEFAULT_SCOPES`), fields
-(`KERKOAPP_EXCLUDE_DEFAULT_FIELDS`), facets (`KERKOAPP_EXCLUDE_DEFAULT_FACETS`),
-sort options (`KERKOAPP_EXCLUDE_DEFAULT_SORTS`) or citation download links
-(`KERKOAPP_EXCLUDE_DEFAULT_CITATION_FORMATS`). Please refer to the
-implementation of `kerko.composer.Composer` for more details on the defaults;
-changing the default scopes and fields, in particular, should be done with care.
-In the above example, `KERKOAPP_EXCLUDE_DEFAULT_FACETS` is used to exclude the
+In this example, `KERKOAPP_EXCLUDE_DEFAULT_FACETS` is used to exclude the
 `'facet_tag'` and `'facet_link'` facets that Kerko would normally build by
 default.
 
-Another KerkoApp variable, `KERKOAPP_COLLECTION_FACETS`, may be used in the
-`.env` file to define facets modeled on Zotero collections. It takes a list of
-semicolon-delimited triples (collection key, facet weight and facet title,
-separated by colons). Each specified collection is then represented as a facet
-where subcollections are represented as values within the facet. The weight
-determines a facet's position relative to the other facets. In the above
-example, "7H2Q7L6I:120:Field of study" defines a facet based on the collection
-whose key on zotero.org is _7H2Q7L6I_. That facet is given a weight of _120_,
-which will position it under facets that have a lighter weight (smaller number),
-and above those that have a heavier weight (larger number). The facet is also
-given the title _Field of study_. The value of `KERKOAPP_COLLECTION_FACETS` is
-defined within a single string that will be parsed by KerkoApp.
-
-These variables cause changes to Kerko's search index. Changing any of those
-values require that you rebuild Kerko's search index and restart your
-application. To rebuild the index:
-
-```bash
-flask kerko clean
-flask kerko sync
-```
-
-Environment variables are just shortcuts for those who wish to use KerkoApp as
-is, without changing any Python code. If you are building your own Kerko
-application, you don't really need those variables. Instead, you may directly
-specify arguments when instanciating the `kerko.composer.Composer` class, and
-call `add_facet()` on the instance to specify additional facets.
+Also in this example, `KERKOAPP_COLLECTION_FACETS` defines three facets. The
+first one, represented by `KY3BNA6T:110:Topic`, is based on a Zotero collection
+whose key is _KY3BNA6T_. Its weight is _110_, which will position it under
+facets that have a lighter weight (smaller number), and above those that have a
+heavier weight (larger number). And its title is _Topic_. The other two facets
+are titled _Field of study_ and _Contribution_.
 
 
 ## Translating KerkoApp
