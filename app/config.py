@@ -66,10 +66,12 @@ class Config():
         exclude_default_facets=env.list('KERKOAPP_EXCLUDE_DEFAULT_FACETS', []),
         exclude_default_sorts=env.list('KERKOAPP_EXCLUDE_DEFAULT_SORTS', []),
         exclude_default_citation_formats=env.list('KERKOAPP_EXCLUDE_DEFAULT_CITATION_FORMATS', []),
+        exclude_default_badges=env.list('KERKOAPP_EXCLUDE_DEFAULT_BADGES', []),
         default_tag_whitelist_re=env.str('KERKOAPP_TAG_WHITELIST_RE', ''),
         default_tag_blacklist_re=env.str('KERKOAPP_TAG_BLACKLIST_RE', r'^_'),
         default_child_whitelist_re=env.str('KERKOAPP_CHILD_WHITELIST_RE', ''),
-        default_child_blacklist_re=env.str('KERKOAPP_CHILD_BLACKLIST_RE', r'^_')
+        default_child_blacklist_re=env.str('KERKOAPP_CHILD_BLACKLIST_RE', r'^_'),
+        mime_types=env.list('KERKOAPP_MIME_TYPES', []),
     )
 
     # Add collection facets.
