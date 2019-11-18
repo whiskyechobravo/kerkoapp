@@ -301,7 +301,7 @@ init method. In that case, please refer to [Kerko's documentation][Kerko] rather
 than KerkoApp's.
 
 
-## Example configuration
+## Configuration example
 
 The `.env` file of the [demo site][KerkoApp_demo] looks like the following,
 except for the private keys:
@@ -470,11 +470,12 @@ Under Windows:
 set FLASK_APP=kerkoapp.py
 ```
 
-### Errors when using the HEAD version of Kerko
+### Errors when using the `master` version of Kerko
 
 The `master` branch of KerkoApp is meant to work with the latest published
-release of Kerko. If you have installed the HEAD version of Kerko, use the
-`kerko-head` branch of KerkoApp instead of `master`.
+release of Kerko. If you have installed the `master` version of Kerko instead
+its latest published release, use the `kerko-head` branch of KerkoApp instead of
+`master`.
 
 
 [Docker]: https://www.docker.com/
