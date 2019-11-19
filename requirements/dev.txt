@@ -21,7 +21,7 @@ idna==2.8                 # via requests
 isort==4.3.21             # via pylint
 itsdangerous==1.1.0       # via flask
 jinja2==2.10.3            # via flask, flask-babelex, kerko
-kerko==0.4
+kerko==0.5
 lazy-object-proxy==1.4.3  # via astroid
 markupsafe==1.1.1         # via jinja2
 marshmallow==3.2.2        # via environs
