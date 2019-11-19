@@ -14,10 +14,10 @@ run:
 pull:
 	docker pull $(IMAGE)
 
-sync:
+kerkosync:
 	docker run --env-file $(ENV_FILE) --rm -p $(HOST_PORT):80 -v $(HOST_DATA_DIR):/app/data -v $(HOST_DEV_LOG):/dev/log $(IMAGE) flask kerko sync
 
-clean:
+kerkoclean:
 	docker run --env-file $(ENV_FILE) --rm -p $(HOST_PORT):80 -v $(HOST_DATA_DIR):/app/data -v $(HOST_DEV_LOG):/dev/log $(IMAGE) flask kerko clean
 
 build:

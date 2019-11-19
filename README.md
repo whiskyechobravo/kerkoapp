@@ -132,7 +132,7 @@ This procedure requires that [Docker] is installed on your computer.
 4. Have KerkoApp retrieve your bibliographic data from zotero.org:
 
    ```bash
-   make index
+   make kerkosync
    ```
 
    If you have a large bibliography, this may take a while (and there is no
