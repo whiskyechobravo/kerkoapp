@@ -4,6 +4,8 @@ from flask import redirect, url_for
 from app import create_app
 
 env = Env()  # pylint: disable=invalid-name
+env.read_env()
+
 app = create_app(env.str('FLASK_ENV'))  # pylint: disable=invalid-name
 
 

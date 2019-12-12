@@ -8,6 +8,7 @@ from kerko.composer import Composer
 from kerko.specs import CollectionFacetSpec
 
 env = Env()  # pylint: disable=invalid-name
+env.read_env()
 
 
 @env.parser_for('collection_spec')
