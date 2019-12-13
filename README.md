@@ -1,16 +1,15 @@
 # KerkoApp
 
-[KerkoApp] is a web application using [Kerko] to provide a user-friendly
+[KerkoApp] is a web application that uses [Kerko] to provide a user-friendly
 search and browsing interface for sharing a bibliography managed with the
-[Zotero] reference manager. Built in [Python] with the [Flask] framework.
+[Zotero] reference manager. It is built in [Python] with the [Flask] framework.
 
 Although this application may be deployed as is on a web server, it is primarily
-meant to serve as an example on how to integrate the Kerko blueprint in a Flask
-application.
+meant to serve as an example on how to integrate Kerko into a Flask application.
 
 Basic configuration options can be set with environment variables, but for more
-advanced customizations one should consider building a custom application,
-possibly using KerkoApp as a starting point, and configuring Kerko through its
+advanced customizations one should consider building a custom application
+(possibly using KerkoApp as a starting point), and configuring Kerko through its
 Python interface.
 
 
