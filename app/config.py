@@ -72,7 +72,7 @@ class Config():
         default_tag_blacklist_re=env.str('KERKOAPP_TAG_BLACKLIST_RE', r'^_'),
         default_child_whitelist_re=env.str('KERKOAPP_CHILD_WHITELIST_RE', ''),
         default_child_blacklist_re=env.str('KERKOAPP_CHILD_BLACKLIST_RE', r'^_'),
-        mime_types=env.list('KERKOAPP_MIME_TYPES', []),
+        mime_types=env.list('KERKOAPP_MIME_TYPES', ['application/pdf']),
     )
 
     # Add collection facets.
