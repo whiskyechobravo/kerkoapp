@@ -23,7 +23,6 @@ class Config():
     app_dir = pathlib.Path(env.str('FLASK_APP')).parent.absolute()
 
     SECRET_KEY = env.str('SECRET_KEY')
-    LOGGING_HANDLER = 'default'
     EXPLAIN_TEMPLATE_LOADING = False
     PROXY_FIX = env.bool('PROXY_FIX', False)
     BABEL_DEFAULT_LOCALE = env.str('BABEL_DEFAULT_LOCALE', 'en')
@@ -93,15 +92,15 @@ class DevelopmentConfig(Config):
     DEBUG = True
     KERKO_ZOTERO_START = env.int('KERKO_ZOTERO_START', 0)
     KERKO_ZOTERO_END = env.int('KERKO_ZOTERO_END', 0)
+    LOGGING_LEVEL = env.str('LOGGING_LEVEL', 'DEBUG')
 
 
 class ProductionConfig(Config):
     CONFIG = 'production'
     DEBUG = False
-    LOGGING_HANDLER = 'syslog'
-    LOGGING_ADDRESS = '/dev/log'
-    LOGGING_LEVEL = logging.WARNING
-    LOGGING_FORMAT = '%(name)s %(asctime)s %(levelname)s: %(message)s'
+    LOGGING_HANDLER = env.str('LOGGING_HANDLER', 'syslog')
+    LOGGING_ADDRESS = env.str('LOGGING_ADDRESS', '/dev/log')
+    LOGGING_LEVEL = env.str('LOGGING_LEVEL', 'WARNING')
 
 
 CONFIGS = {
