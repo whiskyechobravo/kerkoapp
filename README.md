@@ -160,9 +160,9 @@ run containers, see the [Docker documentation][Docker_docs].
 KerkoApp supports a number of environment variables which may be useful to those
 who wish to use KerkoApp as is, without touching any Python code.
 
-Many of these variables cause changes to Kerko's search index. Changing them
-require that you rebuild Kerko's search index and restart the application. To
-rebuild the index:
+Many of these variables cause changes to the structure of Kerko's search index.
+Changing them require that you rebuild Kerko's search index and restart the
+application. To rebuild the index:
 
 ```bash
 flask kerko clean index
@@ -171,6 +171,7 @@ flask kerko sync
 
 The environment variables below are required and have no default values:
 
+* `FLASK_APP`: Specifies the application to load. Normally set to `kerkoapp.py`.
 * `KERKO_ZOTERO_API_KEY`: The API key associated to the library on zotero.org.
   You have to [create that key](https://www.zotero.org/settings/keys/new).
 * `KERKO_ZOTERO_LIBRARY_ID`: Your personal _userID_ for API calls, as given
@@ -182,6 +183,8 @@ The environment variables below are required and have no default values:
 The following environment variables are supported by KerkoApp and may be added
 to your `.env` file if you wish to override their default values:
 
+* `FLASK_ENV`: Specifies the environment in which the app should run. Either
+  `development` or `production`. Defaults to `production`.
 * `KERKO_CSL_STYLE`: The citation style to use for formatted references. Can be
   either the file name (without the `.csl` extension) of one of the styles in the
   [Zotero Styles Repository][Zotero_styles] (e.g., `apa`) or the URL of a remote
@@ -288,6 +291,10 @@ to your `.env` file if you wish to override their default values:
   matches this regular expression will be ignored. If empty, all children will
   be accepted unless `KERKOAPP_CHILD_BLACKLIST_RE` is set and causes some to be
   rejected.
+* `LOGGING_LEVEL`: Severity of events to track. Allowed values are `DEBUG`,
+  `INFO`, `WARNING`, `ERROR`, `CRITICAL`. Defaults to `DEBUG` if app is running
+  in the development environment, and to `WARNING` in the production
+  environment.
 
 Note that some of Kerko's variables do not have a corresponding environment
 variable in KerkoApp and therefore can only be set in Python from a custom
