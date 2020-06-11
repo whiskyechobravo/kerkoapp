@@ -1,5 +1,15 @@
 # Changelog
 
+## Latest
+
+Changes:
+
+* Allow setting `LOGGING_LEVEL` through an environment variable.
+* Set default value for the `KERKOAPP_MIME_TYPES` variable to `['application/pdf']`.
+* Fix `.env` file sometimes not read at app startup.
+* Add a root logging handler.
+* Improve documentation.
+
 ## 0.5 (2019-11-19)
 
 *Warning:* Upgrading from version 0.4 or earlier will require that you clean and
