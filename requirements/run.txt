@@ -4,27 +4,27 @@
 #
 #    pip-compile requirements/run.in
 #
-babel==2.8.0
+babel==2.8.0              # via -r requirements/run.in, flask-babelex, kerko
 bibtexparser==1.2.0       # via pyzotero
-bootstrap-flask==1.4
+bootstrap-flask==1.4      # via -r requirements/run.in, kerko
 certifi==2020.4.5.2       # via requests
 chardet==3.0.4            # via requests
 click==7.1.2              # via flask
-environs==8.0.0
+environs==8.0.0           # via -r requirements/run.in
 feedparser==5.2.1         # via pyzotero
-flask-babelex==0.9.4
+flask-babelex==0.9.4      # via -r requirements/run.in, kerko
 flask-wtf==0.14.3         # via kerko
-flask==1.1.2
+flask==1.1.2              # via -r requirements/run.in, bootstrap-flask, flask-babelex, flask-wtf, kerko
 future==0.18.2            # via bibtexparser
 idna==2.9                 # via requests
 itsdangerous==1.1.0       # via flask, flask-wtf
 jinja2==2.11.2            # via flask, flask-babelex, kerko
-kerko==0.5
+kerko==0.6                # via -r requirements/run.in
 markupsafe==1.1.1         # via jinja2, wtforms
 marshmallow==3.6.1        # via environs
 pathlib==1.0.1            # via pyzotero
 pyparsing==2.4.7          # via bibtexparser
-python-dotenv==0.13.0
+python-dotenv==0.13.0     # via -r requirements/run.in, environs
 pytz==2020.1              # via babel, pyzotero
 pyzotero==1.4.16          # via kerko
 requests==2.23.0          # via pyzotero
