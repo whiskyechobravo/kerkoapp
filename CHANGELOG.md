@@ -1,5 +1,17 @@
 # Changelog
 
+## Latest
+
+Changes:
+
+* The `Config` class is now instanciated, so the configuration variables are now
+  taken from an object rather than a class.
+* The following environment variable names are deprecated:
+  * `KERKOAPP_TAG_WHITELIST_RE` (replaced by `KERKOAPP_TAG_INCLUDE_RE`)
+  * `KERKOAPP_TAG_BLACKLIST_RE` (replaced by `KERKOAPP_TAG_EXCLUDE_RE`)
+  * `KERKOAPP_CHILD_WHITELIST_RE` (replaced by `KERKOAPP_CHILD_INCLUDE_RE`)
+  * `KERKOAPP_CHILD_BLACKLIST_RE` (replaced by `KERKOAPP_CHILD_EXCLUDE_RE`)
+
 ## 0.6 (2020-06-15)
 
 Changes:

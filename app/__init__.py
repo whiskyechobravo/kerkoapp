@@ -21,7 +21,7 @@ def create_app(config_name):
     :param config_object: The configuration object to use.
     """
     app = Flask(__name__)
-    app.config.from_object(CONFIGS[config_name])
+    app.config.from_object(CONFIGS[config_name]())
     register_extensions(app)
     register_blueprints(app)
     register_errorhandlers(app)
