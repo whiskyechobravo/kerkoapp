@@ -2,7 +2,9 @@
 
 disable=fixme,
         missing-docstring,
-        too-many-lines
+        too-many-lines,
+        too-few-public-methods,
+        too-many-instance-attributes
 
 enable=unused-import
 
