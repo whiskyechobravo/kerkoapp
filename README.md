@@ -192,6 +192,8 @@ to your `.env` file if you wish to override their default values:
 * `KERKO_DATA_DIR`: The directory where to store the search index and the file
   attachments. Defaults to `data/kerko`. Subdirectories `index` and
   `attachments` will be created if they don't already exist.
+* `KERKO_DOWNLOAD_ATTACHMENT_NEW_WINDOW`: Open attachments in new windows, i.e.,
+  add the `target="_blank"` attribute to attachment links. Defaults to `False`.
 * `KERKO_DOWNLOAD_CITATIONS_LINK`: Provide a citation download button on search
   results pages. Defaults to `True`.
 * `KERKO_DOWNLOAD_CITATIONS_MAX_COUNT`: Limit over which the citation download
@@ -207,6 +209,8 @@ to your `.env` file if you wish to override their default values:
   pages. Defaults to `False`.
 * `KERKO_PRINT_CITATIONS_MAX_COUNT`: Limit over which the print button should
   be hidden from search results pages. Defaults to `0` (i.e. no limit).
+* `KERKO_RELATIONS_INITIAL_LIMIT`: Number of related items to show above the
+  "view all" link. Defaults to `5`.
 * `KERKO_RESULTS_ABSTRACT`: Show abstracts in search result pages. Defaults to
   `False`.
 * `KERKO_TITLE`: The title to display in web pages. Defaults to `'Kerko App'`.

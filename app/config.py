@@ -58,6 +58,7 @@ class Config:
         self.KERKO_DOWNLOAD_ATTACHMENT_NEW_WINDOW = env.bool(
             'KERKO_DOWNLOAD_ATTACHMENT_NEW_WINDOW', False
         )
+        self.KERKO_RELATIONS_INITIAL_LIMIT = env.int('KERKO_RELATIONS_INITIAL_LIMIT', 5)
 
         self.KERKO_COMPOSER = Composer(
             whoosh_language=self.KERKO_WHOOSH_LANGUAGE,
