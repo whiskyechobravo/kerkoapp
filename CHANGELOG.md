@@ -11,6 +11,7 @@ Changes:
   * `KERKOAPP_TAG_BLACKLIST_RE` (replaced by `KERKOAPP_TAG_EXCLUDE_RE`)
   * `KERKOAPP_CHILD_WHITELIST_RE` (replaced by `KERKOAPP_CHILD_INCLUDE_RE`)
   * `KERKOAPP_CHILD_BLACKLIST_RE` (replaced by `KERKOAPP_CHILD_EXCLUDE_RE`)
+* Add German translation. Thanks [@mmoole](https://github.com/mmoole).
 
 ## 0.6 (2020-06-15)
 
