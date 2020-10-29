@@ -275,6 +275,15 @@ to your `.env` file if you wish to override their default values:
   `kerko.composer.Composer.init_default_sorts()` for the list of default sorts.
 * `KERKOAPP_MIME_TYPES`: List of allowed MIME types for attachments. Defaults to
   `"application/pdf"`.
+* `KERKOAPP_ITEM_EXCLUDE_RE`: Regex to use to exclude items based on their tags.
+  Any object that have a tag that matches this regular expression will be
+  excluded. If empty (which is the default), no items will be excluded unless
+  `KERKOAPP_ITEM_INCLUDE_RE` is set, in which case items that don't have any tag
+  that matches it will be excluded.
+* `KERKOAPP_ITEM_INCLUDE_RE`: Regex to use to include items based on their tags.
+  Any object which does not have a tag that matches this regular expression will
+  be excluded. If empty (which is the default), all items will be included
+  unless `KERKOAPP_ITEM_EXCLUDE_RE` is set and causes some to be excluded.
 * `KERKOAPP_TAG_EXCLUDE_RE`: Regex to use to exclude tags. The default value
   causes any tag that begins with an underscore ('_') to be ignored by Kerko.
   Note that citation exports (downloads) always include all tags regardless of

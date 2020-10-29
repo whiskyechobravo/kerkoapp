@@ -70,6 +70,8 @@ class Config:
                 'KERKOAPP_EXCLUDE_DEFAULT_CITATION_FORMATS', []
             ),
             exclude_default_badges=env.list('KERKOAPP_EXCLUDE_DEFAULT_BADGES', []),
+            default_item_include_re=env.str('KERKOAPP_ITEM_INCLUDE_RE', ''),
+            default_item_exclude_re=env.str('KERKOAPP_ITEM_EXCLUDE_RE', ''),
             default_tag_include_re=env.str(
                 'KERKOAPP_TAG_INCLUDE_RE', env.str('KERKOAPP_TAG_WHITELIST_RE', '')
             ),
@@ -100,21 +102,21 @@ class Config:
     @staticmethod
     def check_deprecated_options():
         if env.str('KERKOAPP_TAG_WHITELIST_RE', '') or env.str('KERKOAPP_TAG_BLACKLIST_RE', ''):
-            # Obsolete after version 0.6.
+            # Deprecated after version 0.6.
             print(
                 "WARNING: The 'KERKOAPP_TAG_WHITELIST_RE' and 'KERKOAPP_TAG_BLACKLIST_RE' "
                 "environment variables are deprecated. Please use 'KERKOAPP_TAG_INCLUDE_RE' "
                 "and 'KERKOAPP_TAG_EXCLUDE_RE' instead."
             )
         if env.str('KERKOAPP_CHILD_WHITELIST_RE', '') or env.str('KERKOAPP_CHILD_BLACKLIST_RE', ''):
-            # Obsolete after version 0.6.
+            # Deprecated after version 0.6.
             print(
                 "WARNING: The 'KERKOAPP_CHILD_WHITELIST_RE' and 'KERKOAPP_CHILD_BLACKLIST_RE' "
                 "environment variables are deprecated. Please use 'KERKOAPP_CHILD_INCLUDE_RE' "
                 "and 'KERKOAPP_CHILD_EXCLUDE_RE' instead."
             )
         if env.str('KERKOAPP_NOTE_WHITELIST_RE', '') or env.str('KERKOAPP_NOTE_BLACKLIST_RE', ''):
-            # Obsolete after version 0.4.
+            # Deprecated after version 0.4.
             raise SystemExit(
                 "ERROR: The 'KERKOAPP_NOTE_WHITELIST_RE' and 'KERKOAPP_NOTE_BLACKLIST_RE' "
                 "environment variables are no longer supported. Please use "
