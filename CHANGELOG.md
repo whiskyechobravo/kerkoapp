@@ -2,10 +2,21 @@
 
 ## Latest
 
+*Warning:* Upgrading from version 0.6 or earlier will require that you clean and
+re-sync your existing search index. Use the following commands:
+
+```bash
+flask kerko clean index
+flask kerko sync
+```
+
 Changes:
 
 * The `Config` class is now instanciated, so the configuration variables are now
   taken from an object rather than a class.
+* Replace the `KERKO_RESULTS_ABSTRACT` environment variable with two variables,
+  `KERKO_RESULTS_ABSTRACTS` (note the now plural form) and
+  `KERKO_RESULTS_ABSTRACTS_TOGGLER`.
 * The following environment variable names are deprecated:
   * `KERKOAPP_TAG_WHITELIST_RE` (replaced by `KERKOAPP_TAG_INCLUDE_RE`)
   * `KERKOAPP_TAG_BLACKLIST_RE` (replaced by `KERKOAPP_TAG_EXCLUDE_RE`)

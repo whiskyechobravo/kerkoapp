@@ -52,7 +52,7 @@ pre-built with KerkoApp. You may choose the one you are most comfortable with.
 This procedure requires Python 3.6 or later.
 
 1. The first step is to install the software. As with any Python package, it is
-   highly recommended to install it within a [virtualenv].
+   highly recommended to install it within a [virtual environment][venv].
 
    ```bash
    git clone https://github.com/whiskyechobravo/kerkoapp.git
@@ -211,8 +211,10 @@ to your `.env` file if you wish to override their default values:
   be hidden from search results pages. Defaults to `0` (i.e. no limit).
 * `KERKO_RELATIONS_INITIAL_LIMIT`: Number of related items to show above the
   "view all" link. Defaults to `5`.
-* `KERKO_RESULTS_ABSTRACT`: Show abstracts in search result pages. Defaults to
-  `False`.
+* `KERKO_RESULTS_ABSTRACTS`: Determines whether abstracts are displayed on
+  search results pages. Defaults to `False` (hidden).
+* `KERKO_RESULTS_ABSTRACTS_TOGGLER`: Determines whether the user may toggle the
+  display of abstracts on search results pages. Defaults to `True`.
 * `KERKO_TITLE`: The title to display in web pages. Defaults to `'Kerko App'`.
 * `KERKO_ZOTERO_BATCH_SIZE`: Number of items to request on each call to the
   Zotero API. Defaults to `100` (which is the maximum currently allowed by the
@@ -361,8 +363,8 @@ refer to [Kerko's documentation][Kerko].
 KerkoApp can be translated with [Babel](http://babel.pocoo.org).
 
 The following commands should be executed from the directory that contains
-`babel.cfg`, and the appropriate [virtualenv] must have been activated
-beforehand.
+`babel.cfg`, and the appropriate [virtual environment][venv] must have been
+activated beforehand.
 
 Create or update the PO file template (POT). Replace `CURRENT_VERSION` with your
 current KerkoApp version:
@@ -514,6 +516,6 @@ its latest published release, use the `kerko-head` branch of KerkoApp instead of
 [KerkoApp_demo]: https://demo.kerko.whiskyechobravo.com
 [KerkoApp_issues]: https://github.com/whiskyechobravo/kerkoapp/issues
 [Python]: https://www.python.org/
-[virtualenv]: https://virtualenv.pypa.io/en/latest/
+[venv]: https://docs.python.org/3.8/tutorial/venv.html
 [Zotero]: https://www.zotero.org/
 [Zotero_demo]: https://www.zotero.org/groups/2348869/kerko_demo/items
