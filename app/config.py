@@ -1,7 +1,7 @@
 import pathlib
 
 from environs import Env
-from flask_babelex import lazy_gettext as _
+from flask_babel import lazy_gettext as _
 
 from kerko.composer import Composer
 from kerko.specs import CollectionFacetSpec

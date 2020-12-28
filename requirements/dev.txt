@@ -5,49 +5,47 @@
 #    pip-compile requirements/dev.in
 #
 astroid==2.4.2            # via pylint
-babel==2.8.0              # via -r requirements/run.in, flask-babelex, kerko
+babel==2.9.0              # via -r requirements/run.in, flask-babel, kerko
 bibtexparser==1.2.0       # via pyzotero
-bootstrap-flask==1.4      # via -r requirements/run.in, kerko
-certifi==2020.4.5.2       # via requests
-chardet==3.0.4            # via requests
+bootstrap-flask==1.5.1    # via -r requirements/run.in, kerko
+certifi==2020.12.5        # via requests
+chardet==4.0.0            # via requests
 click==7.1.2              # via flask, pip-tools
-environs==8.0.0           # via -r requirements/run.in
+environs==9.3.0           # via -r requirements/run.in
 feedparser==5.2.1         # via pyzotero
-flask-babelex==0.9.4      # via -r requirements/run.in, kerko
+flask-babel==2.0.0        # via -r requirements/run.in, kerko
 flask-wtf==0.14.3         # via kerko
-flask==1.1.2              # via -r requirements/run.in, bootstrap-flask, flask-babelex, flask-wtf, kerko
+flask==1.1.2              # via -r requirements/run.in, bootstrap-flask, flask-babel, flask-wtf, kerko
 future==0.18.2            # via bibtexparser
-idna==2.9                 # via requests
-isort==4.3.21             # via pylint
+idna==2.10                # via requests
+isort==5.6.4              # via pylint
 itsdangerous==1.1.0       # via flask, flask-wtf
-jinja2==2.11.2            # via flask, flask-babelex, kerko
-kerko==0.6                # via -r requirements/run.in
+jinja2==2.11.2            # via flask, flask-babel, kerko
+git+https://github.com/whiskyechobravo/kerko.git@20fde32510f034f7d094da47697ca448047ae50f#egg=kerko
 lazy-object-proxy==1.4.3  # via astroid
 markupsafe==1.1.1         # via jinja2, wtforms
-marshmallow==3.6.1        # via environs
+marshmallow==3.10.0       # via environs
 mccabe==0.6.1             # via pylint
 pathlib==1.0.1            # via pyzotero
-pip-tools==5.2.1          # via -r requirements/dev.in
-pipdeptree==1.0.0         # via -r requirements/dev.in
+pip-tools==5.4.0          # via -r requirements/dev.in
+pipdeptree==2.0.0         # via -r requirements/dev.in
 pycodestyle==2.6.0        # via -r requirements/dev.in
-pydocstyle==5.0.2         # via -r requirements/dev.in
-pylint==2.5.3             # via -r requirements/dev.in
+pydocstyle==5.1.1         # via -r requirements/dev.in
+pylint==2.6.0             # via -r requirements/dev.in
 pyparsing==2.4.7          # via bibtexparser
-python-dotenv==0.13.0     # via -r requirements/run.in, environs
-pytz==2020.1              # via babel, pyzotero
-pyzotero==1.4.16          # via kerko
-requests==2.23.0          # via pyzotero
-rope==0.17.0              # via -r requirements/dev.in
+python-dotenv==0.15.0     # via -r requirements/run.in, environs
+pytz==2020.5              # via babel, flask-babel, pyzotero
+pyzotero==1.4.20          # via kerko
+requests==2.25.1          # via pyzotero
+rope==0.18.0              # via -r requirements/dev.in
 six==1.15.0               # via astroid, pip-tools
 snowballstemmer==2.0.0    # via pydocstyle
-speaklater==1.3           # via flask-babelex
-toml==0.10.1              # via pylint
-typed-ast==1.4.1          # via astroid
-urllib3==1.25.9           # via requests
+toml==0.10.2              # via pylint
+urllib3==1.26.2           # via requests
 werkzeug==1.0.1           # via flask, kerko
 whoosh==2.7.4             # via kerko
 wrapt==1.12.1             # via astroid, kerko
-wtforms==2.3.1            # via flask-wtf, kerko
+wtforms==2.3.3            # via flask-wtf, kerko
 yapf==0.30.0              # via -r requirements/dev.in
 
 # The following packages are considered to be unsafe in a requirements file:
