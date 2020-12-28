@@ -10,6 +10,6 @@ import pathlib
 from flask_babel import Babel, Domain
 from flask_bootstrap import Bootstrap
 
-babel_domain = Domain(str(pathlib.Path(__file__).parent / 'translations'))
+babel_domain = Domain()
 babel = Babel(default_domain=babel_domain)
 bootstrap = Bootstrap()
