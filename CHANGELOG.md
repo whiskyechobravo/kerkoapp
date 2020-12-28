@@ -24,6 +24,8 @@ Changes:
   * `KERKOAPP_CHILD_BLACKLIST_RE` (replaced by `KERKOAPP_CHILD_EXCLUDE_RE`)
 * Add environment variables `KERKOAPP_ITEM_INCLUDE_RE` and `KERKOAPP_ITEM_EXCLUDE_RE`.
 * Add German translation. Thanks [@mmoole](https://github.com/mmoole).
+* Use Flask-Babel instead of its fork Flask-BabelEx, now that is has merged the
+  translation domain features from Flask-BabelEx.
 
 ## 0.6 (2020-06-15)
 
