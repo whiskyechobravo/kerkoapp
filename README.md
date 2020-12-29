@@ -354,6 +354,19 @@ heavier weight (larger number). And its title is _Topic_. The other two facets
 are titled _Field of study_ and _Contribution_.
 
 
+## Deploying KerkoApp in production
+
+As there are many different systems and environments, setting up KerkoApp for
+use in production is out of scope for this guide. The procedures will be the
+same as for any Flask application, but you will have consider features that are
+more specific to KerkoApp, e.g., the `.env` file, the data directory, the
+regular synchronization of data from zotero.org.
+
+You might find the following guide useful:
+
+- [Deploying KerkoApp on Ubuntu 20.04 with nginx and gunicorn](https://gist.github.com/davidlesieur/e1dafd09636a4bb333ad360e4b2c5d6d)
+
+
 ## Translating KerkoApp
 
 Note that Kerko and KerkoApp have separate translation files and that most
@@ -447,7 +460,7 @@ helping others in working with the system is a lot of work, but hiring the
 original developers of Kerko can do a lot in ensuring continued support and
 development of the project.
 
-If you need professionnal support related to Kerko, have requirements not
+If you need professional support related to Kerko, have requirements not
 currently implemented in Kerko, want to make sure that some Kerko issue
 important to you gets resolved, or if you just like our work and would like to
 hire us for an unrelated project, please [e-mail us][Kerko_email].
