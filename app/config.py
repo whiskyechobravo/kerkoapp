@@ -31,6 +31,7 @@ class Config:
         self.EXPLAIN_TEMPLATE_LOADING = False
         self.PROXY_FIX = env.bool('PROXY_FIX', False)
         self.BABEL_DEFAULT_LOCALE = env.str('BABEL_DEFAULT_LOCALE', 'en')
+        self.BABEL_DEFAULT_TIMEZONE = env.str('BABEL_DEFAULT_TIMEZONE', 'UTC')
 
         # Set Kerko variables from the environment. Some are deliberately omitted
         # because it would make more sense to set them in the app's Config object
