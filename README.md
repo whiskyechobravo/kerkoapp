@@ -49,7 +49,7 @@ pre-built with KerkoApp. You may choose the one you are most comfortable with.
 
 ### Standard installation
 
-This procedure requires Python 3.6 or later.
+This procedure requires Python 3.7 or later.
 
 1. The first step is to install the software. As with any Python package, it is
    highly recommended to install it within a [virtual environment][venv].
@@ -227,11 +227,7 @@ to your `.env` file if you wish to override their default values:
   * `BABEL_DEFAULT_LOCALE`: The default language of the user interface. Defaults
     to `'en'`.
   * `BABEL_DEFAULT_TIMEZONE`: The timezone to use for user facing dates.
-    Defaults to `'UTC'`. Note that dates are often manually entered in Zotero,
-    lacking parts such as the day, the time, or the timezone; those will be
-    displayed as they were entered. However, ISO 8601-formatted calendar dates
-    with time and timezone designator will be parsed and reformatted into a more
-    readable (and localized) form.
+    Defaults to `'UTC'`.
   * `KERKO_WHOOSH_LANGUAGE`: The language of search requests. Defaults to
     `'en'`. You may refer to Whoosh's source to get the list of supported
     languages (`whoosh.lang.languages`) and the list of languages that support

@@ -12,7 +12,7 @@ flask kerko sync
 
 Changes:
 
-* The `Config` class is now instanciated, so the configuration variables are now
+* The `Config` class is now instantiated, so the configuration variables are now
   taken from an object rather than a class.
 * Replace the `KERKO_RESULTS_ABSTRACT` environment variable with two variables,
   `KERKO_RESULTS_ABSTRACTS` (note the now plural form) and
@@ -27,6 +27,7 @@ Changes:
 * Add German translation. Thanks [@mmoole](https://github.com/mmoole).
 * Use Flask-Babel instead of its fork Flask-BabelEx, now that is has merged the
   translation domain features from Flask-BabelEx.
+* Drop support for Python 3.6. Kerko is no longer being tested under Python 3.6.
 
 ## 0.6 (2020-06-15)
 
