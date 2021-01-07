@@ -21,7 +21,7 @@ idna==2.10                # via requests
 isort==5.6.4              # via pylint
 itsdangerous==1.1.0       # via flask, flask-wtf
 jinja2==2.11.2            # via flask, flask-babel, kerko
-git+https://github.com/whiskyechobravo/kerko.git@20fde32510f034f7d094da47697ca448047ae50f#egg=kerko
+git+https://github.com/whiskyechobravo/kerko.git#egg=kerko  # via -r requirements/run.in
 lazy-object-proxy==1.4.3  # via astroid
 markupsafe==1.1.1         # via jinja2, wtforms
 marshmallow==3.10.0       # via environs
