@@ -4,32 +4,89 @@
 #
 #    pip-compile requirements/run.in
 #
-babel==2.9.0              # via -r requirements/run.in, flask-babel, kerko
-bibtexparser==1.2.0       # via pyzotero
-bootstrap-flask==1.5.1    # via -r requirements/run.in, kerko
-certifi==2020.12.5        # via requests
-chardet==4.0.0            # via requests
-click==7.1.2              # via flask
-environs==9.3.0           # via -r requirements/run.in
-feedparser==5.2.1         # via pyzotero
-flask-babel==2.0.0        # via -r requirements/run.in, kerko
-flask-wtf==0.14.3         # via kerko
-flask==1.1.2              # via -r requirements/run.in, bootstrap-flask, flask-babel, flask-wtf, kerko
-future==0.18.2            # via bibtexparser
-idna==2.10                # via requests
-itsdangerous==1.1.0       # via flask, flask-wtf
-jinja2==2.11.2            # via flask, flask-babel, kerko
-git+https://github.com/whiskyechobravo/kerko.git#egg=kerko  # via -r requirements/run.in
-markupsafe==1.1.1         # via jinja2, wtforms
-marshmallow==3.10.0       # via environs
-pathlib==1.0.1            # via pyzotero
-pyparsing==2.4.7          # via bibtexparser
-python-dotenv==0.15.0     # via -r requirements/run.in, environs
-pytz==2020.5              # via babel, flask-babel, pyzotero
-pyzotero==1.4.20          # via kerko
-requests==2.25.1          # via pyzotero
-urllib3==1.26.2           # via requests
-werkzeug==1.0.1           # via flask, kerko
-whoosh==2.7.4             # via kerko
-wrapt==1.12.1             # via kerko
-wtforms==2.3.3            # via flask-wtf, kerko
+babel==2.9.0
+    # via
+    #   -r requirements/run.in
+    #   flask-babel
+    #   kerko
+bibtexparser==1.2.0
+    # via pyzotero
+bootstrap-flask==1.5.1
+    # via
+    #   -r requirements/run.in
+    #   kerko
+certifi==2020.12.5
+    # via requests
+chardet==4.0.0
+    # via requests
+click==7.1.2
+    # via flask
+environs==9.3.0
+    # via -r requirements/run.in
+feedparser==5.2.1
+    # via pyzotero
+flask-babel==2.0.0
+    # via
+    #   -r requirements/run.in
+    #   kerko
+flask-wtf==0.14.3
+    # via kerko
+flask==1.1.2
+    # via
+    #   -r requirements/run.in
+    #   bootstrap-flask
+    #   flask-babel
+    #   flask-wtf
+    #   kerko
+future==0.18.2
+    # via bibtexparser
+idna==2.10
+    # via requests
+itsdangerous==1.1.0
+    # via
+    #   flask
+    #   flask-wtf
+jinja2==2.11.2
+    # via
+    #   flask
+    #   flask-babel
+    #   kerko
+kerko==0.7
+    # via -r requirements/run.in
+markupsafe==1.1.1
+    # via
+    #   jinja2
+    #   wtforms
+marshmallow==3.10.0
+    # via environs
+pathlib==1.0.1
+    # via pyzotero
+pyparsing==2.4.7
+    # via bibtexparser
+python-dotenv==0.15.0
+    # via
+    #   -r requirements/run.in
+    #   environs
+pytz==2020.5
+    # via
+    #   babel
+    #   flask-babel
+    #   pyzotero
+pyzotero==1.4.20
+    # via kerko
+requests==2.25.1
+    # via pyzotero
+urllib3==1.26.2
+    # via requests
+werkzeug==1.0.1
+    # via
+    #   flask
+    #   kerko
+whoosh==2.7.4
+    # via kerko
+wrapt==1.12.1
+    # via kerko
+wtforms==2.3.3
+    # via
+    #   flask-wtf
+    #   kerko
