@@ -1,5 +1,12 @@
 # Changelog
 
+## Latest
+
+Documentation changes:
+
+* Fix missing info about library groupID in configuration docs. Thanks
+  [@drmikeuk](https://github.com/drmikeuk) for reporting the issue.
+
 ## 0.7 (2021-01-08)
 
 *Warning:* Upgrading from version 0.6 or earlier will require that you clean and
