@@ -51,7 +51,7 @@ jinja2==2.11.2
     #   flask
     #   flask-babel
     #   kerko
-kerko==0.7
+kerko==0.7.1
     # via -r requirements/run.in
 markupsafe==1.1.1
     # via

@@ -57,7 +57,7 @@ jinja2==2.11.2
     #   flask
     #   flask-babel
     #   kerko
-kerko==0.7
+kerko==0.7.1
     # via -r requirements/run.in
 lazy-object-proxy==1.4.3
     # via astroid

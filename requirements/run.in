@@ -3,5 +3,5 @@ Bootstrap-Flask>=1.0.10
 environs>=5.0.0
 Flask>=1.0.2
 Flask-Babel>=2.0.0
-Kerko>=0.7
+Kerko>=0.7.1
 python-dotenv>=0.10.2
