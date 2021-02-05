@@ -50,5 +50,5 @@ def register_errorhandlers(app):
         }
         return render_template(f'kerkoapp/{error_code}.html.jinja2', **context), error_code
 
-    for errcode in [400, 403, 404, 500]:
+    for errcode in [400, 403, 404, 500, 503]:
         app.errorhandler(errcode)(render_error)

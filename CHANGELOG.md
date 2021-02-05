@@ -1,9 +1,10 @@
 # Changelog
 
-## Latest
+## Latest (unreleased)
 
-Documentation changes:
+Changes:
 
+* Add template for HTTP 503 (Service Unavailable) responses.
 * Fix missing info about library groupID in configuration docs. Thanks
   [@drmikeuk](https://github.com/drmikeuk) for reporting the issue.
 
