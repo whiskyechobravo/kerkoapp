@@ -8,14 +8,14 @@ astroid==2.4.2
     # via pylint
 babel==2.9.0
     # via
-    #   -r requirements/run.in
+    #   -r run.in
     #   flask-babel
     #   kerko
 bibtexparser==1.2.0
     # via pyzotero
 bootstrap-flask==1.5.1
     # via
-    #   -r requirements/run.in
+    #   -r run.in
     #   kerko
 certifi==2020.12.5
     # via requests
@@ -26,18 +26,18 @@ click==7.1.2
     #   flask
     #   pip-tools
 environs==9.3.0
-    # via -r requirements/run.in
+    # via -r run.in
 feedparser==5.2.1
     # via pyzotero
 flask-babel==2.0.0
     # via
-    #   -r requirements/run.in
+    #   -r run.in
     #   kerko
 flask-wtf==0.14.3
     # via kerko
 flask==1.1.2
     # via
-    #   -r requirements/run.in
+    #   -r run.in
     #   bootstrap-flask
     #   flask-babel
     #   flask-wtf
@@ -52,13 +52,13 @@ itsdangerous==1.1.0
     # via
     #   flask
     #   flask-wtf
-jinja2==2.11.2
+jinja2==2.11.3
     # via
     #   flask
     #   flask-babel
     #   kerko
 kerko==0.7.1
-    # via -r requirements/run.in
+    # via -r run.in
 lazy-object-proxy==1.4.3
     # via astroid
 markupsafe==1.1.1
@@ -72,20 +72,20 @@ mccabe==0.6.1
 pathlib==1.0.1
     # via pyzotero
 pip-tools==5.4.0
-    # via -r requirements/dev.in
+    # via -r dev.in
 pipdeptree==2.0.0
-    # via -r requirements/dev.in
+    # via -r dev.in
 pycodestyle==2.6.0
-    # via -r requirements/dev.in
+    # via -r dev.in
 pydocstyle==5.1.1
-    # via -r requirements/dev.in
+    # via -r dev.in
 pylint==2.6.0
-    # via -r requirements/dev.in
+    # via -r dev.in
 pyparsing==2.4.7
     # via bibtexparser
 python-dotenv==0.15.0
     # via
-    #   -r requirements/run.in
+    #   -r run.in
     #   environs
 pytz==2020.5
     # via
@@ -97,7 +97,7 @@ pyzotero==1.4.20
 requests==2.25.1
     # via pyzotero
 rope==0.18.0
-    # via -r requirements/dev.in
+    # via -r dev.in
 six==1.15.0
     # via
     #   astroid
@@ -123,7 +123,7 @@ wtforms==2.3.3
     #   flask-wtf
     #   kerko
 yapf==0.30.0
-    # via -r requirements/dev.in
+    # via -r dev.in
 
 # The following packages are considered to be unsafe in a requirements file:
 # pip
