@@ -51,7 +51,7 @@ jinja2==2.11.2
     #   flask
     #   flask-babel
     #   kerko
-kerko==0.7.1
+git+https://github.com/whiskyechobravo/kerko.git#egg=kerko
     # via -r requirements/run.in
 markupsafe==1.1.1
     # via
@@ -76,8 +76,12 @@ pyzotero==1.4.20
     # via kerko
 requests==2.25.1
     # via pyzotero
+six==1.15.0
+    # via w3lib
 urllib3==1.26.2
     # via requests
+w3lib==1.22.0
+    # via kerko
 werkzeug==1.0.1
     # via
     #   flask

@@ -51,6 +51,8 @@ class Config:
         self.KERKO_CSL_STYLE = env.str('KERKO_CSL_STYLE', 'apa')
         self.KERKO_RESULTS_ABSTRACTS = env.bool('KERKO_RESULTS_ABSTRACTS', False)
         self.KERKO_RESULTS_ABSTRACTS_TOGGLER = env.bool('KERKO_RESULTS_ABSTRACTS_TOGGLER', True)
+        self.KERKO_RESULTS_ATTACHMENT_LINKS = env.bool('KERKO_RESULTS_ATTACHMENT_LINKS', True)
+        self.KERKO_RESULTS_URL_LINKS = env.bool('KERKO_RESULTS_URL_LINKS', True)
         self.KERKO_FACET_COLLAPSING = env.bool('KERKO_FACET_COLLAPSING', False)
         self.KERKO_PRINT_ITEM_LINK = env.bool('KERKO_PRINT_ITEM_LINK', False)
         self.KERKO_PRINT_CITATIONS_LINK = env.bool('KERKO_PRINT_CITATIONS_LINK', False)
@@ -61,6 +63,7 @@ class Config:
             'KERKO_DOWNLOAD_ATTACHMENT_NEW_WINDOW', False
         )
         self.KERKO_RELATIONS_INITIAL_LIMIT = env.int('KERKO_RELATIONS_INITIAL_LIMIT', 5)
+        self.KERKO_RELATIONS_LINKS = env.bool('KERKO_RELATIONS_LINKS', False)
 
         self.KERKO_COMPOSER = Composer(
             whoosh_language=self.KERKO_WHOOSH_LANGUAGE,

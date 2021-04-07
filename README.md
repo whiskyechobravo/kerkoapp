@@ -214,10 +214,18 @@ to your `.env` file if you wish to override their default values:
   be hidden from search results pages. Defaults to `0` (i.e. no limit).
 * `KERKO_RELATIONS_INITIAL_LIMIT`: Number of related items to show above the
   "view all" link. Defaults to `5`.
+* `KERKO_RELATIONS_LINKS`: Show item links in lists of related items. Defaults
+  to `False`. Enabling this only has an effect if at least one of the following
+  variables is also set to `True`: `KERKO_RESULTS_ATTACHMENT_LINKS`,
+  `KERKO_RESULTS_URL_LINKS`).
 * `KERKO_RESULTS_ABSTRACTS`: Determines whether abstracts are displayed on
   search results pages. Defaults to `False` (hidden).
 * `KERKO_RESULTS_ABSTRACTS_TOGGLER`: Determines whether the user may toggle the
   display of abstracts on search results pages. Defaults to `True`.
+* `KERKO_RESULTS_ATTACHMENT_LINKS`: Provide links to attachments in search
+  results. Defaults to `True`.
+* `KERKO_RESULTS_URL_LINKS`: Provide links to online resources in search
+  results (for items whose URL field has a value). Defaults to `True`.
 * `KERKO_TITLE`: The title to display in web pages. Defaults to `'Kerko App'`.
 * `KERKO_ZOTERO_BATCH_SIZE`: Number of items to request on each call to the
   Zotero API. Defaults to `100` (which is the maximum currently allowed by the

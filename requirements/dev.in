@@ -1,5 +1,5 @@
 -r run.in
-pip-tools>=4.2.0
+pip-tools>=5.5.0
 pipdeptree
 pycodestyle
 pydocstyle

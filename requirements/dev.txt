@@ -57,7 +57,7 @@ jinja2==2.11.2
     #   flask
     #   flask-babel
     #   kerko
-kerko==0.7.1
+git+https://github.com/whiskyechobravo/kerko.git#egg=kerko
     # via -r requirements/run.in
 lazy-object-proxy==1.4.3
     # via astroid
@@ -71,7 +71,7 @@ mccabe==0.6.1
     # via pylint
 pathlib==1.0.1
     # via pyzotero
-pip-tools==5.4.0
+pip-tools==5.5.0
     # via -r requirements/dev.in
 pipdeptree==2.0.0
     # via -r requirements/dev.in
@@ -101,13 +101,15 @@ rope==0.18.0
 six==1.15.0
     # via
     #   astroid
-    #   pip-tools
+    #   w3lib
 snowballstemmer==2.0.0
     # via pydocstyle
 toml==0.10.2
     # via pylint
 urllib3==1.26.2
     # via requests
+w3lib==1.22.0
+    # via kerko
 werkzeug==1.0.1
     # via
     #   flask
