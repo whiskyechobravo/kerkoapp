@@ -4,6 +4,8 @@
 
 Changes:
 
+* Read new settings `KERKO_RELATIONS_LINKS`, `KERKO_RESULTS_ATTACHMENT_LINKS`,
+  and `KERKO_RESULTS_URL_LINKS` from environment variables.
 * Add template for HTTP 503 (Service Unavailable) responses.
 * Fix missing info about library groupID in configuration docs. Thanks
   [@drmikeuk](https://github.com/drmikeuk) for reporting the issue.
