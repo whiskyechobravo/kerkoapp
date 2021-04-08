@@ -2,10 +2,22 @@
 
 ## Latest (unreleased)
 
+*Warning:* Upgrading from version 0.7.x or earlier will require that you clean
+and re-sync your existing search index. Use the following commands, then restart
+the application:
+
+```bash
+flask kerko clean index
+flask kerko sync
+```
+
 Changes:
 
-* Read new settings `KERKO_RELATIONS_LINKS`, `KERKO_RESULTS_ATTACHMENT_LINKS`,
-  and `KERKO_RESULTS_URL_LINKS` from environment variables.
+* Read new settings `KERKO_FULLTEXT_SEARCH`, `KERKO_RELATIONS_LINKS`,
+  `KERKO_RESULTS_ATTACHMENT_LINKS`, and `KERKO_RESULTS_URL_LINKS` from
+  environment variables.
+* If full-text search is disabled, remove default scopes and fields that would
+  otherwise be irrelevant or redundant.
 * Add template for HTTP 503 (Service Unavailable) responses.
 * Fix missing info about library groupID in configuration docs. Thanks
   [@drmikeuk](https://github.com/drmikeuk) for reporting the issue.

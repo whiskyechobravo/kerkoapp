@@ -203,6 +203,13 @@ to your `.env` file if you wish to override their default values:
   button should be hidden from search results pages. Defaults to `0` (i.e. no
   limit).
 * `KERKO_FACET_COLLAPSING`: Allow collapsible facets. Defaults to `False`.
+* `KERKO_FULLTEXT_SEARCH`: Allow full-text search of attached documents.
+  Defaults to `True`. You really should set this to `False` if you don't intend
+  to attach any documents, otherwise the users may be offered irrelevant options
+  when selecting the scope of their search. Caution: If you have thousands of
+  attachments, enabling this option can significantly slow down the process of
+  synchronizing data from zotero.org, due to Kerko performing a large number of
+  Zotero API requests (hopefully this will be fixed in the future).
 * `KERKO_PAGE_LEN`: The number of search results per page. Defaults to `20`.
 * `KERKO_PAGER_LINKS`: Number of pages to show in the pager (not counting the
   current page). Defaults to `4`.
@@ -276,14 +283,16 @@ to your `.env` file if you wish to override their default values:
   Kerko or by badges. If required fields are excluded, the application probably
   won't start. Please refer to the implementation of
   `kerko.composer.Composer.init_default_fields()` for the list of default
-  fields.
+  fields. Note that if `KERKO_FULLTEXT_SEARCH` is `False`, the `'text_docs'`
+  field, which otherwise would contain the full-text, is excluded by default.
 * `KERKOAPP_EXCLUDE_DEFAULT_SCOPES`: List of scopes (identified by key) to
   exclude from those created by default. If that list contains the value '*', no
   scope will be added by default. Caution: most default fields are expecting one
   or more of those scopes to exist. If required scopes are excluded, the
   application probably won't start. Please refer to the implementation of
   `kerko.composer.Composer.init_default_scopes()` for the list of default
-  scopes.
+  scopes. Note that if `KERKO_FULLTEXT_SEARCH` is `False`, the `'metadata'` ("In
+  all fields") and `'fulltext'` ("In documents") scopes are excluded by default.
 * `KERKOAPP_EXCLUDE_DEFAULT_SORTS`: List of sorts (identified by key) to exclude
   from those created by default. Caution: at least one sort must remain for the
   application to start. Please refer to the implementation of

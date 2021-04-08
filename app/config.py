@@ -54,6 +54,7 @@ class Config:
         self.KERKO_RESULTS_ATTACHMENT_LINKS = env.bool('KERKO_RESULTS_ATTACHMENT_LINKS', True)
         self.KERKO_RESULTS_URL_LINKS = env.bool('KERKO_RESULTS_URL_LINKS', True)
         self.KERKO_FACET_COLLAPSING = env.bool('KERKO_FACET_COLLAPSING', False)
+        self.KERKO_FULLTEXT_SEARCH = env.bool('KERKO_FULLTEXT_SEARCH', True)
         self.KERKO_PRINT_ITEM_LINK = env.bool('KERKO_PRINT_ITEM_LINK', False)
         self.KERKO_PRINT_CITATIONS_LINK = env.bool('KERKO_PRINT_CITATIONS_LINK', False)
         self.KERKO_PRINT_CITATIONS_MAX_COUNT = env.int('KERKO_PRINT_CITATIONS_MAX_COUNT', 0)
@@ -67,8 +68,16 @@ class Config:
 
         self.KERKO_COMPOSER = Composer(
             whoosh_language=self.KERKO_WHOOSH_LANGUAGE,
-            exclude_default_scopes=env.list('KERKOAPP_EXCLUDE_DEFAULT_SCOPES', []),
-            exclude_default_fields=env.list('KERKOAPP_EXCLUDE_DEFAULT_FIELDS', []),
+            exclude_default_scopes=env.list(
+                'KERKOAPP_EXCLUDE_DEFAULT_SCOPES',
+                [] if self.KERKO_FULLTEXT_SEARCH else ['fulltext', 'metadata']
+                # The 'metadata' scope does the same as the 'all' scope when
+                # full-text search is disabled, hence its removal in that case.
+            ),
+            exclude_default_fields=env.list(
+                'KERKOAPP_EXCLUDE_DEFAULT_FIELDS',
+                [] if self.KERKO_FULLTEXT_SEARCH else ['text_docs']
+            ),
             exclude_default_facets=env.list('KERKOAPP_EXCLUDE_DEFAULT_FACETS', []),
             exclude_default_sorts=env.list('KERKOAPP_EXCLUDE_DEFAULT_SORTS', []),
             exclude_default_citation_formats=env.list(
