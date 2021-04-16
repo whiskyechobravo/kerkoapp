@@ -13,7 +13,9 @@ flask kerko sync
 
 Changes:
 
-* Read new settings `KERKO_FULLTEXT_SEARCH`, `KERKO_RELATIONS_LINKS`,
+* Read new settings `KERKO_FULLTEXT_SEARCH`,
+  `KERKO_RESULTS_ABSTRACTS_MAX_LENGTH`,
+  `KERKO_RESULTS_ABSTRACTS_MAX_LENGTH_LEEWAY`, `KERKO_RELATIONS_LINKS`,
   `KERKO_RESULTS_ATTACHMENT_LINKS`, and `KERKO_RESULTS_URL_LINKS` from
   environment variables.
 * If full-text search is disabled, remove default scopes and fields that would
