@@ -177,9 +177,6 @@ The environment variables below are required and have no default values:
 * `FLASK_APP`: Specifies the application to load. Normally set to `kerkoapp.py`.
 * `FLASK_ENV`: Specifies the environment in which the app should run. Either
   `development` or `production`. Normally set to `production`.
-* `MODULE_NAME`: Specifies the base module to derive which application module to
-  initiate Gunicorn with. Normally set to `kerkoapp`, which causes the base
-  Gunicorn docker image to set `APP_MODULE` to `kerkoapp:app`.
 * `KERKO_ZOTERO_API_KEY`: Your API key, as [created on
   zotero.org](https://www.zotero.org/settings/keys/new).
 * `KERKO_ZOTERO_LIBRARY_ID`: The identifier of the library to get data from. For
@@ -190,6 +187,13 @@ The environment variables below are required and have no default values:
   the _groupID_ is `2348869`).
 * `KERKO_ZOTERO_LIBRARY_TYPE`: The type of library to get data from, either
   `'user'` for your personal library, or `'group'` for a group library.
+
+The environment variables below are required to run KerkoApp in Docker using
+the base Gunicorn image, and have no default values:
+
+* `MODULE_NAME`: Specifies the base module to derive which application module to
+  initiate Gunicorn with. Normally set to `kerkoapp`, which causes the base
+  Gunicorn docker image to set `APP_MODULE` to `kerkoapp:app`.
 
 The following environment variables are supported by KerkoApp and may be added
 to your `.env` file if you wish to override their default values:
