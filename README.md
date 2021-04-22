@@ -116,6 +116,9 @@ This procedure requires that [Docker] is installed on your computer.
      `KERKO_ZOTERO_LIBRARY_TYPE`: These variables are required for Kerko to be
      able to access your Zotero library. See the **Environment variables**
      section below for details.
+   * `MODULE_NAME`, `FLASK_APP` and `FLASK_ENV`: These variables should be present
+     to configure the base Gunicorn image. `dotenv.sample` should already contain a
+     working sample: `kerkoapp`, `kerkoapp.py` and `production`.
 
    **Do not** assign a value to the `KERKO_DATA_DIR` variable. If you do, the
    volume bindings defined within the `Makefile` won't be of any use to the
@@ -172,6 +175,11 @@ flask kerko sync
 The environment variables below are required and have no default values:
 
 * `FLASK_APP`: Specifies the application to load. Normally set to `kerkoapp.py`.
+* `FLASK_ENV`: Specifies the environment in which the app should run. Either
+  `development` or `production`. Normally set to `production`.
+* `MODULE_NAME`: Specifies the base module to derive which application module to
+  initiate Gunicorn with. Normally set to `kerkoapp`, which causes the base
+  Gunicorn docker image to set `APP_MODULE` to `kerkoapp:app`.
 * `KERKO_ZOTERO_API_KEY`: Your API key, as [created on
   zotero.org](https://www.zotero.org/settings/keys/new).
 * `KERKO_ZOTERO_LIBRARY_ID`: The identifier of the library to get data from. For
@@ -186,8 +194,6 @@ The environment variables below are required and have no default values:
 The following environment variables are supported by KerkoApp and may be added
 to your `.env` file if you wish to override their default values:
 
-* `FLASK_ENV`: Specifies the environment in which the app should run. Either
-  `development` or `production`. Defaults to `production`.
 * `KERKO_CSL_STYLE`: The citation style to use for formatted references. Can be
   either the file name (without the `.csl` extension) of one of the styles in the
   [Zotero Styles Repository][Zotero_styles] (e.g., `apa`) or the URL of a remote
