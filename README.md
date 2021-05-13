@@ -71,8 +71,8 @@ This procedure requires Python 3.7 or later.
      secret. For this reason, never add your `.env` file to a code repository.
    * `KERKO_ZOTERO_API_KEY`, `KERKO_ZOTERO_LIBRARY_ID` and
      `KERKO_ZOTERO_LIBRARY_TYPE`: These variables are required for Kerko to be
-     able to access your Zotero library. See the **Environment variables**
-     section below for details.
+     able to access your Zotero library. See [Environment
+     variables](#environment-variables) for details.
 
 3. Have KerkoApp retrieve your data from zotero.org:
 
@@ -114,14 +114,14 @@ This procedure requires that [Docker] is installed on your computer.
      secret. For this reason, never add your `.env` file to a code repository.
    * `KERKO_ZOTERO_API_KEY`, `KERKO_ZOTERO_LIBRARY_ID` and
      `KERKO_ZOTERO_LIBRARY_TYPE`: These variables are required for Kerko to be
-     able to access your Zotero library. See the **Environment variables**
-     section below for details.
+     able to access your Zotero library. See [Environment
+     variables](#environment-variables) for details.
    * `FLASK_APP`, `FLASK_ENV`, and `MODULE_NAME`: These variables are also
      required for running the application with the provided Docker image. The
      values provided by `dotenv.sample` should be working examples.
 
    **Do not** assign a value to the `KERKO_DATA_DIR` variable. If you do, the
-   volume bindings defined within the `Makefile` won't be of any use to the
+   volume bindings defined within the `Makefile` will not be of any use to the
    application running within the container.
 
 3. Pull the latest KerkoApp Docker image. In the same directory as the
@@ -204,7 +204,7 @@ to your `.env` file if you wish to override their default values:
   CSL file. Defaults to `'apa'`.
 * `KERKO_DATA_DIR`: The directory where to store the search index and the file
   attachments. Defaults to `data/kerko`. Subdirectories `index` and
-  `attachments` will be created if they don't already exist.
+  `attachments` will be created if they do not already exist.
 * `KERKO_DOWNLOAD_ATTACHMENT_NEW_WINDOW`: Open attachments in new windows, i.e.,
   add the `target="_blank"` attribute to attachment links. Defaults to `False`.
 * `KERKO_DOWNLOAD_CITATIONS_LINK`: Provide a citation download button on search
@@ -214,7 +214,7 @@ to your `.env` file if you wish to override their default values:
   limit).
 * `KERKO_FACET_COLLAPSING`: Allow collapsible facets. Defaults to `False`.
 * `KERKO_FULLTEXT_SEARCH`: Allow full-text search of attached documents.
-  Defaults to `True`. You really should set this to `False` if you don't intend
+  Defaults to `True`. You really should set this to `False` if you do not intend
   to attach any documents, otherwise the users may be offered irrelevant options
   when selecting the scope of their search. Caution: If you have thousands of
   attachments, enabling this option can significantly slow down the process of
@@ -299,8 +299,8 @@ to your `.env` file if you wish to override their default values:
 * `KERKOAPP_EXCLUDE_DEFAULT_FIELDS`: List of fields (identified by key) to
   exclude from those created by default. If that list contains the value '*', no
   field will be created by default. Caution: some default fields are required by
-  Kerko or by badges. If required fields are excluded, the application probably
-  won't start. Please refer to the implementation of
+  Kerko or by badges. If required fields are excluded, the application will
+  probably not start. Please refer to the implementation of
   `kerko.composer.Composer.init_default_fields()` for the list of default
   fields. Note that if `KERKO_FULLTEXT_SEARCH` is `False`, the `'text_docs'`
   field, which otherwise would contain the full-text, is excluded by default.
@@ -308,7 +308,7 @@ to your `.env` file if you wish to override their default values:
   exclude from those created by default. If that list contains the value '*', no
   scope will be added by default. Caution: most default fields are expecting one
   or more of those scopes to exist. If required scopes are excluded, the
-  application probably won't start. Please refer to the implementation of
+  application will probably not start. Please refer to the implementation of
   `kerko.composer.Composer.init_default_scopes()` for the list of default
   scopes. Note that if `KERKO_FULLTEXT_SEARCH` is `False`, the `'metadata'` ("In
   all fields") and `'fulltext'` ("In documents") scopes are excluded by default.
@@ -321,8 +321,8 @@ to your `.env` file if you wish to override their default values:
 * `KERKOAPP_ITEM_EXCLUDE_RE`: Regex to use to exclude items based on their tags.
   Any object that have a tag that matches this regular expression will be
   excluded. If empty (which is the default), no items will be excluded unless
-  `KERKOAPP_ITEM_INCLUDE_RE` is set, in which case items that don't have any tag
-  that matches it will be excluded.
+  `KERKOAPP_ITEM_INCLUDE_RE` is set, in which case items that do not have any
+  tag that matches it will be excluded.
 * `KERKOAPP_ITEM_INCLUDE_RE`: Regex to use to include items based on their tags.
   Any object which does not have a tag that matches this regular expression will
   be excluded. If empty (which is the default), all items will be included
@@ -339,8 +339,8 @@ to your `.env` file if you wish to override their default values:
 * `KERKOAPP_CHILD_EXCLUDE_RE`: Regex to use to exclude children (e.g. notes,
   attachments) based on their tags. Any child that have a tag that matches this
   regular expression will be ignored. If empty, no children will be rejected
-  unless `KERKOAPP_CHILD_INCLUDE_RE` is set and the tags of those children
-  don't match it. By default, any child having at least one tag that begins with
+  unless `KERKOAPP_CHILD_INCLUDE_RE` is set and the tags of those children do
+  not match it. By default, any child having at least one tag that begins with
   an underscore ('_') is rejected.
 * `KERKOAPP_CHILD_INCLUDE_RE`: Regex to use to include children (e.g. notes,
   attachments) based on their tags. Any child which does not have a tag that
@@ -356,7 +356,7 @@ Note that some of Kerko's variables do not have a corresponding environment
 variable in KerkoApp and therefore can only be set in Python from a custom
 application.
 
-If you are building your own application, you don't really need the above
+If you are building your own application, you do not really need the above
 environment variables. Instead, you could directly set Kerko variables in your
 application's `Config` object and set arguments to `kerko.composer.Composer`'s
 init method. In that case, please refer to [Kerko's documentation][Kerko] rather
