@@ -7,6 +7,8 @@ Changes:
 * Add template for HTTP 503 (Service Unavailable) responses.
 * Fix missing info about library groupID in configuration docs. Thanks
   [@drmikeuk](https://github.com/drmikeuk) for reporting the issue.
+* Fix missing mandatory variables in instructions for running from Docker.
+  Thanks [@amv](https://github.com/amv).
 
 ## 0.7 (2021-01-08)
 
