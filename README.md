@@ -85,6 +85,14 @@ This procedure requires Python 3.7 or later.
    production use, that command is usually added to the crontab file for regular
    execution.
 
+   Alternatively, to get a better sense of the synchronization process, you
+   could use the following command, which will cause Kerko to output various
+   informational messages:
+
+   ```bash
+   LOGGING_LEVEL=INFO flask kerko sync
+   ```
+
 4. Run KerkoApp:
 
    ```bash
