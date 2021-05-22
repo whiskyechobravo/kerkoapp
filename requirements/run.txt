@@ -72,7 +72,7 @@ pytz==2021.1
     #   babel
     #   flask-babel
     #   pyzotero
-pyzotero==1.4.21
+pyzotero==1.4.22
     # via kerko
 requests==2.25.1
     # via pyzotero
