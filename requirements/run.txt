@@ -6,14 +6,14 @@
 #
 babel==2.9.0
     # via
-    #   -r requirements/run.in
+    #   -r run.in
     #   flask-babel
     #   kerko
 bibtexparser==1.2.0
     # via pyzotero
 bootstrap-flask==1.5.1
     # via
-    #   -r requirements/run.in
+    #   -r run.in
     #   kerko
 certifi==2020.12.5
     # via requests
@@ -22,18 +22,18 @@ chardet==4.0.0
 click==7.1.2
     # via flask
 environs==9.3.0
-    # via -r requirements/run.in
+    # via -r run.in
 feedparser==5.2.1
     # via pyzotero
 flask-babel==2.0.0
     # via
-    #   -r requirements/run.in
+    #   -r run.in
     #   kerko
 flask-wtf==0.14.3
     # via kerko
 flask==1.1.2
     # via
-    #   -r requirements/run.in
+    #   -r run.in
     #   bootstrap-flask
     #   flask-babel
     #   flask-wtf
@@ -52,7 +52,7 @@ jinja2==2.11.2
     #   flask-babel
     #   kerko
 kerko==0.7.1
-    # via -r requirements/run.in
+    # via -r run.in
 markupsafe==1.1.1
     # via
     #   jinja2
@@ -65,7 +65,7 @@ pyparsing==2.4.7
     # via bibtexparser
 python-dotenv==0.15.0
     # via
-    #   -r requirements/run.in
+    #   -r run.in
     #   environs
 pytz==2020.5
     # via
@@ -76,7 +76,7 @@ pyzotero==1.4.20
     # via kerko
 requests==2.25.1
     # via pyzotero
-urllib3==1.26.2
+urllib3==1.26.5
     # via requests
 werkzeug==1.0.1
     # via
