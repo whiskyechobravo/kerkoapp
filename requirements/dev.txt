@@ -21,9 +21,10 @@ certifi==2020.12.5
     # via requests
 chardet==4.0.0
     # via requests
-click==8.0.0
+click==8.0.1
     # via
     #   flask
+    #   kerko
     #   pip-tools
 environs==9.3.2
     # via -r requirements/run.in
@@ -35,7 +36,7 @@ flask-babel==2.0.0
     #   kerko
 flask-wtf==0.14.3
     # via kerko
-flask==2.0.0
+flask==2.0.1
     # via
     #   -r requirements/run.in
     #   bootstrap-flask
@@ -48,11 +49,11 @@ idna==2.10
     # via requests
 isort==5.8.0
     # via pylint
-itsdangerous==2.0.0
+itsdangerous==2.0.1
     # via
     #   flask
     #   flask-wtf
-jinja2==3.0.0
+jinja2==3.0.1
     # via
     #   flask
     #   flask-babel
@@ -108,11 +109,11 @@ toml==0.10.2
     # via
     #   pep517
     #   pylint
-urllib3==1.26.4
+urllib3==1.26.6
     # via requests
 w3lib==1.22.0
     # via kerko
-werkzeug==2.0.0
+werkzeug==2.0.1
     # via
     #   flask
     #   kerko
