@@ -359,6 +359,10 @@ to your `.env` file if you wish to override their default values:
   `INFO`, `WARNING`, `ERROR`, `CRITICAL`. Defaults to `DEBUG` if app is running
   in the development environment, and to `WARNING` in the production
   environment.
+* `GOOGLE_ANALYTICS_ID`: A Google Analytics property ID, e.g., 'UA-99999-9'.
+  This variable is optional and is empty by default. If it is set *and*
+  `FLASK_ENV` is set to `production`, then the Google Analytics tag is inserted
+  into the pages.
 
 Note that some of Kerko's variables do not have a corresponding environment
 variable in KerkoApp and therefore can only be set in Python from a custom

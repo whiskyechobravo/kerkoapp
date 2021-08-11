@@ -164,6 +164,7 @@ class ProductionConfig(Config):
         self.LOGGING_HANDLER = env.str('LOGGING_HANDLER', 'syslog')
         self.LOGGING_ADDRESS = env.str('LOGGING_ADDRESS', '/dev/log')
         self.LOGGING_LEVEL = env.str('LOGGING_LEVEL', 'WARNING')
+        self.GOOGLE_ANALYTICS_ID = env.str('GOOGLE_ANALYTICS_ID', '')
 
 
 CONFIGS = {
