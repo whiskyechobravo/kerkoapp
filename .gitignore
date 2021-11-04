@@ -16,6 +16,7 @@ eggs/
 .eggs/
 *.egg
 *.egg-info/
+.tool-versions
 
 # Unit test / coverage reports.
 htmlcov/
