@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements/dev.in
 #
-astroid==2.5.6
+astroid==2.8.4
     # via pylint
 babel==2.9.1
     # via
@@ -13,20 +13,20 @@ babel==2.9.1
     #   kerko
 bibtexparser==1.2.0
     # via pyzotero
-bootstrap-flask==1.5.2
+bootstrap-flask==1.8.0
     # via
     #   -r requirements/run.in
     #   kerko
-certifi==2020.12.5
+certifi==2021.10.8
     # via requests
-chardet==4.0.0
+charset-normalizer==2.0.7
     # via requests
-click==8.0.1
+click==8.0.3
     # via
     #   flask
     #   kerko
     #   pip-tools
-environs==9.3.2
+environs==9.3.4
     # via -r requirements/run.in
 feedparser==6.0.8
     # via pyzotero
@@ -34,9 +34,9 @@ flask-babel==2.0.0
     # via
     #   -r requirements/run.in
     #   kerko
-flask-wtf==0.14.3
+flask-wtf==0.15.1
     # via kerko
-flask==2.0.1
+flask==2.0.2
     # via
     #   -r requirements/run.in
     #   bootstrap-flask
@@ -45,15 +45,15 @@ flask==2.0.1
     #   kerko
 future==0.18.2
     # via bibtexparser
-idna==2.10
+idna==3.3
     # via requests
-isort==5.8.0
+isort==5.10.0
     # via pylint
 itsdangerous==2.0.1
     # via
     #   flask
     #   flask-wtf
-jinja2==3.0.1
+jinja2==3.0.2
     # via
     #   flask
     #   flask-babel
@@ -62,42 +62,44 @@ git+https://github.com/whiskyechobravo/kerko.git#egg=kerko
     # via -r requirements/run.in
 lazy-object-proxy==1.6.0
     # via astroid
-markupsafe==2.0.0
+markupsafe==2.0.1
     # via
     #   jinja2
     #   wtforms
-marshmallow==3.12.1
+marshmallow==3.14.0
     # via environs
 mccabe==0.6.1
     # via pylint
-pep517==0.10.0
+pep517==0.12.0
     # via pip-tools
-pip-tools==6.1.0
+pip-tools==6.4.0
     # via -r requirements/dev.in
-pipdeptree==2.0.0
+pipdeptree==2.2.0
     # via -r requirements/dev.in
-pycodestyle==2.7.0
+platformdirs==2.4.0
+    # via pylint
+pycodestyle==2.8.0
     # via -r requirements/dev.in
-pydocstyle==6.0.0
+pydocstyle==6.1.1
     # via -r requirements/dev.in
-pylint==2.8.2
+pylint==2.11.1
     # via -r requirements/dev.in
-pyparsing==2.4.7
+pyparsing==3.0.4
     # via bibtexparser
-python-dotenv==0.17.1
+python-dotenv==0.19.1
     # via
     #   -r requirements/run.in
     #   environs
-pytz==2021.1
+pytz==2021.3
     # via
     #   babel
     #   flask-babel
     #   pyzotero
 pyzotero==1.4.26
     # via kerko
-requests==2.25.1
+requests==2.26.0
     # via pyzotero
-rope==0.19.0
+rope==0.21.0
     # via -r requirements/dev.in
 sgmllib3k==1.0.0
     # via feedparser
@@ -106,20 +108,22 @@ six==1.16.0
 snowballstemmer==2.1.0
     # via pydocstyle
 toml==0.10.2
-    # via
-    #   pep517
-    #   pylint
-urllib3==1.26.6
+    # via pylint
+tomli==1.2.2
+    # via pep517
+urllib3==1.26.7
     # via requests
 w3lib==1.22.0
     # via kerko
-werkzeug==2.0.1
+werkzeug==2.0.2
     # via
     #   flask
     #   kerko
+wheel==0.37.0
+    # via pip-tools
 whoosh==2.7.4
     # via kerko
-wrapt==1.12.1
+wrapt==1.13.3
     # via
     #   astroid
     #   kerko
@@ -132,3 +136,4 @@ yapf==0.31.0
 
 # The following packages are considered to be unsafe in a requirements file:
 # pip
+# setuptools
