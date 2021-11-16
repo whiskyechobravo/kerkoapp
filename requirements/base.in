@@ -1,0 +1,2 @@
+environs>=5.0.0
+python-dotenv>=0.10.2

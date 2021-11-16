@@ -1,8 +1,2 @@
--r run.in
-pip-tools>=5.5.0
-pipdeptree
-pycodestyle
-pydocstyle
-pylint
-rope
-yapf
+-r base.in
+kerko[dev,tests] @ git+https://github.com/whiskyechobravo/kerko.git

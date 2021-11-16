@@ -1,7 +1,2 @@
-Babel>=2.6.0
-Bootstrap-Flask>=1.0.10
-environs>=5.0.0
-Flask>=2.0.1
-Flask-Babel>=2.0.0
-git+https://github.com/whiskyechobravo/kerko.git#egg=kerko
-python-dotenv>=0.10.2
+-r base.in
+kerko @ git+https://github.com/whiskyechobravo/kerko.git
