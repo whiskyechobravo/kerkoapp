@@ -1,2 +1,2 @@
 -r base.in
-kerko[dev,tests]>=0.8.1
+kerko[dev,tests] @ git+https://github.com/whiskyechobravo/kerko.git

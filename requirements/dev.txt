@@ -64,7 +64,7 @@ jinja2==3.0.2
     #   flask
     #   flask-babel
     #   kerko
-kerko[dev,tests]==0.8.1
+kerko @ git+https://github.com/whiskyechobravo/kerko.git
     # via -r requirements/dev.in
 lazy-object-proxy==1.6.0
     # via astroid
