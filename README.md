@@ -228,6 +228,11 @@ to your `.env` file if you wish to override their default values:
   attachments, enabling this option can significantly slow down the process of
   synchronizing data from zotero.org, due to Kerko performing a large number of
   Zotero API requests (hopefully this will be fixed in the future).
+* `KERKO_HIGHWIREPRESS_TAGS`: Embed [Highwire Press
+  tags](https://scholar.google.ca/intl/en/scholar/inclusion.html#indexing) into
+  the HTML of item pages. This should help search engines such as Google Scholar
+  index your items, but works only with book, conference paper, journal article,
+  report or thesis items. Defaults to `True` (i.e. enabled).
 * `KERKO_PAGE_LEN`: The number of search results per page. Defaults to `20`.
 * `KERKO_PAGER_LINKS`: Number of pages to show in the pager (not counting the
   current page). Defaults to `4`.
@@ -331,10 +336,6 @@ to your `.env` file if you wish to override their default values:
   excluded. If empty (which is the default), no items will be excluded unless
   `KERKOAPP_ITEM_INCLUDE_RE` is set, in which case items that do not have any
   tag that matches it will be excluded.
-* `KERKOAPP_ITEM_INCLUDE_RE`: Regex to use to include items based on their tags.
-  Any object which does not have a tag that matches this regular expression will
-  be excluded. If empty (which is the default), all items will be included
-  unless `KERKOAPP_ITEM_EXCLUDE_RE` is set and causes some to be excluded.
 * `KERKOAPP_TAG_EXCLUDE_RE`: Regex to use to exclude tags. The default value
   causes any tag that begins with an underscore ('_') to be ignored by Kerko.
   Note that record exports (downloads) always include all tags regardless of

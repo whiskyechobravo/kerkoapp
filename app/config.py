@@ -67,6 +67,7 @@ class Config:
         self.KERKO_DOWNLOAD_ATTACHMENT_NEW_WINDOW = env.bool(
             'KERKO_DOWNLOAD_ATTACHMENT_NEW_WINDOW', False
         )
+        self.KERKO_HIGHWIREPRESS_TAGS = env.bool('KERKO_HIGHWIREPRESS_TAGS', True)
         self.KERKO_RELATIONS_INITIAL_LIMIT = env.int('KERKO_RELATIONS_INITIAL_LIMIT', 5)
         self.KERKO_RELATIONS_LINKS = env.bool('KERKO_RELATIONS_LINKS', False)
 
