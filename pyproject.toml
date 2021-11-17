@@ -1,3 +1,19 @@
+[tool.pylint]
+    [tool.pylint.messages_control]
+    disable = [
+        "fixme",
+        "missing-docstring",
+        "too-many-line",
+        "too-few-public-methods",
+        "too-many-instance-attributes",
+    ]
+    enable = [
+        "unused-import",
+    ]
+
+    [tool.pylint.basic]
+    good-names = "a,b,c,d,e,f,g,h,i,id,j,k,m,n,p,q,r,s,t,u,v,w,x,y,_"
+
 [tool.pydocstyle]
 ignore = [
     "D100",
