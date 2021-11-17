@@ -1,4 +1,4 @@
-FROM tiangolo/meinheld-gunicorn-flask:python3.7
+FROM tiangolo/meinheld-gunicorn-flask:python3.9
 
 LABEL maintainer="kerko@whiskyechobravo.com" \
       org.opencontainers.image.source="https://github.com/whiskyechobravo/kerkoapp" \

@@ -1,2 +1,2 @@
 -r base.in
-kerko @ git+https://github.com/whiskyechobravo/kerko.git
+kerko>=0.8.1

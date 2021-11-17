@@ -1,6 +1,6 @@
 # Changelog
 
-## Latest (unreleased)
+## 0.8 (2021-11-16)
 
 *Warning:* Upgrading from version 0.7.x or earlier will require that you clean
 and re-sync your existing search index. Use the following commands, then restart
