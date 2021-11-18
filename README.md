@@ -12,6 +12,28 @@ advanced customizations one should consider building a custom application
 (possibly using KerkoApp as a starting point), and configuring Kerko through its
 Python interface.
 
+Contents:
+
+- [KerkoApp](#kerkoapp)
+  - [Demo site](#demo-site)
+  - [Features](#features)
+  - [Getting started](#getting-started)
+    - [Standard installation](#standard-installation)
+    - [Running from Docker](#running-from-docker)
+  - [Environment variables](#environment-variables)
+  - [Configuration example](#configuration-example)
+  - [Deploying KerkoApp in production](#deploying-kerkoapp-in-production)
+  - [Translating KerkoApp](#translating-kerkoapp)
+  - [Contributing](#contributing)
+    - [Reporting issues](#reporting-issues)
+    - [Submitting code changes](#submitting-code-changes)
+    - [Submitting a translation](#submitting-a-translation)
+    - [Supporting the project](#supporting-the-project)
+  - [Changelog](#changelog)
+  - [Troubleshooting](#troubleshooting)
+    - [Conflicting package versions with standard installation](#conflicting-package-versions-with-standard-installation)
+    - [No such command "kerko" error when running flask](#no-such-command-kerko-error-when-running-flask)
+    - [Errors when using the `master` version of Kerko](#errors-when-using-the-master-version-of-kerko)
 
 ## Demo site
 
