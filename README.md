@@ -358,6 +358,11 @@ to your `.env` file if you wish to override their default values:
   excluded. If empty (which is the default), no items will be excluded unless
   `KERKOAPP_ITEM_INCLUDE_RE` is set, in which case items that do not have any
   tag that matches it will be excluded.
+* `KERKOAPP_ITEM_INCLUDE_RE`: Regex to use to include items based on their tags.
+  Any item which does not have a tag that matches this regular expression will
+  be ignored. If this value is empty (which is the default), all items will be
+  accepted unless `KERKOAPP_ITEM_EXCLUDE_RE` is set which can cause some items
+  to be rejected.
 * `KERKOAPP_TAG_EXCLUDE_RE`: Regex to use to exclude tags. The default value
   causes any tag that begins with an underscore ('_') to be ignored by Kerko.
   Note that record exports (downloads) always include all tags regardless of
@@ -375,9 +380,9 @@ to your `.env` file if you wish to override their default values:
   an underscore ('_') is rejected.
 * `KERKOAPP_CHILD_INCLUDE_RE`: Regex to use to include children (e.g. notes,
   attachments) based on their tags. Any child which does not have a tag that
-  matches this regular expression will be ignored. If empty, all children will
-  be accepted unless `KERKOAPP_CHILD_EXCLUDE_RE` is set and causes some to be
-  rejected.
+  matches this regular expression will be ignored. If this value is empty (which
+  is the default), all children will be accepted unless
+  `KERKOAPP_CHILD_EXCLUDE_RE` is set and causes some to be rejected.
 * `LOGGING_LEVEL`: Severity of events to track. Allowed values are `DEBUG`,
   `INFO`, `WARNING`, `ERROR`, `CRITICAL`. Defaults to `DEBUG` if app is running
   in the development environment, and to `WARNING` in the production
