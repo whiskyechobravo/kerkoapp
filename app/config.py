@@ -150,8 +150,6 @@ class DevelopmentConfig(Config):
 
         self.CONFIG = 'development'
         self.DEBUG = True
-        self.KERKO_ZOTERO_START = env.int('KERKO_ZOTERO_START', 0)
-        self.KERKO_ZOTERO_END = env.int('KERKO_ZOTERO_END', 0)
         self.LOGGING_LEVEL = env.str('LOGGING_LEVEL', 'DEBUG')
 
 
