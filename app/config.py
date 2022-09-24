@@ -57,7 +57,6 @@ class Config:
         )
         self.KERKO_RESULTS_ATTACHMENT_LINKS = env.bool('KERKO_RESULTS_ATTACHMENT_LINKS', True)
         self.KERKO_RESULTS_URL_LINKS = env.bool('KERKO_RESULTS_URL_LINKS', True)
-        self.KERKO_FACET_COLLAPSING = env.bool('KERKO_FACET_COLLAPSING', False)
         self.KERKO_FULLTEXT_SEARCH = env.bool('KERKO_FULLTEXT_SEARCH', True)
         self.KERKO_PRINT_ITEM_LINK = env.bool('KERKO_PRINT_ITEM_LINK', False)
         self.KERKO_PRINT_CITATIONS_LINK = env.bool('KERKO_PRINT_CITATIONS_LINK', False)

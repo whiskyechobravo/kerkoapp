@@ -242,7 +242,6 @@ to your `.env` file if you wish to override their default values:
 * `KERKO_DOWNLOAD_CITATIONS_MAX_COUNT`: Limit over which the record download
   button should be hidden from search results pages. Defaults to `0` (i.e. no
   limit).
-* `KERKO_FACET_COLLAPSING`: Allow collapsible facets. Defaults to `False`.
 * `KERKO_FULLTEXT_SEARCH`: Allow full-text search of attached documents.
   Defaults to `True`. You really should set this to `False` if you do not intend
   to attach any documents, otherwise the users may be offered irrelevant options

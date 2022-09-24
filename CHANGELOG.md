@@ -1,5 +1,20 @@
 # Changelog
 
+## Latest (unreleased)
+
+*Warning:* Upgrading from version 0.8.x or earlier will require that you rebuild
+your search index. Use the following commands, then restart the application:
+
+```bash
+flask kerko clean index
+flask kerko sync index
+```
+
+Backwards incompatible changes:
+
+- Remove the `KERKO_FACET_COLLAPSING` option.
+
+
 ## 0.8 (2021-11-16)
 
 *Warning:* Upgrading from version 0.7.x or earlier will require that you clean
