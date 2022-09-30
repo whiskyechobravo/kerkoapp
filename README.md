@@ -362,6 +362,12 @@ to your `.env` file if you wish to override their default values:
   from those created by default. Caution: at least one sort must remain for the
   application to start. Please refer to the implementation of
   `kerko.composer.Composer.init_default_sorts()` for the list of default sorts.
+* `KERKOAPP_FACET_INITIAL_LIMIT`: Limits the number of facet values initially
+  shown on search results pages. If more values are available, a "show more"
+  button will let the user expand the list. Defaults to `0` (i.e. no limit).
+* `KERKOAPP_FACET_INITIAL_LIMIT_LEEWAY`: If the number of facet values exceeds
+  `KERKOAPP_FACET_INITIAL_LIMIT` by this tolerance margin or less, all values
+  will be initially shown. Defaults to `0` (i.e. no tolerance margin).
 * `KERKOAPP_MIME_TYPES`: List of allowed MIME types for attachments. Defaults to
   `"application/pdf"`.
 * `KERKOAPP_ITEM_EXCLUDE_RE`: Regex to use to exclude items based on their tags.

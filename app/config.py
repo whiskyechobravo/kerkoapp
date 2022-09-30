@@ -103,6 +103,8 @@ class Config:
                 'KERKOAPP_CHILD_EXCLUDE_RE', env.str('KERKOAPP_CHILD_BLACKLIST_RE', r'^_')
             ),
             mime_types=env.list('KERKOAPP_MIME_TYPES', ['application/pdf']),
+            facet_initial_limit=env.int('KERKOAPP_FACET_INITIAL_LIMIT', 0),
+            facet_initial_limit_leeway=env.int('KERKOAPP_FACET_INITIAL_LIMIT_LEEWAY', 0),
         )
 
         # Add collection facets.
@@ -114,6 +116,8 @@ class Config:
                         title=title,
                         weight=int(weight),
                         collection_key=collection_key,
+                        soft_limit=env.int('KERKOAPP_FACET_INITIAL_LIMIT', 0),
+                        soft_limit_leeway=env.int('KERKOAPP_FACET_INITIAL_LIMIT_LEEWAY', 0),
                     )
                 )
 

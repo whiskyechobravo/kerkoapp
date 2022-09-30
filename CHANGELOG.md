@@ -10,6 +10,13 @@ flask kerko clean index
 flask kerko sync index
 ```
 
+Features:
+
+- Add settings to control the initial limit on the number of values to show
+  under each facet. When the initial limit is reached, a "show more" button
+  allow to user to expand the full list. See `KERKOAPP_FACET_INITIAL_LIMIT` and
+  `KERKOAPP_FACET_INITIAL_LIMIT_LEEWAY`.
+
 Backwards incompatible changes:
 
 - Remove the `KERKO_FACET_COLLAPSING` option.
