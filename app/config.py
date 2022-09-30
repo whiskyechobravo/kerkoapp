@@ -116,8 +116,8 @@ class Config:
                         title=title,
                         weight=int(weight),
                         collection_key=collection_key,
-                        soft_limit=env.int('KERKOAPP_FACET_INITIAL_LIMIT', 0),
-                        soft_limit_leeway=env.int('KERKOAPP_FACET_INITIAL_LIMIT_LEEWAY', 0),
+                        initial_limit=env.int('KERKOAPP_FACET_INITIAL_LIMIT', 0),
+                        initial_limit_leeway=env.int('KERKOAPP_FACET_INITIAL_LIMIT_LEEWAY', 0),
                     )
                 )
 
