@@ -3,7 +3,7 @@
     disable = [
         "fixme",
         "missing-docstring",
-        "too-many-line",
+        "too-many-lines",
         "too-few-public-methods",
         "too-many-instance-attributes",
     ]
