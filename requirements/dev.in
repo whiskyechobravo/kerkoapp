@@ -1,2 +1,2 @@
--r base.in
+-r base.txt
 kerko[dev,tests] @ git+https://github.com/whiskyechobravo/kerko.git
