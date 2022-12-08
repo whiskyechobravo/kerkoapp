@@ -12,7 +12,7 @@ bibtexparser==1.2.0
     # via pyzotero
 bootstrap-flask==1.8.0
     # via kerko
-certifi==2021.10.8
+certifi==2022.12.7
     # via requests
 charset-normalizer==2.0.7
     # via requests
@@ -21,7 +21,7 @@ click==8.0.3
     #   flask
     #   kerko
 environs==9.3.4
-    # via -r requirements/base.in
+    # via -r base.in
 feedparser==6.0.8
     # via pyzotero
 flask==2.0.2
@@ -48,7 +48,7 @@ jinja2==3.0.2
     #   flask-babel
     #   kerko
 kerko==0.8.1
-    # via -r requirements/run.in
+    # via -r run.in
 markupsafe==2.0.1
     # via
     #   jinja2
@@ -59,7 +59,7 @@ pyparsing==3.0.4
     # via bibtexparser
 python-dotenv==0.19.1
     # via
-    #   -r requirements/base.in
+    #   -r base.in
     #   environs
 pytz==2021.3
     # via
