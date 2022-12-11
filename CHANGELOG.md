@@ -16,6 +16,7 @@ Features:
   under each facet. When the initial limit is reached, a "show more" button
   allow to user to expand the full list. See `KERKOAPP_FACET_INITIAL_LIMIT` and
   `KERKOAPP_FACET_INITIAL_LIMIT_LEEWAY`.
+- Read new setting `KERKO_FEEDS` from environment variables.
 
 Backwards incompatible changes:
 
