@@ -243,8 +243,8 @@ to your `.env` file if you wish to override their default values:
   button should be hidden from search results pages. Defaults to `0` (i.e. no
   limit).
 * `KERKO_FEEDS`: A list of syndication feed formats to publish. Defaults to
-  `['atom']`. If set to an empty list, no syndication feed will be provided. At
-  this point, the only supported format is `'atom'`.
+  `['atom']`. If set to an empty list, no web feed will be provided. The only
+  supported format is `'atom'`.
 * `KERKO_FULLTEXT_SEARCH`: Allow full-text search of attached documents.
   Defaults to `True`. You really should set this to `False` if you do not intend
   to attach any documents, otherwise the users may be offered irrelevant options
