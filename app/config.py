@@ -69,26 +69,28 @@ class Config:
         self.KERKO_HIGHWIREPRESS_TAGS = env.bool('KERKO_HIGHWIREPRESS_TAGS', True)
         self.KERKO_RELATIONS_INITIAL_LIMIT = env.int('KERKO_RELATIONS_INITIAL_LIMIT', 5)
         self.KERKO_RELATIONS_LINKS = env.bool('KERKO_RELATIONS_LINKS', False)
-        self.KERKO_FEEDS = env.list('KERKO_FEEDS', ['atom'])
+        self.KERKO_FEEDS = env.list('KERKO_FEEDS', ['atom'], subcast=str)
 
         self.KERKO_COMPOSER = Composer(
             whoosh_language=self.KERKO_WHOOSH_LANGUAGE,
             exclude_default_scopes=env.list(
                 'KERKOAPP_EXCLUDE_DEFAULT_SCOPES',
-                [] if self.KERKO_FULLTEXT_SEARCH else ['fulltext', 'metadata']
+                [] if self.KERKO_FULLTEXT_SEARCH else ['fulltext', 'metadata'],
                 # The 'metadata' scope does the same as the 'all' scope when
                 # full-text search is disabled, hence its removal in that case.
+                subcast=str,
             ),
             exclude_default_fields=env.list(
                 'KERKOAPP_EXCLUDE_DEFAULT_FIELDS',
-                [] if self.KERKO_FULLTEXT_SEARCH else ['text_docs']
+                [] if self.KERKO_FULLTEXT_SEARCH else ['text_docs'],
+                subcast=str,
             ),
-            exclude_default_facets=env.list('KERKOAPP_EXCLUDE_DEFAULT_FACETS', []),
-            exclude_default_sorts=env.list('KERKOAPP_EXCLUDE_DEFAULT_SORTS', []),
+            exclude_default_facets=env.list('KERKOAPP_EXCLUDE_DEFAULT_FACETS', [], subcast=str),
+            exclude_default_sorts=env.list('KERKOAPP_EXCLUDE_DEFAULT_SORTS', [], subcast=str),
             exclude_default_citation_formats=env.list(
-                'KERKOAPP_EXCLUDE_DEFAULT_CITATION_FORMATS', []
+                'KERKOAPP_EXCLUDE_DEFAULT_CITATION_FORMATS', [], subcast=str
             ),
-            exclude_default_badges=env.list('KERKOAPP_EXCLUDE_DEFAULT_BADGES', []),
+            exclude_default_badges=env.list('KERKOAPP_EXCLUDE_DEFAULT_BADGES', [], subcast=str),
             default_item_include_re=env.str('KERKOAPP_ITEM_INCLUDE_RE', ''),
             default_item_exclude_re=env.str('KERKOAPP_ITEM_EXCLUDE_RE', ''),
             default_tag_include_re=env.str(
@@ -103,7 +105,7 @@ class Config:
             default_child_exclude_re=env.str(
                 'KERKOAPP_CHILD_EXCLUDE_RE', env.str('KERKOAPP_CHILD_BLACKLIST_RE', r'^_')
             ),
-            mime_types=env.list('KERKOAPP_MIME_TYPES', ['application/pdf']),
+            mime_types=env.list('KERKOAPP_MIME_TYPES', ['application/pdf'], subcast=str),
             facet_initial_limit=env.int('KERKOAPP_FACET_INITIAL_LIMIT', 0),
             facet_initial_limit_leeway=env.int('KERKOAPP_FACET_INITIAL_LIMIT_LEEWAY', 0),
         )
