@@ -28,7 +28,6 @@ class Config:
         self.check_deprecated_options()
 
         self.SECRET_KEY = env.str('SECRET_KEY')
-        self.EXPLAIN_TEMPLATE_LOADING = False
         self.PROXY_FIX = env.bool('PROXY_FIX', False)
         self.BABEL_DEFAULT_LOCALE = env.str('BABEL_DEFAULT_LOCALE', 'en')
         self.BABEL_DEFAULT_TIMEZONE = env.str('BABEL_DEFAULT_TIMEZONE', 'UTC')
@@ -70,6 +69,7 @@ class Config:
         self.KERKO_RELATIONS_INITIAL_LIMIT = env.int('KERKO_RELATIONS_INITIAL_LIMIT', 5)
         self.KERKO_RELATIONS_LINKS = env.bool('KERKO_RELATIONS_LINKS', False)
         self.KERKO_FEEDS = env.list('KERKO_FEEDS', ['atom'], subcast=str)
+        self.KERKO_FEEDS_MAX_DAYS = env.int('KERKO_FEEDS_MAX_DAYS', 0)
 
         self.KERKO_COMPOSER = Composer(
             whoosh_language=self.KERKO_WHOOSH_LANGUAGE,
@@ -157,6 +157,7 @@ class DevelopmentConfig(Config):
         self.CONFIG = 'development'
         self.DEBUG = True
         self.LOGGING_LEVEL = env.str('LOGGING_LEVEL', 'DEBUG')
+        # self.EXPLAIN_TEMPLATE_LOADING = True
 
 
 class ProductionConfig(Config):

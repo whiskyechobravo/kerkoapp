@@ -245,6 +245,15 @@ to your `.env` file if you wish to override their default values:
 * `KERKO_FEEDS`: A list of syndication feed formats to publish. Defaults to
   `['atom']`. If set to an empty list, no web feed will be provided. The only
   supported format is `'atom'`.
+* `KERKO_FEEDS_MAX_DAYS`: The age (in number of days) of the oldest items
+  allowed into web feeds. The Date field of the items are used for that purpose,
+  and when no date is available, the date the item was added to Zotero is used
+  instead. Defaults to `0` (no age limit). Unless your goal is to promote recent
+  literature only, you should probably ignore this setting. Note: Items with
+  missing dates will be considered as very recent, to prevent them from being
+  excluded from feeds. For the same reason, items whose date lack the month
+  and/or the day will be considered as from the 12th month of the year and/or
+  the last day of the month.
 * `KERKO_FULLTEXT_SEARCH`: Allow full-text search of attached documents.
   Defaults to `True`. You really should set this to `False` if you do not intend
   to attach any documents, otherwise the users may be offered irrelevant options
