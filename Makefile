@@ -20,6 +20,15 @@ kerkosync:
 kerkoclean:
 	docker run --env-file $(ENV_FILE) --rm -p $(HOST_PORT):80 -v $(HOST_DATA_DIR):/app/data -v $(HOST_DEV_LOG):/dev/log $(IMAGE) flask kerko clean
 
+kerkocleancache:
+	docker run --env-file $(ENV_FILE) --rm -p $(HOST_PORT):80 -v $(HOST_DATA_DIR):/app/data -v $(HOST_DEV_LOG):/dev/log $(IMAGE) flask kerko clean cache
+
+kerkocleanindex:
+	docker run --env-file $(ENV_FILE) --rm -p $(HOST_PORT):80 -v $(HOST_DATA_DIR):/app/data -v $(HOST_DEV_LOG):/dev/log $(IMAGE) flask kerko clean index
+
+kerkocleanattachments:
+	docker run --env-file $(ENV_FILE) --rm -p $(HOST_PORT):80 -v $(HOST_DATA_DIR):/app/data -v $(HOST_DEV_LOG):/dev/log $(IMAGE) flask kerko clean attachments
+
 build:
 	docker build -t kerkoapp --label "org.opencontainers.image.version=`git describe --tags`" --label "org.opencontainers.image.created=`date --rfc-3339=seconds`" $(MAKEFILE_DIR)
 
