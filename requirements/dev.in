@@ -1,2 +1,2 @@
 -r base.txt
-kerko[dev,tests] @ git+https://github.com/whiskyechobravo/kerko.git
+kerko[dev,tests]==0.9
