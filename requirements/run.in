@@ -1,2 +1,2 @@
 -r base.txt
-kerko==0.9
+kerko @ git+https://github.com/whiskyechobravo/kerko.git
