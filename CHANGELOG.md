@@ -2,7 +2,18 @@
 
 ## Latest (unreleased)
 
-TBD.
+*Warning:* Upgrading from version 0.9 or earlier will require that you rebuild
+your search index. Use the following commands, then restart the application:
+
+```bash
+flask kerko clean index
+flask kerko sync index
+```
+
+Features:
+
+- Read new settings `KERKO_OPEN_IN_ZOTERO_APP` and `KERKO_OPEN_IN_ZOTERO_WEB`
+  from environment variables.
 
 
 ## 0.9 (2022-12-29)
