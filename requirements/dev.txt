@@ -154,7 +154,7 @@ virtualenv==20.17.1
     # via tox
 w3lib==2.1.1
     # via kerko
-werkzeug==2.2.2
+werkzeug==2.2.3
     # via
     #   flask
     #   kerko
