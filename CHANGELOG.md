@@ -15,6 +15,10 @@ Features:
 - Read new settings `KERKO_OPEN_IN_ZOTERO_APP` and `KERKO_OPEN_IN_ZOTERO_WEB`
   from environment variables.
 
+Other changes:
+
+- Add Portuguese translation. Thanks to Gonçalo Cordeiro.
+
 
 ## 0.9 (2022-12-29)
 
@@ -91,7 +95,7 @@ Changes:
   * `KERKOAPP_CHILD_BLACKLIST_RE` (replaced by `KERKOAPP_CHILD_EXCLUDE_RE`)
 * Add environment variables `KERKOAPP_ITEM_INCLUDE_RE`,
   `KERKOAPP_ITEM_EXCLUDE_RE`, and `BABEL_DEFAULT_TIMEZONE`.
-* Add German translation. Thanks [@mmoole](https://github.com/mmoole).
+* Add German translation. Thanks to [@mmoole](https://github.com/mmoole).
 * Use Flask-Babel instead of its fork Flask-BabelEx, now that is has merged the
   translation domain features from Flask-BabelEx.
 * Drop support for Python 3.6. Kerko is no longer being tested under Python 3.6.
