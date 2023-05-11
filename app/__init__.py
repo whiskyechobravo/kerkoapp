@@ -12,7 +12,7 @@ from .config import CONFIGS
 from .extensions import babel, babel_domain, bootstrap
 
 
-def create_app(config_name):
+def create_app():
     """
     Application factory.
 
@@ -21,7 +21,7 @@ def create_app(config_name):
     :param config_object: The configuration object to use.
     """
     app = Flask(__name__)
-    app.config.from_object(CONFIGS[config_name]())
+    app.config.from_object(CONFIGS['development' if app.config['DEBUG'] else 'production']())
     register_extensions(app)
     register_blueprints(app)
     register_errorhandlers(app)

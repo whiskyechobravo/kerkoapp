@@ -99,7 +99,7 @@ This procedure requires Python 3.7 or later.
 3. Have KerkoApp retrieve your data from zotero.org:
 
    ```bash
-   flask kerko sync
+   flask --debug kerko sync
    ```
 
    If you have a large bibliography and/or large file attachments, that command
@@ -107,18 +107,14 @@ This procedure requires Python 3.7 or later.
    production use, that command is usually added to the crontab file for regular
    execution.
 
-   Alternatively, to get a better sense of the synchronization process, you
-   could use the following command, which will cause Kerko to output various
-   informational messages:
-
-   ```bash
-   LOGGING_LEVEL=INFO flask kerko sync
-   ```
+   The `--debug` switch is optional. If you use it, some messages will give you
+   an idea of the sync process' progress. If you omit it, the command will run
+   silently unless there are warnings or errors.
 
 4. Run KerkoApp:
 
    ```bash
-   flask run
+   flask --debug run
    ```
 
 5. Open http://localhost:5000/ in your browser and explore the bibliography.
@@ -146,9 +142,8 @@ This procedure requires that [Docker] is installed on your computer.
      `KERKO_ZOTERO_LIBRARY_TYPE`: These variables are required for Kerko to be
      able to access your Zotero library. See [Environment
      variables](#environment-variables) for details.
-   * `FLASK_ENV`, and `MODULE_NAME`: These variables are also required for
-     running the application with the provided Docker image. The values provided
-     by `dotenv.sample` should be working examples.
+   * `MODULE_NAME`: This variable is required for running the application with
+     the provided Docker image. See `dotenv.sample` for the proper value.
 
    **Do not** assign a value to the `KERKO_DATA_DIR` variable. If you do, the
    volume bindings defined within the `Makefile` will not be of any use to the
@@ -204,8 +199,6 @@ flask kerko sync
 
 The environment variables below are required and have no default values:
 
-* `FLASK_ENV`: Specifies the environment in which the app should run. Either
-  `development` or `production`. Normally set to `production`.
 * `KERKO_ZOTERO_API_KEY`: Your API key, as [created on
   zotero.org](https://www.zotero.org/settings/keys/new).
 * `KERKO_ZOTERO_LIBRARY_ID`: The identifier of the library to get data from. For
@@ -413,12 +406,11 @@ to your `.env` file if you wish to override their default values:
   `KERKOAPP_CHILD_EXCLUDE_RE` is set and causes some to be rejected.
 * `LOGGING_LEVEL`: Severity of events to track. Allowed values are `DEBUG`,
   `INFO`, `WARNING`, `ERROR`, `CRITICAL`. Defaults to `DEBUG` if app is running
-  in the development environment, and to `WARNING` in the production
-  environment.
-* `GOOGLE_ANALYTICS_ID`: A Google Analytics property ID, e.g., 'UA-99999-9'.
-  This variable is optional and is empty by default. If it is set *and*
-  `FLASK_ENV` is set to `production`, then the Google Analytics tag is inserted
-  into the pages.
+  in debug mode, and to `WARNING` otherwise.
+* `GOOGLE_ANALYTICS_ID`: A Google Analytics stream ID, e.g., 'G-??????????'.
+  This variable is optional and there is no default value. If set and Flask is
+  not running in debug mode, then the Google Analytics tag is inserted into the
+  pages.
 
 Note that some of Kerko's variables do not have a corresponding environment
 variable in KerkoApp and therefore can only be set in Python from a custom
@@ -437,7 +429,6 @@ The `.env` file of the [demo site][KerkoApp_demo] looks like the following,
 except for the private keys:
 
 ```
-FLASK_ENV=production
 SECRET_KEY=XXXXX
 KERKO_TITLE=Kerko Demo
 KERKO_ZOTERO_API_KEY=XXXXX

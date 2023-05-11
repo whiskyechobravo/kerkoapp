@@ -154,8 +154,6 @@ class DevelopmentConfig(Config):
     def __init__(self):
         super().__init__()
 
-        self.CONFIG = 'development'
-        self.DEBUG = True
         self.LOGGING_LEVEL = env.str('LOGGING_LEVEL', 'DEBUG')
         # self.EXPLAIN_TEMPLATE_LOADING = True
 
@@ -165,8 +163,6 @@ class ProductionConfig(Config):
     def __init__(self):
         super().__init__()
 
-        self.CONFIG = 'production'
-        self.DEBUG = False
         self.LOGGING_HANDLER = env.str('LOGGING_HANDLER', 'syslog')
         self.LOGGING_ADDRESS = env.str('LOGGING_ADDRESS', '/dev/log')
         self.LOGGING_LEVEL = env.str('LOGGING_LEVEL', 'WARNING')

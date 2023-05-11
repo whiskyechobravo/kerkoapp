@@ -6,7 +6,7 @@ from app import create_app
 env = Env()
 env.read_env()
 
-app = create_app(env.str('FLASK_ENV'))
+app = create_app()
 
 
 @app.route('/')
