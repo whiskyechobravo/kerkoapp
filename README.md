@@ -463,7 +463,7 @@ regular synchronization of data from zotero.org.
 
 You might find the following guide useful:
 
-- [Deploying KerkoApp on Ubuntu 20.04 with nginx and gunicorn](https://gist.github.com/davidlesieur/e1dafd09636a4bb333ad360e4b2c5d6d)
+- [Deploying KerkoApp on Ubuntu 20.04 or 22.04 with nginx and gunicorn](https://gist.github.com/davidlesieur/e1dafd09636a4bb333ad360e4b2c5d6d)
 
 
 ## Translating KerkoApp
@@ -606,7 +606,7 @@ its latest published release, use the `kerko-head` branch of KerkoApp instead of
 [Docker]: https://www.docker.com/
 [Docker_docs]: https://docs.docker.com/
 [Flask]: https://pypi.org/project/Flask/
-[Flask_production]: https://flask.palletsprojects.com/en/1.1.x/deploying/
+[Flask_production]: https://flask.palletsprojects.com/en/latest/deploying/
 [Kerko]: https://github.com/whiskyechobravo/kerko
 [Kerko_email]: mailto:kerko@whiskyechobravo.com
 [Kerko_issues]: https://github.com/whiskyechobravo/kerko/issues
@@ -615,6 +615,6 @@ its latest published release, use the `kerko-head` branch of KerkoApp instead of
 [KerkoApp_demo]: https://demo.kerko.whiskyechobravo.com
 [KerkoApp_issues]: https://github.com/whiskyechobravo/kerkoapp/issues
 [Python]: https://www.python.org/
-[venv]: https://docs.python.org/3.8/tutorial/venv.html
+[venv]: https://docs.python.org/3.11/tutorial/venv.html
 [Zotero]: https://www.zotero.org/
 [Zotero_demo]: https://www.zotero.org/groups/2348869/kerko_demo/items
