@@ -1,7 +1,7 @@
 from environs import Env
 from flask import redirect, url_for
 
-from app import create_app
+from kerkoapp import create_app
 
 env = Env()
 env.read_env()

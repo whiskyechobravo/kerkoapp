@@ -482,26 +482,26 @@ Create or update the PO file template (POT). Replace `CURRENT_VERSION` with your
 current KerkoApp version:
 
 ```bash
-pybabel extract -F babel.cfg -o app/translations/messages.pot --project=KerkoApp --version=CURRENT_VERSION --copyright-holder="Kerko Contributors" app
+pybabel extract -F babel.cfg -o kerkoapp/translations/messages.pot --project=KerkoApp --version=CURRENT_VERSION --copyright-holder="Kerko Contributors" kerkoapp
 ```
 
 Create a new PO file (for a new locale) based on the POT file. Replace
 `YOUR_LOCALE` with the appropriate language code, e.g., `de`, `es`, `it`:
 
 ```bash
-pybabel init -l YOUR_LOCALE -i app/translations/messages.pot -d app/translations
+pybabel init -l YOUR_LOCALE -i kerkoapp/translations/messages.pot -d kerkoapp/translations
 ```
 
 Update an existing PO file based on the POT file:
 
 ```bash
-pybabel update -l YOUR_LOCALE -i app/translations/messages.pot -d app/translations
+pybabel update -l YOUR_LOCALE -i kerkoapp/translations/messages.pot -d kerkoapp/translations
 ```
 
 Compile MO files:
 
 ```bash
-pybabel compile -l YOUR_LOCALE -d app/translations
+pybabel compile -l YOUR_LOCALE -d kerkoapp/translations
 ```
 
 

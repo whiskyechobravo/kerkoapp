@@ -5,8 +5,6 @@ Each extension is initialized by the create_app factory of the app module.
 """
 # pylint: disable=invalid-name
 
-import pathlib
-
 from flask_babel import Babel, Domain
 from flask_bootstrap import Bootstrap
 
