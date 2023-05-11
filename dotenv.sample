@@ -8,8 +8,7 @@ KERKO_PRINT_ITEM_LINK=True
 KERKO_PRINT_CITATIONS_LINK=True
 
 # KerkoApp variables.
-FLASK_APP=kerkoapp.py
 FLASK_ENV=production
 
 # Docker container variables.
-MODULE_NAME=kerkoapp
+MODULE_NAME=wsgi

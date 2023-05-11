@@ -146,9 +146,9 @@ This procedure requires that [Docker] is installed on your computer.
      `KERKO_ZOTERO_LIBRARY_TYPE`: These variables are required for Kerko to be
      able to access your Zotero library. See [Environment
      variables](#environment-variables) for details.
-   * `FLASK_APP`, `FLASK_ENV`, and `MODULE_NAME`: These variables are also
-     required for running the application with the provided Docker image. The
-     values provided by `dotenv.sample` should be working examples.
+   * `FLASK_ENV`, and `MODULE_NAME`: These variables are also required for
+     running the application with the provided Docker image. The values provided
+     by `dotenv.sample` should be working examples.
 
    **Do not** assign a value to the `KERKO_DATA_DIR` variable. If you do, the
    volume bindings defined within the `Makefile` will not be of any use to the
@@ -204,7 +204,6 @@ flask kerko sync
 
 The environment variables below are required and have no default values:
 
-* `FLASK_APP`: Specifies the application to load. Normally set to `kerkoapp.py`.
 * `FLASK_ENV`: Specifies the environment in which the app should run. Either
   `development` or `production`. Normally set to `production`.
 * `KERKO_ZOTERO_API_KEY`: Your API key, as [created on
@@ -222,8 +221,8 @@ The environment variable below is required to run KerkoApp with the provided
 Docker image, and has no default value:
 
 * `MODULE_NAME`: Specifies the Python module to be imported by Gunicorn.
-  Normally set to `kerkoapp`, which causes Gunicorn to run with `APP_MODULE` set
-  to `kerkoapp:app`.
+  Normally set to `wsgi`, which causes Gunicorn to run with `APP_MODULE` set
+  to `wsgi:app`.
 
 The following environment variables are supported by KerkoApp and may be added
 to your `.env` file if you wish to override their default values:
@@ -438,7 +437,6 @@ The `.env` file of the [demo site][KerkoApp_demo] looks like the following,
 except for the private keys:
 
 ```
-FLASK_APP=kerkoapp.py
 FLASK_ENV=production
 SECRET_KEY=XXXXX
 KERKO_TITLE=Kerko Demo
@@ -603,21 +601,8 @@ other Python code.
 
 ### No such command "kerko" error when running flask
 
-You might have to set the `FLASK_APP` variable. Its value is normally picked up
-from the `.env` file in the current working directory, but if that's not the
-case you might need to set it directly in the environment.
-
-Under Linux:
-
-```bash
-export FLASK_APP=kerkoapp.py
-```
-
-Under Windows:
-
-```
-set FLASK_APP=kerkoapp.py
-```
+Make sure you are trying to run flask from the application's directory, where
+the file `wsgi.py` is located.
 
 ### Errors when using the `master` version of Kerko
 

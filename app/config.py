@@ -23,7 +23,7 @@ def collection_spec_parser(value):
 class Config:
 
     def __init__(self):
-        app_dir = pathlib.Path(env.str('FLASK_APP')).parent.absolute()
+        app_dir = pathlib.Path(__file__).parent.parent.absolute()
 
         self.check_deprecated_options()
 
