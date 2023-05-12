@@ -18,15 +18,15 @@ msgstr ""
 "Generated-By: Babel 2.8.0\n"
 "Last-Translator: Sven Rothe <mmoole@gmail.com>\n"
 
-#: app/config.py:32
+#: kerkoapp/config.py:32
 msgid "Kerko App"
 msgstr "Kerko App"
 
-#: app/templates/kerkoapp/400.html.jinja2:1
+#: kerkoapp/templates/kerkoapp/400.html.jinja2:1
 msgid "Bad request"
 msgstr "Ungültige Anforderung"
 
-#: app/templates/kerkoapp/400.html.jinja2:5
+#: kerkoapp/templates/kerkoapp/400.html.jinja2:5
 msgid ""
 "The browser (or a proxy) sent a request that this site could not "
 "understand."
@@ -34,23 +34,23 @@ msgstr ""
 "Der Browser (oder ein Proxy) hat eine Anfrage gesendet, die diese "
 "Website nicht verstehen konnte."
 
-#: app/templates/kerkoapp/403.html.jinja2:1
+#: kerkoapp/templates/kerkoapp/403.html.jinja2:1
 msgid "Access denied"
 msgstr "Zugriff verboten"
 
-#: app/templates/kerkoapp/403.html.jinja2:5
+#: kerkoapp/templates/kerkoapp/403.html.jinja2:5
 msgid "Access to the required page is not authorized."
 msgstr "Der Zugriff auf die gewünschte Seite ist nicht erlaubt."
 
-#: app/templates/kerkoapp/404.html.jinja2:1
+#: kerkoapp/templates/kerkoapp/404.html.jinja2:1
 msgid "Page not found"
 msgstr "Seite nicht gefunden"
 
-#: app/templates/kerkoapp/404.html.jinja2:5
+#: kerkoapp/templates/kerkoapp/404.html.jinja2:5
 msgid "The required page does not exists or has moved."
 msgstr "Die gewünschte Seite existiert nicht oder ist umgezogen."
 
-#: app/templates/kerkoapp/404.html.jinja2:6
+#: kerkoapp/templates/kerkoapp/404.html.jinja2:6
 #, python-format
 msgid ""
 "You might want to use our <a href=\"%(url)s\">search engine</a> to try "
@@ -59,11 +59,11 @@ msgstr ""
 "Vielleicht möchten Sie unsere <a href=\"%(url)s\">Suchmaschine</a> "
 "verwenden, um die gewünschte Information zu finden."
 
-#: app/templates/kerkoapp/500.html.jinja2:1
+#: kerkoapp/templates/kerkoapp/500.html.jinja2:1
 msgid "Internal server error"
 msgstr "Interner Server-Fehler"
 
-#: app/templates/kerkoapp/500.html.jinja2:5
+#: kerkoapp/templates/kerkoapp/500.html.jinja2:5
 msgid ""
 "The required page could not be loaded because of an internal server "
 "error. Please try again later. If the error persists, please contact the "
