@@ -8,9 +8,9 @@ environs==9.5.0
     # via -r requirements/base.in
 marshmallow==3.19.0
     # via environs
-packaging==22.0
+packaging==23.1
     # via marshmallow
-python-dotenv==0.21.0
+python-dotenv==1.0.0
     # via
     #   -r requirements/base.in
     #   environs
