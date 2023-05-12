@@ -18,8 +18,12 @@ bootstrap-flask==2.2.0
     # via kerko
 build==0.10.0
     # via pip-tools
+cachetools==5.3.0
+    # via tox
 certifi==2023.5.7
     # via requests
+chardet==5.1.0
+    # via tox
 charset-normalizer==3.1.0
     # via requests
 click==8.1.3
@@ -27,13 +31,15 @@ click==8.1.3
     #   flask
     #   kerko
     #   pip-tools
-coverage==6.3.3
+colorama==0.4.6
+    # via tox
+coverage==7.2.5
     # via kerko
 dill==0.3.6
     # via pylint
 distlib==0.3.6
     # via virtualenv
-elementpath==2.5.3
+elementpath==4.1.2
     # via kerko
 environs==9.5.0
     # via -r requirements/base.txt
@@ -88,6 +94,7 @@ packaging==23.1
     #   -r requirements/base.txt
     #   build
     #   marshmallow
+    #   pyproject-api
     #   pytoolconfig
     #   tox
 pip-tools==6.13.0
@@ -96,10 +103,9 @@ platformdirs==3.5.1
     # via
     #   pylint
     #   pytoolconfig
+    #   tox
     #   virtualenv
 pluggy==1.0.0
-    # via tox
-py==1.11.0
     # via tox
 pycodestyle==2.10.0
     # via kerko
@@ -109,6 +115,8 @@ pylint==2.17.4
     # via kerko
 pyparsing==3.0.9
     # via bibtexparser
+pyproject-api==1.5.1
+    # via tox
 pyproject-hooks==1.0.0
     # via build
 python-dotenv==1.0.0
@@ -122,30 +130,30 @@ pytz==2023.3
     #   flask-babel
     #   kerko
     #   pyzotero
+pyyaml==6.0
+    # via responses
 pyzotero==1.5.9
     # via kerko
 requests==2.30.0
     # via
     #   pyzotero
     #   responses
-responses==0.17.0
+responses==0.23.1
     # via kerko
 rope==1.8.0
     # via kerko
 sgmllib3k==1.0.0
     # via feedparser
-six==1.16.0
-    # via
-    #   responses
-    #   tox
 snowballstemmer==2.2.0
     # via pydocstyle
 tomli==2.0.1
     # via yapf
 tomlkit==0.11.8
     # via pylint
-tox==3.28.0
+tox==4.5.1
     # via kerko
+types-pyyaml==6.0.12.9
+    # via responses
 urllib3==2.0.2
     # via
     #   requests
