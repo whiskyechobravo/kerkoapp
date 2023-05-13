@@ -6,7 +6,7 @@ import pathlib
 
 import kerko
 from flask import Flask, render_template
-from flask_babel import Domain, get_locale
+from flask_babel import get_locale
 
 from . import logging
 from .config import CONFIGS
