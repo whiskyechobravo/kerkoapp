@@ -1,0 +1,85 @@
+# Portuguese translations for KerkoApp.
+# Copyright (C) 2023 Kerko Contributors
+# This file is distributed under the same license as the KerkoApp project.
+# Gonçalo Cordeiro <gzcordeiro@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: KerkoApp 0.9\n"
+"Report-Msgid-Bugs-To: <kerko@whiskyechobravo.com>\n"
+"POT-Creation-Date: 2023-02-10 13:03+0100\n"
+"PO-Revision-Date: 2023-02-10 13:21+0100\n"
+"Last-Translator: Gonçalo Cordeiro <gzcordeiro@gmail.com>\n"
+"Language-Team: pt <gzcordeiro@gmail.com>\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.11.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: app/config.py:38
+msgid "Kerko App"
+msgstr "Kerko App"
+
+#: app/templates/kerkoapp/400.html.jinja2:1
+msgid "Bad request"
+msgstr "Solicitação não válida"
+
+#: app/templates/kerkoapp/400.html.jinja2:5
+msgid ""
+"The browser (or a proxy) sent a request that this site could not "
+"understand."
+msgstr ""
+"O navegador (ou um proxy) enviou uma solicitação que este site não "
+"conseguiu entender."
+
+#: app/templates/kerkoapp/403.html.jinja2:1
+msgid "Access denied"
+msgstr "Acesso negado"
+
+#: app/templates/kerkoapp/403.html.jinja2:5
+msgid "Access to the required page is not authorized."
+msgstr "O acesso à página solicitada não está autorizado."
+
+#: app/templates/kerkoapp/404.html.jinja2:1
+msgid "Page not found"
+msgstr "Página não encontrada"
+
+#: app/templates/kerkoapp/404.html.jinja2:5
+msgid "The required page does not exists or has moved."
+msgstr "A página solicitada não foi encontrada ou não existe mais."
+
+#: app/templates/kerkoapp/404.html.jinja2:6
+#, python-format
+msgid ""
+"You might want to use our <a href=\"%(url)s\">search engine</a> to try "
+"finding the desired resource."
+msgstr ""
+"Você pode querer usar a nossa <a href=\"%(url)s\">ferramenta de "
+"pesquisa</a> para tentar encontrar o recurso desejado."
+
+#: app/templates/kerkoapp/500.html.jinja2:1
+msgid "Internal server error"
+msgstr "Erro interno do servidor"
+
+#: app/templates/kerkoapp/500.html.jinja2:5
+msgid ""
+"The required page could not be loaded because of an internal server "
+"error. Please try again later. If the error persists, please contact the "
+"site's administrators."
+msgstr ""
+"A página solicitada não pôde ser carregada devido a um erro interno do "
+"servidor. Por favor, tente novamente mais tarde. Se o erro persistir, "
+"entre em contato com os administradores do site."
+
+#: app/templates/kerkoapp/503.html.jinja2:1
+msgid "Service unavailable"
+msgstr "Serviço indisponível"
+
+#: app/templates/kerkoapp/503.html.jinja2:5
+msgid "The service is temporarily unavailable. Please try again later."
+msgstr ""
+"O serviço está temporariamente indisponível. Por favor, tente novamente "
+"mais tarde."

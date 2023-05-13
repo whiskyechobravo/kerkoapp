@@ -45,6 +45,8 @@ class Config:
         self.KERKO_ZOTERO_MAX_ATTEMPTS = env.int('KERKO_ZOTERO_MAX_ATTEMPTS', 10)
         self.KERKO_ZOTERO_WAIT = env.int('KERKO_ZOTERO_WAIT', 120)  # In seconds.
         self.KERKO_ZOTERO_BATCH_SIZE = env.int('KERKO_ZOTERO_BATCH_SIZE', 100)
+        self.KERKO_OPEN_IN_ZOTERO_APP = env.bool('KERKO_OPEN_IN_ZOTERO_APP', False)
+        self.KERKO_OPEN_IN_ZOTERO_WEB = env.bool('KERKO_OPEN_IN_ZOTERO_WEB', False)
         self.KERKO_PAGE_LEN = env.int('KERKO_PAGE_LEN', 20)
         self.KERKO_PAGER_LINKS = env.int('KERKO_PAGER_LINKS', 4)
         self.KERKO_CSL_STYLE = env.str('KERKO_CSL_STYLE', 'apa')
