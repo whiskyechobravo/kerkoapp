@@ -31,6 +31,65 @@ Backwards incompatible changes:
   `app` object.
 - Remove all uses of the `FLASK_ENV` configuration variable, which Flask 2.3
   stopped supporting. For debug mode, use Flask's `--debug` command line option.
+- Configuration settings have moved:
+    - `KERKO_BOOTSTRAP_VERSION` → `kerko.assets.bootstrap_version`
+    - `KERKO_JQUERY_VERSION` → `kerko.assets.jquery_version`
+    - `KERKO_POPPER_VERSION` → `kerko.assets.popper_version`
+    - `KERKO_WITH_JQUERY` → `kerko.assets.with_jquery`
+    - `KERKO_WITH_POPPER` → `kerko.assets.with_popper`
+    - `KERKO_DOWNLOAD_ATTACHMENT_NEW_WINDOW` → `kerko.features.download_attachment_new_window`
+    - `KERKO_DOWNLOAD_CITATIONS_LINK` → `kerko.features.download_citations_link`
+    - `KERKO_DOWNLOAD_CITATIONS_MAX_COUNT` → `kerko.features.download_citations_max_count`
+    - `KERKO_OPEN_IN_ZOTERO_APP` → `kerko.features.open_in_zotero_app`
+    - `KERKO_OPEN_IN_ZOTERO_WEB` → `kerko.features.open_in_zotero_web`
+    - `KERKO_PRINT_CITATIONS_LINK` → `kerko.features.print_citations_link`
+    - `KERKO_PRINT_CITATIONS_MAX_COUNT` → `kerko.features.print_citations_max_count`
+    - `KERKO_PRINT_ITEM_LINK` → `kerko.features.print_item_link`
+    - `KERKO_RELATIONS_LINKS` → `kerko.features.relations_links`
+    - `KERKO_RELATIONS_INITIAL_LIMIT` → `kerko.features.relations_initial_limit`
+    - `KERKO_RELATIONS_SORT` → `kerko.features.relations_sort`
+    - `KERKO_RESULTS_ABSTRACTS` → `kerko.features.results_abstracts`
+    - `KERKO_RESULTS_ABSTRACTS_MAX_LENGTH` → `kerko.features.results_abstracts_max_length`
+    - `KERKO_RESULTS_ABSTRACTS_MAX_LENGTH_LEEWAY` → `kerko.features.results_abstracts_max_length_leeway`
+    - `KERKO_RESULTS_ABSTRACTS_TOGGLER` → `kerko.features.results_abstracts_toggler`
+    - `KERKO_RESULTS_ATTACHMENT_LINKS` → `kerko.features.results_attachment_links`
+    - `KERKO_RESULTS_URL_LINKS` → `kerko.features.results_url_links`
+    - `KERKO_FEEDS` → `kerko.feeds.formats`
+    - `KERKO_FEEDS_FIELDS` → `kerko.feeds.fields`
+    - `KERKO_FEEDS_MAX_DAYS` → `kerko.feeds.max_days`
+    - `KERKO_FEEDS_REQUIRE_ANY` → `kerko.feeds.require_any`
+    - `KERKO_FEEDS_REJECT_ANY` → `kerko.feeds.reject_any`
+    - `KERKO_HIGHWIREPRESS_TAGS` → `kerko.meta.highwirepress_tags`
+    - `KERKO_TITLE` → `kerko.meta.title`
+    - `KERKO_PAGE_LEN` → `kerko.pagination.page_len`
+    - `KERKO_PAGER_LINKS` → `kerko.pagination.pager_links`
+    - `KERKO_RESULTS_FIELDS` → `kerko.search.result_fields`
+    - `KERKO_FULLTEXT_SEARCH` → `kerko.search.fulltext`
+    - `KERKO_WHOOSH_LANGUAGE` → `kerko.search.whoosh_language`
+    - `KERKO_TEMPLATE_BASE` → `kerko.templates.base`
+    - `KERKO_TEMPLATE_LAYOUT` → `kerko.templates.layout`
+    - `KERKO_TEMPLATE_SEARCH` → `kerko.templates.search`
+    - `KERKO_TEMPLATE_SEARCH_ITEM` → `kerko.templates.search_item`
+    - `KERKO_TEMPLATE_ITEM` → `kerko.templates.item`
+    - `KERKO_TEMPLATE_ATOM_FEED` → `kerko.templates.atom_feed`
+    - `KERKO_CSL_STYLE` → `kerko.zotero.csl_style`
+    - `KERKO_ZOTERO_LOCALE` → `kerko.zotero.locale`
+    - `KERKO_ZOTERO_BATCH_SIZE` → `kerko.zotero.batch_size`
+    - `KERKO_ZOTERO_MAX_ATTEMPTS` → `kerko.zotero.max_attempts`
+    - `KERKO_ZOTERO_WAIT` → `kerko.zotero.wait`
+    - `KERKOAPP_TAG_INCLUDE_RE` → `kerko.zotero.tag_include_re`
+    - `KERKOAPP_TAG_EXCLUDE_RE` → `kerko.zotero.tag_exclude_re`
+    - `KERKOAPP_CHILD_INCLUDE_RE` → `kerko.zotero.child_include_re`
+    - `KERKOAPP_CHILD_EXCLUDE_RE` → `kerko.zotero.child_exclude_re`
+    - `KERKOAPP_MIME_TYPES` → `kerko.zotero.attachment_mime_types`
+    - `KERKOAPP_COLLECTION_FACETS` → `kerko.facets.collection_facets`
+    - `KERKOAPP_EXCLUDE_DEFAULT_SCOPES`: Default scopes may now be excluded on a per-scope basis, using `kerko.scopes.SCOPE_KEY.enabled = false`.
+    - `KERKOAPP_EXCLUDE_DEFAULT_FIELDS`: Default fields may now be excluded on a per-field basis, using `kerko.fields.FIELD_KEY.enabled = false`.
+    - `KERKOAPP_EXCLUDE_DEFAULT_FACETS`: Default facets may now be excluded on a per-facet basis, using `kerko.facets.FACET_KEY.enabled = false`.
+    - `KERKOAPP_EXCLUDE_DEFAULT_SORTS`: Default sorts may now be excluded on a per-sort option basis, using `kerko.sorts.SORT_KEY.enabled = false`.
+    - `KERKOAPP_EXCLUDE_DEFAULT_CITATION_FORMATS`: Default citation formats may now be excluded on a per-citation format basis, using `kerko.citation_formats.CITATION_FORMAT_KEY.enabled = false`.
+    - `KERKOAPP_FACET_INITIAL_LIMIT`: Limit must may now be set on a per-facet basis, using `kerko.facets.FACET_KEY.initial_limit = LIMIT`.
+    - `KERKOAPP_FACET_INITIAL_LIMIT_LEEWAY`: Limit leeway must may now be set on a per-facet basis, using `kerko.facets.FACET_KEY.initial_limit_leeway = LEEWAY`.
 
 
 ## 0.9 (2022-12-29)

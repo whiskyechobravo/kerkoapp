@@ -50,6 +50,8 @@ list of features.
 
 The main features added by KerkoApp over Kerko's are:
 
+**TODO:config: Update this description!**
+
 - Read most configuration from environment variables or a `.env` file, adhering
   to the [Twelve-factor App](https://12factor.net/config) methodology.
 - Provide extra environment variables for:
@@ -84,15 +86,14 @@ This procedure requires Python 3.7 or later.
 
    This will install many packages required by Kerko or KerkoApp.
 
-2. Copy `dotenv.sample` to `.env`. Open `.env` in a text editor to assign proper
-   values to the variables outlined below.
+2. Copy the `sample.env` file to `.env`. Open `.env` in a text editor to assign
+   proper values to the variables outlined below.
 
-   - `KERKO_TITLE`: The title to display in web pages.
-   - `SECRET_KEY`: This variable is required for generating secure tokens in web
+   - `KERKOAPP_SECRET_KEY`: This variable is required for generating secure tokens in web
      forms. It should have a secure, random value and it really has to be
      secret. For this reason, never add your `.env` file to a code repository.
-   - `KERKO_ZOTERO_API_KEY`, `KERKO_ZOTERO_LIBRARY_ID` and
-     `KERKO_ZOTERO_LIBRARY_TYPE`: These variables are required for Kerko to be
+   - `KERKOAPP_ZOTERO_API_KEY`, `KERKOAPP_ZOTERO_LIBRARY_ID` and
+     `KERKOAPP_ZOTERO_LIBRARY_TYPE`: These variables are required for Kerko to be
      able to access your Zotero library. See [Environment
      variables](#environment-variables) for details.
 
@@ -128,24 +129,23 @@ servers suggested in Flask's documentation][Flask_production].
 
 This procedure requires that [Docker] is installed on your computer.
 
-1. Copy the `Makefile` and `dotenv.sample` files from [KerkoApp's
+1. Copy the `Makefile` and `sample.env` files from [KerkoApp's
    repository][KerkoApp] to an empty directory on your computer.
 
-2. Rename `dotenv.sample` to `.env`. Open `.env` in a text editor to assign
-   proper values to the variables outlined below.
+2. Rename `sample.env` to `.env`. Open `.env` in a text editor to assign proper
+   values to the variables outlined below.
 
-   - `KERKO_TITLE`: The title to display in web pages.
-   - `SECRET_KEY`: This variable is required for generating secure tokens in web
+   - `KERKOAPP_SECRET_KEY`: This variable is required for generating secure tokens in web
      forms. It should have a secure, random value and it really has to be
      secret. For this reason, never add your `.env` file to a code repository.
-   - `KERKO_ZOTERO_API_KEY`, `KERKO_ZOTERO_LIBRARY_ID` and
-     `KERKO_ZOTERO_LIBRARY_TYPE`: These variables are required for Kerko to be
+   - `KERKOAPP_ZOTERO_API_KEY`, `KERKOAPP_ZOTERO_LIBRARY_ID` and
+     `KERKOAPP_ZOTERO_LIBRARY_TYPE`: These variables are required for Kerko to be
      able to access your Zotero library. See [Environment
      variables](#environment-variables) for details.
    - `MODULE_NAME`: This variable is required for running the application with
-     the provided Docker image. See `dotenv.sample` for the proper value.
+     the provided Docker image. See `sample.env` for the proper value.
 
-   **Do not** assign a value to the `KERKO_DATA_DIR` variable. If you do, the
+   **Do not** assign a value to the `KERKOAPP_DATA_DIR` variable. If you do, the
    volume bindings defined within the `Makefile` will not be of any use to the
    application running within the container.
 
@@ -175,10 +175,10 @@ This procedure requires that [Docker] is installed on your computer.
 
 6. Open http://localhost:8080/ in your browser and explore the bibliography.
 
-Keep in mind that the `dotenv.sample` and `Makefile` provide only examples on
-how to run the dockerized KerkoApp. Also, **we have not made any special effort
-to harden the KerkoApp image for production use**; for such use, you will have
-to build an image that is up to your standards. For full documentation on how to
+Keep in mind that the `sample.env` and `Makefile` provide only examples on how
+to run the dockerized KerkoApp. Also, **we have not made any special effort to
+harden the KerkoApp image for production use**; for such use, you will have to
+build an image that is up to your standards. For full documentation on how to
 run Docker containers, including the port mapping and volume binding required to
 run containers, see the [Docker documentation][Docker_docs].
 
@@ -197,17 +197,24 @@ flask kerko clean index
 flask kerko sync
 ```
 
+**TODO:config: Cleanup redundancies: these variables are explained in 3 different places in this file!**
+
+**TODO:config: Clarify that the following may be set as environment variables or .env variables but with the KERKOAPP_ prefix**
+
 The environment variables below are required and have no default values:
 
-- `KERKO_ZOTERO_API_KEY`: Your API key, as [created on
+- `KERKOAPP_SECRET_KEY`: This variable is required for generating secure tokens in web
+  forms. It should have a secure, random value and it really has to be secret.
+  For this reason, never add your `.env` file to a code repository.
+- `KERKOAPP_ZOTERO_API_KEY`: Your API key, as [created on
   zotero.org](https://www.zotero.org/settings/keys/new).
-- `KERKO_ZOTERO_LIBRARY_ID`: The identifier of the library to get data from. For
+- `KERKOAPP_ZOTERO_LIBRARY_ID`: The identifier of the library to get data from. For
   your personal library this value should be your _userID_, as found on
   https://www.zotero.org/settings/keys (you must be logged-in). For a group
   library this value should be the _groupID_ of the library, as found in the URL
   of that library (e.g., in https://www.zotero.org/groups/2348869/kerko_demo,
   the _groupID_ is `2348869`).
-- `KERKO_ZOTERO_LIBRARY_TYPE`: The type of library to get data from, either
+- `KERKOAPP_ZOTERO_LIBRARY_TYPE`: The type of library to get data from, either
   `'user'` for your personal library, or `'group'` for a group library.
 
 The environment variable below is required to run KerkoApp with the provided
@@ -217,101 +224,17 @@ Docker image, and has no default value:
   Normally set to `wsgi`, which causes Gunicorn to run with `APP_MODULE` set
   to `wsgi:app`.
 
-The following environment variables are supported by KerkoApp and may be added
-to your `.env` file if you wish to override their default values:
+**TODO:config: Optional env variables**
 
-- `KERKO_CSL_STYLE`: The citation style to use for formatted references. Can be
-  either the file name (without the `.csl` extension) of one of the styles in the
-  [Zotero Styles Repository][Zotero_styles] (e.g., `apa`) or the URL of a remote
-  CSL file. Defaults to `'apa'`.
-- `KERKO_DATA_DIR`: The directory where to store the search index and the file
-  attachments. Defaults to `data/kerko`. Subdirectories `index` and
-  `attachments` will be created if they do not already exist.
-- `KERKO_DOWNLOAD_ATTACHMENT_NEW_WINDOW`: Open attachments in new windows, i.e.,
-  add the `target="_blank"` attribute to attachment links. Defaults to `False`.
-- `KERKO_DOWNLOAD_CITATIONS_LINK`: Provide a record download button on search
-  results pages. Defaults to `True`.
-- `KERKO_DOWNLOAD_CITATIONS_MAX_COUNT`: Limit over which the record download
-  button should be hidden from search results pages. Defaults to `0` (i.e. no
-  limit).
-- `KERKO_FEEDS`: A list of syndication feed formats to publish. Defaults to
-  `['atom']`. If set to an empty list, no web feed will be provided. The only
-  supported format is `'atom'`.
-- `KERKO_FEEDS_MAX_DAYS`: The age (in number of days) of the oldest items
-  allowed into web feeds. The Date field of the items are used for that purpose,
-  and when no date is available, the date the item was added to Zotero is used
-  instead. Defaults to `0` (no age limit). Unless your goal is to promote recent
-  literature only, you should probably ignore this setting. Note: Items with
-  missing dates will be considered as very recent, to prevent them from being
-  excluded from feeds. For the same reason, items whose date lack the month
-  and/or the day will be considered as from the 12th month of the year and/or
-  the last day of the month.
-- `KERKO_FULLTEXT_SEARCH`: Allow full-text search of attached documents.
-  Defaults to `True`. You really should set this to `False` if you do not intend
-  to attach any documents, otherwise the users may be offered irrelevant options
-  when selecting the scope of their search. Caution: If you have thousands of
-  attachments, enabling this option can significantly slow down the process of
-  synchronizing data from zotero.org, due to Kerko performing a large number of
-  Zotero API requests (hopefully this will be fixed in the future).
-- `KERKO_HIGHWIREPRESS_TAGS`: Embed [Highwire Press
-  tags](https://scholar.google.ca/intl/en/scholar/inclusion.html#indexing) into
-  the HTML of item pages. This should help search engines such as Google Scholar
-  index your items, but works only with book, conference paper, journal article,
-  report or thesis items. Defaults to `True` (i.e. enabled).
-- `KERKO_PAGE_LEN`: The number of search results per page. Defaults to `20`.
-- `KERKO_PAGER_LINKS`: Number of pages to show in the pager (not counting the
-  current page). Defaults to `4`.
-- `KERKO_PRINT_ITEM_LINK`: Provide a print button on item pages. Defaults to
-  `False`.
-- `KERKO_PRINT_CITATIONS_LINK`: Provide a print button on search results
-  pages. Defaults to `False`.
-- `KERKO_PRINT_CITATIONS_MAX_COUNT`: Limit over which the print button should
-  be hidden from search results pages. Defaults to `0` (i.e. no limit).
-- `KERKO_RELATIONS_INITIAL_LIMIT`: Number of related items to show above the
-  "view all" link. Defaults to `5`.
-- `KERKO_RELATIONS_LINKS`: Show item links in lists of related items. Defaults
-  to `False`. Enabling this only has an effect if at least one of the following
-  variables is also set to `True`: `KERKO_RESULTS_ATTACHMENT_LINKS`,
-  `KERKO_RESULTS_URL_LINKS`).
-- `KERKO_RESULTS_ABSTRACTS`: Determines whether abstracts are displayed on
-  search results pages. Defaults to `False` (hidden).
-- `KERKO_RESULTS_ABSTRACTS_TOGGLER`: Determines whether the user may toggle the
-  display of abstracts on search results pages. Defaults to `True`.
-- `KERKO_RESULTS_ABSTRACTS_MAX_LENGTH`: Truncate abstracts at the given length
-  (in number of characters). If text is to be truncated in the middle of a word,
-  the whole word is discarded instead. Truncated text is appended with an
-  ellipsis sign ("..."). Defaults to `0` (abstracts get displayed in their full
-  length, without any truncation).
-- `KERKO_RESULTS_ABSTRACTS_MAX_LENGTH_LEEWAY`: If the length of an abstract only
-  exceeds `KERKO_RESULTS_ABSTRACTS_MAX_LENGTH` by this tolerance margin (in
-  number of characters), it will not be truncated. Defaults to `0` (no tolerance
-  margin).
-- `KERKO_RESULTS_ATTACHMENT_LINKS`: Provide links to attachments in search
-  results. Defaults to `True`.
-- `KERKO_RESULTS_URL_LINKS`: Provide links to online resources in search
-  results (for items whose URL field has a value). Defaults to `True`.
-- `KERKO_TITLE`: The title to display in web pages. Defaults to `'Kerko App'`.
-- `KERKO_ZOTERO_BATCH_SIZE`: Number of items to request on each call to the
-  Zotero API. Defaults to `100` (which is the maximum currently allowed by the
-  API).
-- `KERKO_ZOTERO_MAX_ATTEMPTS`: Maximum number of tries after the Zotero API
-  has returned an error or not responded during indexing. Defaults to `10`.
-- `KERKO_ZOTERO_WAIT`: Time to wait (in seconds) between failed attempts to
-  call the Zotero API. Defaults to `120`.
-- Localization-related variables:
-  - `BABEL_DEFAULT_LOCALE`: The default language of the user interface. Defaults
-    to `'en'`.
-  - `BABEL_DEFAULT_TIMEZONE`: The timezone to use for user facing dates.
-    Defaults to `'UTC'`. Any timezone name supported by the [pytz] package
-    should work.
-  - `KERKO_WHOOSH_LANGUAGE`: The language of search requests. Defaults to
-    `'en'`. You may refer to Whoosh's source to get the list of supported
-    languages (`whoosh.lang.languages`) and the list of languages that support
-    stemming (`whoosh.lang.has_stemmer()`).
-  - `KERKO_ZOTERO_LOCALE`: The locale to use with Zotero API calls. This
-    dictates the locale of Zotero item types, field names, creator types and
-    citations. Defaults to `'en-US'`. Supported locales are listed at
-    https://api.zotero.org/schema, under "locales".
+- `KERKOAPP_CONFIG_FILE`: **TODO:config: document this!**
+- `KERKOAPP_DATA_DIR`: The directory where to store the search index and the
+  file attachments. This may be an absolute path or a relative path; a relative
+  path will be resolved from the application's directory. Under the data
+  directory, subdirectories `cache`, `index` and `attachments` will be created
+  if they do not already exist.
+
+**TODO:config: Refer to Kerko documentation for Kerko configuration settings.**
+
 - `KERKOAPP_COLLECTION_FACETS`: Defines facets modeled on Zotero collections.
   This variable should be a list of semicolon-delimited triples (collection key,
   facet weight and facet title, separated by colons). Each specified collection
@@ -353,7 +276,7 @@ to your `.env` file if you wish to override their default values:
   Kerko or by badges. If required fields are excluded, the application will
   probably not start. Please refer to the implementation of
   `kerko.composer.Composer.init_default_fields()` for the list of default
-  fields. Note that if `KERKO_FULLTEXT_SEARCH` is `False`, the `'text_docs'`
+  fields. Note that if `kerko.search.fulltext` is `False`, the `'text_docs'`
   field, which otherwise would contain the full-text, is excluded by default.
 - `KERKOAPP_EXCLUDE_DEFAULT_SCOPES`: List of scopes (identified by key) to
   exclude from those created by default. If that list contains the value '*', no
@@ -361,7 +284,7 @@ to your `.env` file if you wish to override their default values:
   or more of those scopes to exist. If required scopes are excluded, the
   application will probably not start. Please refer to the implementation of
   `kerko.composer.Composer.init_default_scopes()` for the list of default
-  scopes. Note that if `KERKO_FULLTEXT_SEARCH` is `False`, the `'metadata'` ("In
+  scopes. Note that if `kerko.search.fulltext` is `False`, the `'metadata'` ("In
   all fields") and `'fulltext'` ("In documents") scopes are excluded by default.
 - `KERKOAPP_EXCLUDE_DEFAULT_SORTS`: List of sorts (identified by key) to exclude
   from those created by default. Caution: at least one sort must remain for the
@@ -408,10 +331,6 @@ to your `.env` file if you wish to override their default values:
 - `LOGGING_LEVEL`: Severity of events to track. Allowed values are `DEBUG`,
   `INFO`, `WARNING`, `ERROR`, `CRITICAL`. Defaults to `DEBUG` if app is running
   in debug mode, and to `WARNING` otherwise.
-- `GOOGLE_ANALYTICS_ID`: A Google Analytics stream ID, e.g., 'G-??????????'.
-  This variable is optional and there is no default value. If set and Flask is
-  not running in debug mode, then the Google Analytics tag is inserted into the
-  pages.
 
 Note that some of Kerko's variables do not have a corresponding environment
 variable in KerkoApp and therefore can only be set in Python from a custom
@@ -429,12 +348,14 @@ than KerkoApp's.
 The `.env` file of the [demo site][KerkoApp_demo] looks like the following,
 except for the private keys:
 
+**TODO:config: Update this example!**
+
 ```
-SECRET_KEY=XXXXX
+KERKOAPP_SECRET_KEY=XXXXX
+KERKOAPP_ZOTERO_API_KEY=XXXXX
+KERKOAPP_ZOTERO_LIBRARY_ID=2348869
+KERKOAPP_ZOTERO_LIBRARY_TYPE=group
 KERKO_TITLE=Kerko Demo
-KERKO_ZOTERO_API_KEY=XXXXX
-KERKO_ZOTERO_LIBRARY_ID=2348869
-KERKO_ZOTERO_LIBRARY_TYPE=group
 KERKO_CSL_STYLE=apa
 KERKO_PRINT_ITEM_LINK=True
 KERKO_PRINT_CITATIONS_LINK=True

@@ -1,5 +1,5 @@
 {%- set title = _("Internal server error") %}
-{%- extends config.KERKO_TEMPLATE_LAYOUT %}
+{%- extends config.kerko.templates.layout %}
 
 {%- block content_inner %}
     <p>{{ _("The required page could not be loaded because of an internal server error. Please try again later. If the error persists, please contact the site's administrators.") }}</p>

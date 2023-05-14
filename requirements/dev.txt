@@ -8,92 +8,116 @@ astroid==2.15.4
     # via pylint
 babel==2.12.1
     # via
+    #   -r requirements/run.txt
     #   flask-babel
     #   kerko
 bibtexparser==1.4.0
-    # via pyzotero
+    # via
+    #   -r requirements/run.txt
+    #   pyzotero
 blinker==1.6.2
-    # via flask
+    # via
+    #   -r requirements/run.txt
+    #   flask
 bootstrap-flask==2.2.0
-    # via kerko
+    # via
+    #   -r requirements/run.txt
+    #   kerko
 build==0.10.0
     # via pip-tools
 cachetools==5.3.0
     # via tox
 certifi==2023.5.7
-    # via requests
+    # via
+    #   -r requirements/run.txt
+    #   requests
 chardet==5.1.0
     # via tox
 charset-normalizer==3.1.0
-    # via requests
+    # via
+    #   -r requirements/run.txt
+    #   requests
 click==8.1.3
     # via
+    #   -r requirements/run.txt
     #   flask
     #   kerko
     #   pip-tools
 colorama==0.4.6
     # via tox
-coverage==7.2.5
+coverage==7.2.6
     # via kerko
 dill==0.3.6
     # via pylint
 distlib==0.3.6
     # via virtualenv
+dpath==2.1.5
+    # via
+    #   -r requirements/run.txt
+    #   kerko
 elementpath==4.1.2
     # via kerko
-environs==9.5.0
-    # via -r requirements/base.txt
 feedparser==6.0.10
-    # via pyzotero
+    # via
+    #   -r requirements/run.txt
+    #   pyzotero
 filelock==3.12.0
     # via
     #   tox
     #   virtualenv
 flask==2.3.2
     # via
+    #   -r requirements/run.txt
     #   bootstrap-flask
     #   flask-babel
     #   flask-wtf
     #   kerko
 flask-babel==3.1.0
-    # via kerko
+    # via
+    #   -r requirements/run.txt
+    #   kerko
 flask-wtf==1.1.1
-    # via kerko
+    # via
+    #   -r requirements/run.txt
+    #   kerko
 idna==3.4
-    # via requests
+    # via
+    #   -r requirements/run.txt
+    #   requests
 isort==5.12.0
     # via pylint
 itsdangerous==2.1.2
     # via
+    #   -r requirements/run.txt
     #   flask
     #   flask-wtf
 jinja2==3.1.2
     # via
+    #   -r requirements/run.txt
     #   flask
     #   flask-babel
     #   kerko
 kerko[dev,tests] @ git+https://github.com/whiskyechobravo/kerko.git
-    # via -r requirements/dev.in
+    # via -r requirements/run.txt
 lazy-object-proxy==1.9.0
     # via astroid
 lxml==4.9.2
     # via kerko
 markupsafe==2.1.2
     # via
+    #   -r requirements/run.txt
     #   jinja2
     #   werkzeug
     #   wtforms
-marshmallow==3.19.0
-    # via
-    #   -r requirements/base.txt
-    #   environs
 mccabe==0.7.0
     # via pylint
+mypy==1.3.0
+    # via kerko
+mypy-extensions==1.0.0
+    # via mypy
 packaging==23.1
     # via
-    #   -r requirements/base.txt
     #   build
-    #   marshmallow
     #   pyproject-api
     #   pytoolconfig
     #   tox
@@ -109,33 +133,43 @@ pluggy==1.0.0
     # via tox
 pycodestyle==2.10.0
     # via kerko
+pydantic==1.10.8
+    # via
+    #   -r requirements/run.txt
+    #   kerko
 pydocstyle==6.3.0
     # via kerko
 pylint==2.17.4
     # via kerko
 pyparsing==3.0.9
-    # via bibtexparser
+    # via
+    #   -r requirements/run.txt
+    #   bibtexparser
 pyproject-api==1.5.1
     # via tox
 pyproject-hooks==1.0.0
     # via build
 python-dotenv==1.0.0
     # via
-    #   -r requirements/base.txt
-    #   environs
+    #   -r requirements/run.txt
+    #   kerko
 pytoolconfig[global]==1.2.5
     # via rope
 pytz==2023.3
     # via
+    #   -r requirements/run.txt
     #   flask-babel
     #   kerko
     #   pyzotero
 pyyaml==6.0
     # via responses
 pyzotero==1.5.9
-    # via kerko
+    # via
+    #   -r requirements/run.txt
+    #   kerko
 requests==2.30.0
     # via
+    #   -r requirements/run.txt
     #   pyzotero
     #   responses
 responses==0.23.1
@@ -143,39 +177,57 @@ responses==0.23.1
 rope==1.8.0
     # via kerko
 sgmllib3k==1.0.0
-    # via feedparser
+    # via
+    #   -r requirements/run.txt
+    #   feedparser
 snowballstemmer==2.2.0
     # via pydocstyle
 tomli==2.0.1
-    # via yapf
+    # via
+    #   -r requirements/run.txt
+    #   kerko
+    #   yapf
 tomlkit==0.11.8
     # via pylint
 tox==4.5.1
     # via kerko
-types-pyyaml==6.0.12.9
+types-pyyaml==6.0.12.10
     # via responses
+typing-extensions==4.6.2
+    # via
+    #   -r requirements/run.txt
+    #   mypy
+    #   pydantic
 urllib3==2.0.2
     # via
+    #   -r requirements/run.txt
     #   requests
     #   responses
 virtualenv==20.23.0
     # via tox
 w3lib==2.1.1
-    # via kerko
+    # via
+    #   -r requirements/run.txt
+    #   kerko
 werkzeug==2.3.4
     # via
+    #   -r requirements/run.txt
     #   flask
     #   kerko
 wheel==0.40.0
     # via pip-tools
 whoosh==2.7.4
-    # via kerko
+    # via
+    #   -r requirements/run.txt
+    #   kerko
 wrapt==1.15.0
     # via
+    #   -r requirements/run.txt
     #   astroid
     #   kerko
 wtforms==3.0.1
     # via
+    #   -r requirements/run.txt
     #   bootstrap-flask
     #   flask-wtf
     #   kerko

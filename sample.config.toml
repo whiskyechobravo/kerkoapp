@@ -1,0 +1,131 @@
+# This file uses the TOML format.
+# For general syntax, see https://toml.io/.
+# For specific settings, see https://github.com/whiskyechobravo/kerkoapp.
+
+# Settings in UPPERCASE may be set (in ascending order of precedence):
+#
+# - in the top section of a config.toml file located in the application's root
+#   directory or specified by the KERKOAPP_CONFIG_FILE environment variable;
+# - in a .flaskenv file in the application's root directory;
+# - in a .env file in the application's root directory;
+# - as an environment variable.
+#
+# Setting names in .flaskenv, .env, or as an environment variables must be
+# prefixed with KERKOAPP_, e.g., SECRET_KEY becomes KERKOAPP_SECRET_KEY.
+#
+# For Flask settings, see https://flask.palletsprojects.com/en/latest/config/
+# For Bootstrap-Flask settings, see https://bootstrap-flask.readthedocs.io/en/stable/basic/#configurations
+# For Flask-Babel settings, see https://python-babel.github.io/flask-babel/#configuration
+
+BABEL_DEFAULT_LOCALE = "en_US"
+BABEL_DEFAULT_TIMEZONE = "UTC"
+
+# PROXY_FIX = true  # TODO:config: Set here with the safest default?
+
+# ZOTERO_LIBRARY_ID = "0000000"
+# ZOTERO_LIBRARY_TYPE = "group"
+
+# Settings in lowercase may only be set in a config.toml file located in the
+# application's root directory or specified by the KERKOAPP_CONFIG_FILE
+# environment variable.
+
+# Deleting a setting from this file will not disable it. Instead, that will
+# cause the setting to use its default value.
+
+[kerko.features]
+
+download_attachment_new_window = false
+download_citations_link = true
+download_citations_max_count = 0
+open_in_zotero_app = false
+open_in_zotero_web = false
+print_citations_link = false
+print_citations_max_count = 0
+print_item_link = false
+relations_links = false
+relations_initial_limit = 5
+relations_sort = "author_asc"
+results_abstracts = false
+results_abstracts_max_length = 0
+results_abstracts_max_length_leeway = 0
+results_abstracts_toggler = true
+results_attachment_links = true
+results_url_links = true
+
+[kerko.feeds]
+
+formats = ["atom"]
+fields = ["id", "data"]
+max_days = 0
+
+[kerko.meta]
+
+title = "KerkoApp"
+highwirepress_tags = true
+google_analytics_id = ""
+
+[kerko.pagination]
+
+page_len = 20
+pager_links = 4
+
+[kerko.zotero]
+
+# Changing any of the following will require sync cache --force && sync index.
+
+csl_style = "apa"
+locale = "en-US"
+item_include_re = ''
+item_exclude_re = ''
+child_include_re = ''
+child_exclude_re = '^_'
+attachment_mime_types = ["application/pdf"]
+tag_include_re = ''
+tag_exclude_re = '^_'
+
+[kerko.search]
+fulltext = true         # Changing this will require sync cache --force && sync index.
+whoosh_language = "en"  # Changing this will require sync index --force.
+
+[kerko.facets]
+
+    # Changing any facet will require clean index && sync index.
+
+    [kerko.facets.tag]
+    enabled = true
+    weight = 100
+    initial_limit = 10
+    initial_limit_leeway = 2
+    sort_by = ["label"]
+
+    [kerko.facets.item_type]
+    enabled = true
+    weight = 200
+    initial_limit = 0
+    initial_limit_leeway = 2
+    sort_by = ["label"]
+
+    [kerko.facets.year]
+    enabled = true
+    weight = 300
+    initial_limit = 0
+    initial_limit_leeway = 2
+    sort_by = ["label"]
+
+    [kerko.facets.link]
+    enabled = false
+    weight = 400
+    sort_by = ["label"]
+
+    [kerko.facets.my_facet]
+    enabled = false  # Change this once the facet is properly configured.
+    type = "collection"
+    collection_key = "AAAAAAAA"
+    filter_key = "my_facet"
+    title = "My facet"
+    weight = 50
+    initial_limit = 10
+    initial_limit_leeway = 2
+    sort_by = ["count", "label"]
+    sort_reverse = false
+    item_view = true

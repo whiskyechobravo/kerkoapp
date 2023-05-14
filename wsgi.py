@@ -1,10 +1,6 @@
-from environs import Env
 from flask import redirect, url_for
 
 from kerkoapp import create_app
-
-env = Env()
-env.read_env()
 
 app = create_app()
 
@@ -14,7 +10,7 @@ def home():
     return redirect(url_for('kerko.search'))
 
 
-if app.config['PROXY_FIX']:
+if app.config.get('PROXY_FIX'):
     # CAUTION: It is a security issue to use this middleware in a non-proxy
     # setup because it will blindly trust the incoming headers which might be
     # forged by malicious clients.
