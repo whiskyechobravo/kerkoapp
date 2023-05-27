@@ -20,8 +20,6 @@
 BABEL_DEFAULT_LOCALE = "en_US"
 BABEL_DEFAULT_TIMEZONE = "UTC"
 
-# PROXY_FIX = true  # TODO:config: Set here with the safest default?
-
 # ZOTERO_LIBRARY_ID = "0000000"
 # ZOTERO_LIBRARY_TYPE = "group"
 
@@ -31,6 +29,26 @@ BABEL_DEFAULT_TIMEZONE = "UTC"
 
 # Deleting a setting from this file will not disable it. Instead, that will
 # cause the setting to use its default value.
+
+[kerkoapp.proxy_fix]
+
+# When an application is running behind a proxy server, WSGI may see the request
+# as coming from that server rather than the real client. Proxies set various
+# headers to track where the request actually came from.
+#
+# In that case you must tell the application how many proxies set each header so
+# it knows what values to trust. However, enable this ONLY if the application is
+# actually running behind a proxy; it would be a security issue to trust values
+# that came directly from the client rather than a proxy.
+#
+# See https://flask.palletsprojects.com/en/2.3.x/deploying/proxy_fix/
+
+enabled = false
+x_for = 1
+x_proto = 1
+x_host = 0
+x_port = 0
+x_prefix = 0
 
 [kerko.features]
 

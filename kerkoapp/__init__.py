@@ -11,6 +11,7 @@ from kerko.config_helpers import config_update, load_toml, validate_config
 
 from . import logging
 from .config import CONFIGS
+from .config_helpers import KerkoAppModel
 from .extensions import babel, bootstrap
 
 
@@ -41,7 +42,8 @@ def create_app() -> Flask:
     config_update(app.config, load_toml(config_filename))
 
     # Perform validation checks on config.
-    validate_config(app.config)
+    validate_config(app.config, 'kerko')
+    validate_config(app.config, 'kerkoapp', KerkoAppModel)
 
     # Initialize the Composer object.
     app.config['kerko_composer'] = kerko.composer.Composer(app.config)
