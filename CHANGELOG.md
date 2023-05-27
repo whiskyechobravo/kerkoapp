@@ -12,8 +12,7 @@ flask kerko sync index
 
 Features:
 
-- Read new settings `KERKO_OPEN_IN_ZOTERO_APP` and `KERKO_OPEN_IN_ZOTERO_WEB`
-  from environment variables.
+- Many new configuration settings have been added.
 
 Other changes:
 
@@ -31,7 +30,10 @@ Backwards incompatible changes:
   `app` object.
 - Remove all uses of the `FLASK_ENV` configuration variable, which Flask 2.3
   stopped supporting. For debug mode, use Flask's `--debug` command line option.
-- Configuration settings have moved:
+
+- Move most configuration options from environment variables to settings in TOML
+  configuration files: **TODO:config: describe upgrade steps**
+    - `KERKO_DATA_DIR` (now optional) → `DATA_DIR` if set in a TOML file, `KERKOAPP_DATA_DIR` if set as an environment variable.
     - `KERKO_BOOTSTRAP_VERSION` → `kerko.assets.bootstrap_version`
     - `KERKO_JQUERY_VERSION` → `kerko.assets.jquery_version`
     - `KERKO_POPPER_VERSION` → `kerko.assets.popper_version`
@@ -90,7 +92,6 @@ Backwards incompatible changes:
     - `KERKOAPP_EXCLUDE_DEFAULT_CITATION_FORMATS`: Default citation formats may now be excluded on a per-citation format basis, using `kerko.citation_formats.CITATION_FORMAT_KEY.enabled = false`.
     - `KERKOAPP_FACET_INITIAL_LIMIT`: Limit must may now be set on a per-facet basis, using `kerko.facets.FACET_KEY.initial_limit = LIMIT`.
     - `KERKOAPP_FACET_INITIAL_LIMIT_LEEWAY`: Limit leeway must may now be set on a per-facet basis, using `kerko.facets.FACET_KEY.initial_limit_leeway = LEEWAY`.
-    - `KERKOAPP_DATA_DIR` is now optional.
 
 
 ## 0.9 (2022-12-29)
