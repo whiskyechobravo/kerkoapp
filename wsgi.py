@@ -1,8 +1,14 @@
+import sys
+
 from flask import redirect, url_for
 
 from kerkoapp import create_app
 
-app = create_app()
+try:
+    app = create_app()
+except RuntimeError as e:
+    print(e, file=sys.stderr)
+    sys.exit(1)
 
 
 @app.route('/')
