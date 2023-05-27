@@ -224,16 +224,29 @@ Docker image, and has no default value:
   Normally set to `wsgi`, which causes Gunicorn to run with `APP_MODULE` set
   to `wsgi:app`.
 
-**TODO:config: Optional env variables**
+Any of the following variables may be added to your configuration if you wish to
+override their default value:
 
-- `KERKOAPP_CONFIG_FILE`: **TODO:config: document this!**
-- `KERKOAPP_DATA_DIR`: The directory where to store the search index and the
-  file attachments. This may be an absolute path or a relative path; a relative
-  path will be resolved from the application's directory. Under the data
-  directory, subdirectories `cache`, `index` and `attachments` will be created
-  if they do not already exist.
+- `KERKOAPP_CONFIG_FILES`: Semicolon-separated list of TOML configuration files.
+  The configuration from each file will be merged into the known configuration.
+  When file refers to a setting that was already set by a previous file, it
+  overrides the previous value. This ability to specify multiple configuration
+  files may be used to separate, say, common settings from settings that are
+  specific to development and production instances (for example, a value for
+  ``KERKOAPP_CONFIG_FILES` might look like
+  `common_config.toml;prod_config.toml`). Individual paths may be either
+  absolute or relative (to the application's root directory).
+  **TODO:config: refine this description!**
 
 **TODO:config: Refer to Kerko documentation for Kerko configuration settings.**
+
+- `KERKOAPP_DATA_DIR`: The directory where Kerko will store its data (such as
+  the search index and the file attachments). This may be specified as an
+  absolute path or as a relative path. For the latter case, the path will be
+  relative to the application's instance directory that is [determined by
+  Flask](https://flask.palletsprojects.com/en/2.3.x/config/#instance-folders).
+  Under the data directory, subdirectories `cache`, `index` and `attachments`
+  will be created if they do not already exist.
 
 - `KERKOAPP_COLLECTION_FACETS`: Defines facets modeled on Zotero collections.
   This variable should be a list of semicolon-delimited triples (collection key,

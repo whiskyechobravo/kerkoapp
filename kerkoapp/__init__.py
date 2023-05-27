@@ -10,8 +10,7 @@ from flask_babel import get_locale
 from kerko.config_helpers import config_update, load_toml, validate_config
 
 from . import logging
-from .config import CONFIGS
-from .config_helpers import KerkoAppModel
+from .config_helpers import KerkoAppModel, load_config_files
 from .extensions import babel, bootstrap
 
 
@@ -25,9 +24,6 @@ def create_app() -> Flask:
     """
     app = Flask(__name__)
 
-    # Load app configuration defaults.
-    app.config.from_object(CONFIGS['development' if app.config['DEBUG'] else 'production']())
-
     # Update app configuration from environment variables (may override app
     # defaults set above).
     app.config.from_prefixed_env(prefix='KERKOAPP')
@@ -35,11 +31,9 @@ def create_app() -> Flask:
     # Update app configuration with Kerko's defaults.
     config_update(app.config, kerko.DEFAULTS)
 
-    # Update app configuration from KerkoApp TOML configuration file (adds Kerko
-    # variables, but cannot override environment variables set above, although
-    # it may add new ones).
-    config_filename = app.config.get('CONFIG_FILE', pathlib.Path(app.root_path) / 'config.toml')
-    config_update(app.config, load_toml(config_filename))
+    # Update app configuration from TOML configuration file(s) specified in the
+    # 'KERKOAPP_CONFIG_FILES' environment variable.
+    load_config_files(app, app.config.get('CONFIG_FILES', ''))
 
     # Perform validation checks on config.
     validate_config(app.config, 'kerko')

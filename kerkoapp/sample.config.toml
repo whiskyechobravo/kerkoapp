@@ -4,15 +4,16 @@
 
 # Settings in UPPERCASE may be set (in ascending order of precedence):
 #
-# - in the top section of a config.toml file located in the application's root
-#   directory or specified by the KERKOAPP_CONFIG_FILE environment variable;
+# - in the top section of a 'config.toml' file located in the application's root
+#   directory or specified by the KERKOAPP_CONFIG_FILES environment variable;
 # - in a .flaskenv file in the application's root directory;
 # - in a .env file in the application's root directory;
 # - as an environment variable.
 #
 # Setting names in .flaskenv, .env, or as an environment variables must be
-# prefixed with KERKOAPP_, e.g., SECRET_KEY becomes KERKOAPP_SECRET_KEY.
-#
+# prefixed with KERKOAPP_, e.g., in those contextes, SECRET_KEY should be
+# specified as KERKOAPP_SECRET_KEY.
+
 # For Flask settings, see https://flask.palletsprojects.com/en/latest/config/
 # For Bootstrap-Flask settings, see https://bootstrap-flask.readthedocs.io/en/stable/basic/#configurations
 # For Flask-Babel settings, see https://python-babel.github.io/flask-babel/#configuration
@@ -20,12 +21,21 @@
 BABEL_DEFAULT_LOCALE = "en_US"
 BABEL_DEFAULT_TIMEZONE = "UTC"
 
+# LOGGING_LEVEL = "DEBUG"
+# LOGGING_LEVEL = "INFO"
+# LOGGING_LEVEL = "WARNING"
+
+# LOGGING_HANDLER = "syslog"    # On Unix only. Recommended when running in production.
+# LOGGING_ADDRESS = "/dev/log"  # On Unix only. Recommended when running in production.
+
+# EXPLAIN_TEMPLATE_LOADING = true
+
 # ZOTERO_LIBRARY_ID = "0000000"
 # ZOTERO_LIBRARY_TYPE = "group"
 
-# Settings in lowercase may only be set in a config.toml file located in the
-# application's root directory or specified by the KERKOAPP_CONFIG_FILE
-# environment variable.
+# Settings in lowercase characters may only be set in a 'config.toml' file
+# located in the application's root directory or specified by the
+# KERKOAPP_CONFIG_FILES environment variable
 
 # Deleting a setting from this file will not disable it. Instead, that will
 # cause the setting to use its default value.
