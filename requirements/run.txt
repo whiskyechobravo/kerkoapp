@@ -67,7 +67,7 @@ pytz==2023.3
     #   pyzotero
 pyzotero==1.5.9
     # via kerko
-requests==2.30.0
+requests==2.31.0
     # via pyzotero
 sgmllib3k==1.0.0
     # via feedparser

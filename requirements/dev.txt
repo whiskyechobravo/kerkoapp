@@ -167,7 +167,7 @@ pyzotero==1.5.9
     # via
     #   -r requirements/run.txt
     #   kerko
-requests==2.30.0
+requests==2.31.0
     # via
     #   -r requirements/run.txt
     #   pyzotero
