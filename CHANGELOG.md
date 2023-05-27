@@ -90,6 +90,7 @@ Backwards incompatible changes:
     - `KERKOAPP_EXCLUDE_DEFAULT_CITATION_FORMATS`: Default citation formats may now be excluded on a per-citation format basis, using `kerko.citation_formats.CITATION_FORMAT_KEY.enabled = false`.
     - `KERKOAPP_FACET_INITIAL_LIMIT`: Limit must may now be set on a per-facet basis, using `kerko.facets.FACET_KEY.initial_limit = LIMIT`.
     - `KERKOAPP_FACET_INITIAL_LIMIT_LEEWAY`: Limit leeway must may now be set on a per-facet basis, using `kerko.facets.FACET_KEY.initial_limit_leeway = LEEWAY`.
+    - `KERKOAPP_DATA_DIR` is now optional.
 
 
 ## 0.9 (2022-12-29)
