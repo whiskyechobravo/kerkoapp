@@ -84,6 +84,7 @@ tag_include_re = ''
 tag_exclude_re = '^_'
 
 [kerko.search]
+
 fulltext = true         # Changing this will require sync cache --force && sync index.
 whoosh_language = "en"  # Changing this will require sync index --force.
 
