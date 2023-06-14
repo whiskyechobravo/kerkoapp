@@ -2,6 +2,7 @@
 A sample Flask application using the Kerko blueprint.
 """
 
+import os
 import pathlib
 
 import kerko
@@ -24,16 +25,14 @@ def create_app() -> Flask:
     """
     app = Flask(__name__)
 
-    # Update app configuration from environment variables (may override app
-    # defaults set above).
-    app.config.from_prefixed_env(prefix='KERKOAPP')
-
-    # Update app configuration with Kerko's defaults.
+    # Initialize app configuration with Kerko's defaults.
     config_update(app.config, kerko.DEFAULTS)
 
-    # Update app configuration from TOML configuration file(s) specified in the
-    # 'KERKOAPP_CONFIG_FILES' environment variable.
-    load_config_files(app, app.config.get('CONFIG_FILES', ''))
+    # Update app configuration from TOML configuration file(s).
+    load_config_files(app, os.environ.get('KERKOAPP_CONFIG_FILES'))
+
+    # Update app configuration from environment variables.
+    app.config.from_prefixed_env(prefix='KERKOAPP')
 
     # Perform validation checks on config.
     validate_config(app.config, 'kerko')

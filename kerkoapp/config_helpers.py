@@ -28,19 +28,41 @@ class KerkoAppModel(BaseModel):
     proxy_fix: Optional[ProxyFixModel]
 
 
-def load_config_files(app: Flask, path_spec: str):
+def load_config_files(app: Flask, path_spec: Optional[str]):
     """
     Load configuration files from a semicolon-separated list of paths.
 
-    The configuration from each file will be merged into the known
-    configuration. When file refers to a setting that was already set by a
-    previous file, it overrides the previous value.
+    Paths may be absolute or relative. Relative paths are resolved from the
+    app's instance path, which is determined by Flask.
 
-    If no path is specified, try loading `config.toml` under the application's
-    root path.
+    See https://flask.palletsprojects.com/en/2.3.x/config/#instance-folders.
+
+    If a file is not found at the given resolved path, it is searched by
+    traversing directories up.
+
+    The files are loaded in the specified order, the configuration from each
+    file getting merged into the previously known configuration. If a variable
+    is already set, its value is overwritten by the one from the later file.
+
+    The default `path_spec` is `"config.toml;instance.toml;.secrets.toml"`.
     """
-    paths = [pathlib.Path(app.root_path) / p.strip() for p in path_spec.split(';') if p.strip()]
-    if not paths:
-        paths = [pathlib.Path(app.root_path) / 'config.toml']  # Default path.
-    for path in paths:
-        config_update(app.config, load_toml(path))
+    found = False
+    tried = []
+    if not path_spec:
+        path_spec = "config.toml;instance.toml;.secrets.toml"
+    for path_item in path_spec.split(';'):
+        try_parents = [pathlib.Path(app.instance_path)]
+        try_parents += pathlib.Path(app.instance_path).parents
+        while try_parents:
+            path = try_parents.pop(0) / path_item
+            if path.is_file():
+                config_update(app.config, load_toml(path, silent=False))
+                found = True
+                break
+            else:
+                tried.append(str(path))
+    if not found:
+        raise RuntimeError(
+            "No configuration found. The following paths were unsuccessfully "
+            "tried:\n{}".format('\n'.join(tried))
+        )

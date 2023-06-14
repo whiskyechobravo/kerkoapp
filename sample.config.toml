@@ -2,6 +2,9 @@
 # For general syntax, see https://toml.io/.
 # For specific settings, see https://github.com/whiskyechobravo/kerkoapp.
 
+ZOTERO_LIBRARY_ID = "MY_ZOTERO_LIBRARY_ID"
+ZOTERO_LIBRARY_TYPE = "MY_ZOTERO_LIBRARY_TYPE"
+
 # Settings in UPPERCASE may be set (in ascending order of precedence):
 #
 # - in the top section of a 'config.toml' file located in the application's root
