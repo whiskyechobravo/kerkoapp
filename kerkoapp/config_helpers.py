@@ -54,7 +54,7 @@ def load_config_files(app: Flask, path_spec: Optional[str]):
         try_parents = [pathlib.Path(app.instance_path)]
         try_parents += pathlib.Path(app.instance_path).parents
         while try_parents:
-            path = try_parents.pop(0) / path_item
+            path = try_parents.pop(0) / path_item.strip()
             if path.is_file():
                 config_update(app.config, load_toml(path, silent=False))
                 found = True
