@@ -8,7 +8,7 @@ import pathlib
 import kerko
 from flask import Flask, render_template
 from flask_babel import get_locale
-from kerko.config_helpers import (KerkoModel, RootModel, config_update,
+from kerko.config_helpers import (ConfigModel, KerkoModel, config_update,
                                   load_toml, parse_config)
 
 from . import logging
@@ -36,9 +36,9 @@ def create_app() -> Flask:
     app.config.from_prefixed_env(prefix='KERKOAPP')
 
     # Validate configuration and save its parsed version.
-    parse_config(app.config, None, RootModel)
-    parse_config(app.config, 'kerko', KerkoModel)
-    parse_config(app.config, 'kerkoapp', KerkoAppModel)
+    parse_config(app.config)
+    if app.config.get('kerkoapp'):
+        parse_config(app.config, 'kerkoapp', KerkoAppModel)
 
     # Initialize the Composer object.
     app.config['kerko_composer'] = kerko.composer.Composer(app.config)
