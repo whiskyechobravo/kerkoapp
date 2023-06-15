@@ -55,10 +55,10 @@ coverage.xml
 *.bak
 *.old
 
-# Not to be versioned configuration files.
+# Configuration files.
 .env
-.secrets.toml
-instance.toml
+.secrets.*
+instance.*
 
 # Application data.
 data/
