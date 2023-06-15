@@ -46,8 +46,6 @@ def load_config_files(app: Flask, path_spec: Optional[str]):
 
     The default `path_spec` is `"config.toml;instance.toml;.secrets.toml"`.
     """
-    found = False
-    tried = []
     if not path_spec:
         path_spec = "config.toml;instance.toml;.secrets.toml"
     for path_item in path_spec.split(';'):
@@ -57,12 +55,4 @@ def load_config_files(app: Flask, path_spec: Optional[str]):
             path = try_parents.pop(0) / path_item.strip()
             if path.is_file():
                 config_update(app.config, load_toml(path, verbose=True))
-                found = True
                 break
-            else:
-                tried.append(str(path))
-    if not found:
-        raise RuntimeError(
-            "No configuration found. The following paths were unsuccessfully "
-            "tried:\n{}".format('\n'.join(tried))
-        )
