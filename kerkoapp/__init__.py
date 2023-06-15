@@ -8,7 +8,7 @@ import pathlib
 import kerko
 from flask import Flask, render_template
 from flask_babel import get_locale
-from kerko.config_helpers import config_update, load_toml, validate_config
+from kerko.config_helpers import config_update, load_toml, parse_config
 
 from . import logging
 from .config_helpers import KerkoAppModel, load_config_files
@@ -34,9 +34,9 @@ def create_app() -> Flask:
     # Update app configuration from environment variables.
     app.config.from_prefixed_env(prefix='KERKOAPP')
 
-    # Perform validation checks on config.
-    validate_config(app.config, 'kerko')
-    validate_config(app.config, 'kerkoapp', KerkoAppModel)
+    # Validate configuration and save its parsed version.
+    parse_config(app.config, 'kerko')
+    parse_config(app.config, 'kerkoapp', KerkoAppModel)
 
     # Initialize the Composer object.
     app.config['kerko_composer'] = kerko.composer.Composer(app.config)
