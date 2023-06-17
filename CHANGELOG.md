@@ -79,19 +79,22 @@ Backwards incompatible changes:
     - `KERKO_ZOTERO_BATCH_SIZE` → `kerko.zotero.batch_size`
     - `KERKO_ZOTERO_MAX_ATTEMPTS` → `kerko.zotero.max_attempts`
     - `KERKO_ZOTERO_WAIT` → `kerko.zotero.wait`
+    - `KERKOAPP_ITEM_INCLUDE_RE` → `kerko.zotero.item_include_re`
+    - `KERKOAPP_ITEM_EXCLUDE_RE` → `kerko.zotero.item_exclude_re`
     - `KERKOAPP_TAG_INCLUDE_RE` → `kerko.zotero.tag_include_re`
     - `KERKOAPP_TAG_EXCLUDE_RE` → `kerko.zotero.tag_exclude_re`
     - `KERKOAPP_CHILD_INCLUDE_RE` → `kerko.zotero.child_include_re`
     - `KERKOAPP_CHILD_EXCLUDE_RE` → `kerko.zotero.child_exclude_re`
     - `KERKOAPP_MIME_TYPES` → `kerko.zotero.attachment_mime_types`
     - `KERKOAPP_COLLECTION_FACETS` → `kerko.facets.collection_facets`
+    - `KERKOAPP_EXCLUDE_DEFAULT_BADGES`: Removed, no replacement since no default badges are provided.
     - `KERKOAPP_EXCLUDE_DEFAULT_SCOPES`: Default scopes may now be excluded on a per-scope basis, using `kerko.scopes.SCOPE_KEY.enabled = false`.
-    - `KERKOAPP_EXCLUDE_DEFAULT_FIELDS`: Default fields may now be excluded on a per-field basis, using `kerko.fields.FIELD_KEY.enabled = false`.
+    - `KERKOAPP_EXCLUDE_DEFAULT_FIELDS`: Default fields may now be excluded on a per-field basis, using `kerko.search_fields.FIELD_KEY.enabled = false`. **Not all of them!**
     - `KERKOAPP_EXCLUDE_DEFAULT_FACETS`: Default facets may now be excluded on a per-facet basis, using `kerko.facets.FACET_KEY.enabled = false`.
     - `KERKOAPP_EXCLUDE_DEFAULT_SORTS`: Default sorts may now be excluded on a per-sort option basis, using `kerko.sorts.SORT_KEY.enabled = false`.
     - `KERKOAPP_EXCLUDE_DEFAULT_CITATION_FORMATS`: Default citation formats may now be excluded on a per-citation format basis, using `kerko.citation_formats.CITATION_FORMAT_KEY.enabled = false`.
-    - `KERKOAPP_FACET_INITIAL_LIMIT`: Limit must may now be set on a per-facet basis, using `kerko.facets.FACET_KEY.initial_limit = LIMIT`.
-    - `KERKOAPP_FACET_INITIAL_LIMIT_LEEWAY`: Limit leeway must may now be set on a per-facet basis, using `kerko.facets.FACET_KEY.initial_limit_leeway = LEEWAY`.
+    - `KERKOAPP_FACET_INITIAL_LIMIT`: Limit is now set on a per-facet basis, using `kerko.facets.FACET_KEY.initial_limit = LIMIT`.
+    - `KERKOAPP_FACET_INITIAL_LIMIT_LEEWAY`: Limit leeway is now set on a per-facet basis, using `kerko.facets.FACET_KEY.initial_limit_leeway = LEEWAY`.
 
 
 ## 0.9 (2022-12-29)
