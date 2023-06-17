@@ -12,10 +12,13 @@ flask kerko sync index
 
 Features:
 
-- Many new configuration settings have been added.
+- Add many new configuration parameters. Many more customizations are now
+  possible without deriving a custom application from KerkoApp.
 
 Other changes:
 
+- Restructure and expand documentation into a unified documentation site for
+  both Kerko and KerkoApp.
 - Add Portuguese translation. Thanks to Gonçalo Cordeiro.
 - Update versions of pinned dependencies.
 
