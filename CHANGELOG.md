@@ -12,92 +12,71 @@ flask kerko sync index
 
 Features:
 
-- Add many new configuration parameters. Many more customizations are now
-  possible without deriving a custom application from KerkoApp.
+- TOML files are now the preferred way of configuring KerkoApp. Since the
+  configuration structure has also greatly changed, it is recommended that you
+  review all your settings from `.env` files and migrate them to TOML files.
+  Please refer to the Kerko documentation on configuration.
+- Add many new configuration parameters. Consequently, many more customizations
+  are now possible without having to replace KerkoApp with a custom application.
+  Please refer to Kerko's documentation for the full list of options.
 
 Other changes:
 
 - Restructure and expand documentation into a unified documentation site for
   both Kerko and KerkoApp.
 - Add Portuguese translation. Thanks to Gonçalo Cordeiro.
-- Update versions of pinned dependencies.
+- Update the versions of pinned dependencies.
 
 Backwards incompatible changes:
 
-- Rename `kerkoapp.py` to `wsgi.py`, which is a better default that, in many
-  cases, makes it unnecessary to set the `FLASK_APP` environment variable. You
-  may need to unset or change your `FLASK_APP` environment variable, and/or
-  adapt your WSGI server's configuration to refer to the new location of the
-  application object, which is now `wsgi.app` instead of `kerkoapp.app`.
-- Rename the `app` directory to `kerkoapp` to avoid potential ambiguity with the
-  `app` object.
+- Rename `kerkoapp.py` to `wsgi.py`, which is a more convenient default that, in
+  many cases, makes it unnecessary to set the `FLASK_APP` environment variable
+  or the `--app` command line option. You may need to unset or change your
+  `FLASK_APP` environment variable, and/or adapt your WSGI server's
+  configuration to refer to the new location of the application object, which is
+  now `wsgi.app` instead of `kerkoapp.app`.
+- Rename the `app` directory to `kerkoapp` to avoid potential name ambiguity
+  with the `app` object.
 - Remove all uses of the `FLASK_ENV` configuration variable, which Flask 2.3
   stopped supporting. For debug mode, use Flask's `--debug` command line option.
-
-- Move most configuration options from environment variables to settings in TOML
-  configuration files: **TODO:config: describe upgrade steps**
-    - `KERKO_DATA_DIR` (now optional) → `DATA_PATH` if set in a TOML file, `KERKOAPP_DATA_PATH` if set as an environment variable. Defaults to `kerko` instead of `data/kerko`.
-    - `KERKO_BOOTSTRAP_VERSION` → `kerko.assets.bootstrap_version`
-    - `KERKO_JQUERY_VERSION` → `kerko.assets.jquery_version`
-    - `KERKO_POPPER_VERSION` → `kerko.assets.popper_version`
-    - `KERKO_WITH_JQUERY` → `kerko.assets.with_jquery`
-    - `KERKO_WITH_POPPER` → `kerko.assets.with_popper`
-    - `KERKO_DOWNLOAD_ATTACHMENT_NEW_WINDOW` → `kerko.features.download_attachment_new_window`
-    - `KERKO_DOWNLOAD_CITATIONS_LINK` → `kerko.features.download_citations_link`
-    - `KERKO_DOWNLOAD_CITATIONS_MAX_COUNT` → `kerko.features.download_citations_max_count`
-    - `KERKO_OPEN_IN_ZOTERO_APP` → `kerko.features.open_in_zotero_app`
-    - `KERKO_OPEN_IN_ZOTERO_WEB` → `kerko.features.open_in_zotero_web`
-    - `KERKO_PRINT_CITATIONS_LINK` → `kerko.features.print_citations_link`
-    - `KERKO_PRINT_CITATIONS_MAX_COUNT` → `kerko.features.print_citations_max_count`
-    - `KERKO_PRINT_ITEM_LINK` → `kerko.features.print_item_link`
-    - `KERKO_RELATIONS_LINKS` → `kerko.features.relations_links`
-    - `KERKO_RELATIONS_INITIAL_LIMIT` → `kerko.features.relations_initial_limit`
-    - `KERKO_RELATIONS_SORT` → `kerko.features.relations_sort`
-    - `KERKO_RESULTS_ABSTRACTS` → `kerko.features.results_abstracts`
-    - `KERKO_RESULTS_ABSTRACTS_MAX_LENGTH` → `kerko.features.results_abstracts_max_length`
-    - `KERKO_RESULTS_ABSTRACTS_MAX_LENGTH_LEEWAY` → `kerko.features.results_abstracts_max_length_leeway`
-    - `KERKO_RESULTS_ABSTRACTS_TOGGLER` → `kerko.features.results_abstracts_toggler`
-    - `KERKO_RESULTS_ATTACHMENT_LINKS` → `kerko.features.results_attachment_links`
-    - `KERKO_RESULTS_URL_LINKS` → `kerko.features.results_url_links`
-    - `KERKO_FEEDS` → `kerko.feeds.formats`
-    - `KERKO_FEEDS_FIELDS` → `kerko.feeds.fields`
-    - `KERKO_FEEDS_MAX_DAYS` → `kerko.feeds.max_days`
-    - `KERKO_FEEDS_REQUIRE_ANY` → `kerko.feeds.require_any`
-    - `KERKO_FEEDS_REJECT_ANY` → `kerko.feeds.reject_any`
-    - `KERKO_HIGHWIREPRESS_TAGS` → `kerko.meta.highwirepress_tags`
-    - `KERKO_TITLE` → `kerko.meta.title`
-    - `KERKO_PAGE_LEN` → `kerko.pagination.page_len`
-    - `KERKO_PAGER_LINKS` → `kerko.pagination.pager_links`
-    - `KERKO_RESULTS_FIELDS` → `kerko.search.result_fields`
-    - `KERKO_FULLTEXT_SEARCH` → `kerko.search.fulltext`
-    - `KERKO_WHOOSH_LANGUAGE` → `kerko.search.whoosh_language`
-    - `KERKO_TEMPLATE_BASE` → `kerko.templates.base`
-    - `KERKO_TEMPLATE_LAYOUT` → `kerko.templates.layout`
-    - `KERKO_TEMPLATE_SEARCH` → `kerko.templates.search`
-    - `KERKO_TEMPLATE_SEARCH_ITEM` → `kerko.templates.search_item`
-    - `KERKO_TEMPLATE_ITEM` → `kerko.templates.item`
-    - `KERKO_TEMPLATE_ATOM_FEED` → `kerko.templates.atom_feed`
-    - `KERKO_CSL_STYLE` → `kerko.zotero.csl_style`
-    - `KERKO_ZOTERO_LOCALE` → `kerko.zotero.locale`
-    - `KERKO_ZOTERO_BATCH_SIZE` → `kerko.zotero.batch_size`
-    - `KERKO_ZOTERO_MAX_ATTEMPTS` → `kerko.zotero.max_attempts`
-    - `KERKO_ZOTERO_WAIT` → `kerko.zotero.wait`
-    - `KERKOAPP_ITEM_INCLUDE_RE` → `kerko.zotero.item_include_re`
-    - `KERKOAPP_ITEM_EXCLUDE_RE` → `kerko.zotero.item_exclude_re`
-    - `KERKOAPP_TAG_INCLUDE_RE` → `kerko.zotero.tag_include_re`
-    - `KERKOAPP_TAG_EXCLUDE_RE` → `kerko.zotero.tag_exclude_re`
-    - `KERKOAPP_CHILD_INCLUDE_RE` → `kerko.zotero.child_include_re`
+- The data directory has a new default location relative to the instance path.
+  Please check the documentation for the `DATA_PATH` and `INSTANCE_PATH`
+  configuration parameters. You may need to set one or both of those parameters,
+  and/or move your existing data directory.
+- Almost all configuration parameters have been renamed and/or moved into a
+  hierarchical structure. Hierarchical parameters are referred to using
+  path-like, dot-separated parameter names, and may conveniently be set with the
+  `kerko.config_helpers.config_set()` function. Here is a mapping of the changed
+  parameters that are specific to KerkoApp (please check also Kerko's changelog
+  for other parameter changes):
     - `KERKOAPP_CHILD_EXCLUDE_RE` → `kerko.zotero.child_exclude_re`
+    - `KERKOAPP_CHILD_INCLUDE_RE` → `kerko.zotero.child_include_re`
+    - `KERKOAPP_COLLECTION_FACETS` → `kerko.facets.*`. See sub-parameters `type`
+      (set it to `"collection"`), `collection_key`, and `title`.
+    - `KERKOAPP_EXCLUDE_DEFAULT_BADGES`: Removed, with no replacement since no
+      default badges are provided at this point.
+    - `KERKOAPP_EXCLUDE_DEFAULT_CITATION_FORMATS` → `kerko.citation_formats.*`.
+      See sub-parameter `enable`.
+    - `KERKOAPP_EXCLUDE_DEFAULT_FACETS` → `kerko.facets.*`. See sub-parameter
+      `enable`.
+    - `KERKOAPP_EXCLUDE_DEFAULT_FIELDS` → `kerko.search_fields.*`. See
+      sub-parameter `enable`.
+    - `KERKOAPP_EXCLUDE_DEFAULT_SCOPES` → `kerko.scopes.*`. See sub-parameter
+      `enable`.
+    - `KERKOAPP_EXCLUDE_DEFAULT_SORTS` → `kerko.sorts.*`. See sub-parameter
+      `enable`.
+    - `KERKOAPP_FACET_INITIAL_LIMIT_LEEWAY` →
+      `kerko.facets.*.initial_limit_leeway`. This is now set individually for
+      each facet, and there is no longer a global parameter.
+    - `KERKOAPP_FACET_INITIAL_LIMIT` → `kerko.facets.*.initial_limit`. This is
+      now set individually for each facet, and there is no longer a global
+      parameter.
+    - `KERKOAPP_ITEM_EXCLUDE_RE` → `kerko.zotero.item_exclude_re`
+    - `KERKOAPP_ITEM_INCLUDE_RE` → `kerko.zotero.item_include_re`
     - `KERKOAPP_MIME_TYPES` → `kerko.zotero.attachment_mime_types`
-    - `KERKOAPP_COLLECTION_FACETS` → `kerko.facets.collection_facets`
-    - `KERKOAPP_EXCLUDE_DEFAULT_BADGES`: Removed, no replacement since no default badges are provided.
-    - `KERKOAPP_EXCLUDE_DEFAULT_SCOPES`: Default scopes may now be excluded on a per-scope basis, using `kerko.scopes.SCOPE_KEY.enabled = false`.
-    - `KERKOAPP_EXCLUDE_DEFAULT_FIELDS`: Default fields may now be excluded on a per-field basis, using `kerko.search_fields.FIELD_KEY.enabled = false`. **Not all of them!**
-    - `KERKOAPP_EXCLUDE_DEFAULT_FACETS`: Default facets may now be excluded on a per-facet basis, using `kerko.facets.FACET_KEY.enabled = false`.
-    - `KERKOAPP_EXCLUDE_DEFAULT_SORTS`: Default sorts may now be excluded on a per-sort option basis, using `kerko.sorts.SORT_KEY.enabled = false`.
-    - `KERKOAPP_EXCLUDE_DEFAULT_CITATION_FORMATS`: Default citation formats may now be excluded on a per-citation format basis, using `kerko.citation_formats.CITATION_FORMAT_KEY.enabled = false`.
-    - `KERKOAPP_FACET_INITIAL_LIMIT`: Limit is now set on a per-facet basis, using `kerko.facets.FACET_KEY.initial_limit = LIMIT`.
-    - `KERKOAPP_FACET_INITIAL_LIMIT_LEEWAY`: Limit leeway is now set on a per-facet basis, using `kerko.facets.FACET_KEY.initial_limit_leeway = LEEWAY`.
+    - `KERKOAPP_TAG_EXCLUDE_RE` → `kerko.zotero.tag_exclude_re`
+    - `KERKOAPP_TAG_INCLUDE_RE` → `kerko.zotero.tag_include_re`
+    - `PROXY_FIX` → `kerkoapp.proxy_fix.*`
 
 
 ## 0.9 (2022-12-29)
