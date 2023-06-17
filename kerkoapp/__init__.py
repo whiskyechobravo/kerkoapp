@@ -24,7 +24,10 @@ def create_app() -> Flask:
 
     :param config_object: The configuration object to use.
     """
-    app = Flask(__name__, instance_path=os.environ.get('KERKOAPP_INSTANCE_DIR'))
+    try:
+        app = Flask(__name__, instance_path=os.environ.get('KERKOAPP_INSTANCE_PATH'))
+    except ValueError as e:
+        raise RuntimeError(f"Unable to initialize the application. {e}") from e
 
     # Initialize app configuration with Kerko's defaults.
     config_update(app.config, kerko.DEFAULTS)
