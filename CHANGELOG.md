@@ -36,7 +36,7 @@ Backwards incompatible changes:
 
 - Move most configuration options from environment variables to settings in TOML
   configuration files: **TODO:config: describe upgrade steps**
-    - `KERKO_DATA_DIR` (now optional) → `DATA_PATH` if set in a TOML file, `KERKOAPP_DATA_PATH` if set as an environment variable.
+    - `KERKO_DATA_DIR` (now optional) → `DATA_PATH` if set in a TOML file, `KERKOAPP_DATA_PATH` if set as an environment variable. Defaults to `kerko` instead of `data/kerko`.
     - `KERKO_BOOTSTRAP_VERSION` → `kerko.assets.bootstrap_version`
     - `KERKO_JQUERY_VERSION` → `kerko.assets.jquery_version`
     - `KERKO_POPPER_VERSION` → `kerko.assets.popper_version`
