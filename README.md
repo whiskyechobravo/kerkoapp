@@ -25,6 +25,7 @@ demo site.
 Please refer to the [documentation][Kerko_documentation] for more details.
 
 
+[Kerko]: https://github.com/whiskyechobravo/kerko
 [KerkoApp]: https://github.com/whiskyechobravo/kerkoapp
 [KerkoApp_demo]: https://demo.kerko.whiskyechobravo.com
 [Kerko_documentation]: #
