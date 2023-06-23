@@ -28,7 +28,7 @@ Please refer to the [documentation][Kerko_documentation] for more details.
 
 
 [Kerko]: https://github.com/whiskyechobravo/kerko
-[Kerko_documentation]: #
+[Kerko_documentation]: https://whiskyechobravo.github.io/kerko/
 [KerkoApp]: https://github.com/whiskyechobravo/kerkoapp
 [KerkoApp_demo]: https://demo.kerko.whiskyechobravo.com
 [Flask]: https://pypi.org/project/Flask/
