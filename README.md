@@ -14,11 +14,13 @@ customizations might require building a custom application, possibly using
 KerkoApp as a starting point, where various aspects of Kerko could be extended
 or adapted through its Python API.
 
+
 ## Demo site
 
 A [KerkoApp demo site][KerkoApp_demo] is available for you to try. You may also
 view the [Zotero library][Zotero_demo] that contains the source data for the
 demo site.
+
 
 ## Learn more
 
@@ -26,9 +28,9 @@ Please refer to the [documentation][Kerko_documentation] for more details.
 
 
 [Kerko]: https://github.com/whiskyechobravo/kerko
+[Kerko_documentation]: #
 [KerkoApp]: https://github.com/whiskyechobravo/kerkoapp
 [KerkoApp_demo]: https://demo.kerko.whiskyechobravo.com
-[Kerko_documentation]: #
 [Flask]: https://pypi.org/project/Flask/
 [Python]: https://www.python.org/
 [TOML]: https://toml.io/
