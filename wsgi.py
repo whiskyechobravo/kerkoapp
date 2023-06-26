@@ -1,12 +1,15 @@
-from environs import Env
+import sys
+
 from flask import redirect, url_for
+from kerko.config_helpers import config_get
 
 from kerkoapp import create_app
 
-env = Env()
-env.read_env()
-
-app = create_app()
+try:
+    app = create_app()
+except RuntimeError as e:
+    print(e, file=sys.stderr)
+    sys.exit(1)
 
 
 @app.route('/')
@@ -14,13 +17,20 @@ def home():
     return redirect(url_for('kerko.search'))
 
 
-if app.config['PROXY_FIX']:
-    # CAUTION: It is a security issue to use this middleware in a non-proxy
-    # setup because it will blindly trust the incoming headers which might be
-    # forged by malicious clients.
-    # Ref: https://flask.palletsprojects.com/en/1.1.x/deploying/wsgi-standalone/#proxy-setups
-    from werkzeug.middleware.proxy_fix import ProxyFix
-    app.wsgi_app = ProxyFix(app.wsgi_app)
+try:
+    proxy_fix_config = config_get(app.config, 'kerkoapp.proxy_fix')
+except KeyError:
+    pass
+else:
+    if proxy_fix_config.get('enabled'):
+        from werkzeug.middleware.proxy_fix import ProxyFix
+        app.wsgi_app = ProxyFix(  # type: ignore
+            app.wsgi_app,
+            **{
+                kwarg: value
+                for kwarg, value in proxy_fix_config.items() if kwarg != 'enabled'
+            },
+        )
 
 
 @app.shell_context_processor

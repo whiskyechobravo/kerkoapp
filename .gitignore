@@ -10,6 +10,8 @@ __pycache__/
 # Distribution / packaging.
 .Python
 env/
+venv/
+.venv/
 build/
 dist/
 eggs/
@@ -34,11 +36,8 @@ coverage.xml
 # Logs.
 *.log
 
-# Sphinx documentation.
-docs/_build/
-
-# DotEnv configuration.
-.env
+# Documentation build.
+/site/
 
 # Development tools / IDEs.
 .idea
@@ -56,5 +55,11 @@ docs/_build/
 *.bak
 *.old
 
+# Configuration files.
+.env
+.secrets.*
+instance.*
+
 # Application data.
 data/
+instance/
