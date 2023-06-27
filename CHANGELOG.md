@@ -4,6 +4,7 @@
 
 Changes:
 
+- Print loaded configuration file paths in debug mode only.
 - Rename the default branch of the repository from 'master' to 'main', and the
   'kerko-head' branch to 'development'. If you have cloned the repository with
   Git, use the following commands to rename your local branches:
