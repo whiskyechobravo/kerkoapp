@@ -1,5 +1,10 @@
 # Changelog
 
+## Latest (unreleased)
+
+TBD.
+
+
 ## 1.0.0alpha0 (2023-06-26)
 
 *Warning:* Upgrading from version 0.9 or earlier will require that you adapt
