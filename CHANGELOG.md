@@ -1,9 +1,11 @@
 # Changelog
 
-## Latest (unreleased)
+## 1.0.0alpha0 (2023-06-26)
 
-*Warning:* Upgrading from version 0.9 or earlier will require that you rebuild
-your search index. Use the following commands, then restart the application:
+*Warning:* Upgrading from version 0.9 or earlier will require that you adapt
+your installation and configuration files (see changes descriptions below),
+rebuild your search index using the following commands, and then restart the
+application:
 
 ```bash
 flask kerko clean index
