@@ -61,5 +61,5 @@ coverage.xml
 instance.*
 
 # Application data.
-data/
-instance/
+/data
+/instance
