@@ -2,7 +2,20 @@
 
 ## Latest (unreleased)
 
-TBD.
+Changes:
+
+- Rename the default branch of the repository from 'master' to 'main', and the
+  'kerko-head' branch to 'development'. If you have cloned the repository with
+  Git, use the following commands to rename your local branches:
+
+    ```bash
+    git branch -m master main
+    git branch -m kerko-head development
+    git fetch origin
+    git branch -u origin/main main
+    git branch -u origin/development development
+    git remote set-head origin -a
+    ```
 
 
 ## 1.0.0alpha0 (2023-06-26)
