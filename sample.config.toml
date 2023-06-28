@@ -53,8 +53,6 @@ pager_links = 4
 
 [kerko.zotero]
 
-# Changing any of the following will require sync cache --full && sync index.
-
 csl_style = "apa"
 locale = "en-US"
 item_include_re = ''
@@ -67,12 +65,10 @@ tag_exclude_re = '^_'
 
 [kerko.search]
 
-fulltext = true         # Changing this will require sync cache --full && sync index.
-whoosh_language = "en"  # Changing this will require sync index --full.
+fulltext = true
+whoosh_language = "en"
 
 [kerko.facets]
-
-    # Changing any facet will require clean index && sync index.
 
     [kerko.facets.tag]
     enabled = true
