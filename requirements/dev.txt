@@ -187,6 +187,8 @@ tomli==2.0.1
     #   -r requirements/run.txt
     #   kerko
     #   yapf
+tomli_w==1.0.0
+    # via kerko
 tomlkit==0.11.8
     # via pylint
 tox==4.5.1

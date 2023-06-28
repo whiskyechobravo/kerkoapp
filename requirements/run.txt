@@ -73,6 +73,8 @@ sgmllib3k==1.0.0
     # via feedparser
 tomli==2.0.1
     # via kerko
+tomli_w==1.0.0
+    # via kerko
 typing-extensions==4.6.2
     # via pydantic
 urllib3==2.0.2
