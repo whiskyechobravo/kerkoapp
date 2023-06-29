@@ -1,9 +1,10 @@
 # Changelog
 
-## Latest (unreleased)
+## 1.0.0alpha1 (2023-06-29)
 
 Changes:
 
+- Rename parameters in `sample.config.toml`.
 - Print loaded configuration file paths in debug mode only.
 - Rename the default branch of the repository from 'master' to 'main', and the
   'kerko-head' branch to 'development'. If you have cloned the repository with
