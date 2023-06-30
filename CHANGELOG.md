@@ -6,16 +6,14 @@ Changes:
 
 - Rename parameters in `sample.config.toml`.
 - Print loaded configuration file paths in debug mode only.
-- Rename the default branch of the repository from 'master' to 'main', and the
-  'kerko-head' branch to 'development'. If you have cloned the repository with
-  Git, use the following commands to rename your local branches:
+- Rename the default branch of the repository from 'master' to 'main'. If you
+  have cloned the repository with Git and were using the `master` branch, use
+  the following commands to rename your local branch:
 
     ```bash
     git branch -m master main
-    git branch -m kerko-head development
     git fetch origin
     git branch -u origin/main main
-    git branch -u origin/development development
     git remote set-head origin -a
     ```
 
