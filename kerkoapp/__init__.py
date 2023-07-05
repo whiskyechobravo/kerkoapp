@@ -40,6 +40,8 @@ def create_app() -> Flask:
 
     # Validate configuration and save its parsed version.
     parse_config(app.config)
+
+    # Validate extra configuration model and save its parsed version.
     if app.config.get('kerkoapp'):
         parse_config(app.config, 'kerkoapp', KerkoAppModel)
 
