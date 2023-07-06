@@ -51,6 +51,40 @@ google_analytics_id = ""
 page_len = 20
 pager_links = 4
 
+[kerko.breadcrumb]
+
+enabled = true
+include_current = true
+text_max_length = 50
+text_max_length_leeway = 10
+
+[kerko.link_groups]
+
+    [[kerko.link_groups.navbar.links]]
+    type = "endpoint"
+    label = "My Bibliography"
+    endpoint = "kerko.search"
+    weight = 0
+    new_window = false
+
+    [[kerko.link_groups.breadcrumb_base.links]]
+    type = "url"
+    label = "My Organization"
+    url = "http://example.com"
+    weight = 0
+
+    [[kerko.link_groups.breadcrumb_base.links]]
+    type = "url"
+    label = "My Project"
+    url = "http://example.com/project"
+    weight = 10
+
+    [[kerko.link_groups.breadcrumb_base.links]]
+    type = "endpoint"
+    label = "My Bibliography"
+    endpoint = "kerko.search"
+    weight = 20
+
 [kerko.zotero]
 
 csl_style = "apa"
