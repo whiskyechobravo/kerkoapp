@@ -60,30 +60,25 @@ text_max_length_leeway = 10
 
 [kerko.link_groups]
 
-    [[kerko.link_groups.navbar.links]]
+    [[kerko.link_groups.navbar]]
+    text = "My Bibliography"
     type = "endpoint"
-    label = "My Bibliography"
     endpoint = "kerko.search"
-    weight = 0
-    new_window = false
 
-    [[kerko.link_groups.breadcrumb_base.links]]
+    [[kerko.link_groups.breadcrumb_base]]
+    text = "My Organization"
     type = "url"
-    label = "My Organization"
     url = "http://example.com"
-    weight = 0
 
-    [[kerko.link_groups.breadcrumb_base.links]]
+    [[kerko.link_groups.breadcrumb_base]]
+    text = "My Project"
     type = "url"
-    label = "My Project"
     url = "http://example.com/project"
-    weight = 10
 
-    [[kerko.link_groups.breadcrumb_base.links]]
+    [[kerko.link_groups.breadcrumb_base]]
+    text = "My Bibliography"
     type = "endpoint"
-    label = "My Bibliography"
     endpoint = "kerko.search"
-    weight = 20
 
 [kerko.zotero]
 
