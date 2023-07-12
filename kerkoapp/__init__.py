@@ -21,8 +21,6 @@ def create_app() -> Flask:
     Application factory.
 
     Explained here: http://flask.pocoo.org/docs/patterns/appfactories/
-
-    :param config_object: The configuration object to use.
     """
     try:
         app = Flask(__name__, instance_path=os.environ.get('KERKOAPP_INSTANCE_PATH'))
