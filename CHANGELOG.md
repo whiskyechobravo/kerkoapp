@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.0alpha2 (2023-07-12)
+
+Changes:
+
+- Add parameters to `sample.config.toml`.
+
+
 ## 1.0.0alpha1 (2023-06-29)
 
 Changes:
