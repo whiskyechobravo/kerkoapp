@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+Changes:
+
+- Rename parameters in `sample.config.toml`.
+
+
 ## 1.0.0alpha2 (2023-07-12)
 
 Changes:
