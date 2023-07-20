@@ -5,6 +5,7 @@
 Changes:
 
 - Rename parameters in `sample.config.toml`.
+- Fix duplicate log entries with syslog logging handler.
 
 
 ## 1.0.0alpha2 (2023-07-12)

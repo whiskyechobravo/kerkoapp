@@ -45,7 +45,6 @@ def init_app(app):
                 )
             )
         )
-        app.logger.addHandler(syslog_handler)
         root.addHandler(syslog_handler)
     if 'LOGGING_LEVEL' in app.config:
         default_handler.setLevel(app.config['LOGGING_LEVEL'])
