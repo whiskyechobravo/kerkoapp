@@ -6,6 +6,7 @@ Changes:
 
 - Rename parameters in `sample.config.toml`.
 - Fix duplicate log entries with syslog logging handler.
+- Add instance configuration file example (`sample.instance.toml`).
 
 
 ## 1.0.0alpha2 (2023-07-12)
