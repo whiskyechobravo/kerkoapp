@@ -1,6 +1,11 @@
 .git
-.cache
+.gitignore
 .dockerignore
+
+# Byte-compiled / optimized / caches.
+.cache
+.mypy_cache/
+__pycache__/
 
 # Unit test / coverage reports.
 htmlcov/
@@ -13,12 +18,6 @@ coverage.xml
 
 # Logs.
 *.log
-
-# Sphinx documentation.
-docs/_build/
-
-# DotEnv configuration.
-.env
 
 # Development tools / IDEs.
 .idea
@@ -35,3 +34,14 @@ docs/_build/
 *~
 *.bak
 *.old
+
+# Configuration files.
+.env
+.flaskenv
+.secrets.toml
+instance.toml
+config.toml
+
+# Application data.
+/data
+/instance

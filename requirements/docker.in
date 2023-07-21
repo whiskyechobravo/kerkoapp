@@ -1,0 +1,2 @@
+-r run.txt
+gunicorn
