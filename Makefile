@@ -23,11 +23,11 @@ shell:
 	docker run -it --rm -p $(HOST_PORT):80 -v $(HOST_INSTANCE_PATH):/kerkoapp/instance -v $(HOST_DEV_LOG):/dev/log $(NAME) bash
 
 clean_kerko: | $(SECRETS) $(CONFIG)
-	docker run -it --rm -p $(HOST_PORT):80 -v $(HOST_INSTANCE_PATH):/kerkoapp/instance -v $(HOST_DEV_LOG):/dev/log $(NAME) flask kerko clean everything
+	docker run --rm -p $(HOST_PORT):80 -v $(HOST_INSTANCE_PATH):/kerkoapp/instance -v $(HOST_DEV_LOG):/dev/log $(NAME) flask kerko clean everything
 
 $(DATA): | $(SECRETS) $(CONFIG)
 	@echo "[WARNING] It looks like you have not run the kerko sync command. Trying it for you now!"
-	docker run -it --rm -p $(HOST_PORT):80 -v $(HOST_INSTANCE_PATH):/kerkoapp/instance -v $(HOST_DEV_LOG):/dev/log $(NAME) flask kerko sync
+	docker run --rm -p $(HOST_PORT):80 -v $(HOST_INSTANCE_PATH):/kerkoapp/instance -v $(HOST_DEV_LOG):/dev/log $(NAME) flask kerko sync
 
 $(SECRETS):
 	@echo "[ERROR] You must create '$(SECRETS)'."
