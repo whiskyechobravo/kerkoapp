@@ -2,11 +2,25 @@
 
 ## Unreleased
 
-Changes:
+Bug fixes:
 
-- Rename parameters in `sample.config.toml`.
+- Fix Gunicorn not exiting if the application cannot start because of runtime
+  errors (such as configuration errors). Exit with the `errno.EINTR` error code.
 - Fix duplicate log entries with syslog logging handler.
-- Add instance configuration file example (`sample.instance.toml`).
+
+Backwards incompatible changes:
+
+- Rename parameters in `sample.config.toml` following changes in Kerko.
+
+Other changes:
+
+- Add instance configuration file example, `sample.instance.toml`.
+- Replace the base Docker image with the official Python 3.11 image, and update
+  Docker setup for Kerko 1.0.x.
+- Improve the `Makefile` for an easier first-time experience using the Docker
+  image.
+- Improve the `Makefile` for a simpler and more reliable Docker image building
+  process.
 
 
 ## 1.0.0alpha2 (2023-07-12)
