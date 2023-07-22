@@ -1,3 +1,4 @@
+import errno
 import sys
 
 from flask import redirect, url_for
@@ -9,7 +10,7 @@ try:
     app = create_app()
 except RuntimeError as e:
     print(e, file=sys.stderr)
-    sys.exit(1)
+    sys.exit(errno.EINTR)  # This should make the WSGI server exit as well.
 
 
 @app.route('/')
