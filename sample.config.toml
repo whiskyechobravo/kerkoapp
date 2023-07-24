@@ -6,23 +6,19 @@ ZOTERO_LIBRARY_TYPE = "group"  # Set to "user" for a personal library.
 BABEL_DEFAULT_LOCALE = "en_US"
 BABEL_DEFAULT_TIMEZONE = "UTC"
 
-#LOGGING_HANDLER = "syslog"    # For Unix only. Recommended when running in production.
-#LOGGING_ADDRESS = "/dev/log"  # For Unix only. Recommended when running in production.
-
-#EXPLAIN_TEMPLATE_LOADING = true  # Can be useful for debugging purposes. Do not use in production.
-
 # Most parameters have a default value. Deleting such parameter from this file
 # will not disable it but merely reset it to its default value.
 
 [kerko.features]
 
 download_attachment_new_window = false
-download_results_link = true
+download_item = true
+download_results = true
 download_results_max_count = 0
 open_in_zotero_app = false
 open_in_zotero_web = false
-print_item_link = false
-print_results_link = false
+print_item = false
+print_results = false
 print_results_max_count = 0
 relations_links = false
 relations_initial_limit = 5
@@ -138,12 +134,3 @@ whoosh_language = "en"
     sort_by = ["count", "label"]
     sort_reverse = false
     item_view = true
-
-[kerkoapp.proxy_fix]
-
-enabled = false
-x_for = 1
-x_proto = 1
-x_host = 0
-x_port = 0
-x_prefix = 0

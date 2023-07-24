@@ -57,8 +57,9 @@ coverage.xml
 
 # Configuration files.
 .env
-.secrets.*
-instance.*
+.flaskenv
+.secrets.toml
+instance.toml
 
 # Application data.
 /data

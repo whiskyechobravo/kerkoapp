@@ -1,0 +1,17 @@
+# Sample instance.toml file.
+#
+# The configuration parameters below do not usually belong to config.toml
+# because they tend to be context-specific, useful only on a production
+# instance, or for development purposes on a local instance.
+
+# LOGGING_HANDLER = "syslog"  # Uncomment this line on Unix only!
+
+EXPLAIN_TEMPLATE_LOADING = false  # Can be useful for development. Do not set to true in production!
+
+[kerkoapp.proxy_fix]
+enabled = false
+x_for = 1
+x_proto = 1
+x_host = 1
+x_port = 0
+x_prefix = 0
