@@ -21,6 +21,7 @@ Other changes:
   image.
 - Improve the `Makefile` for a simpler and more reliable Docker image building
   process.
+- Compile KerkoApp translations when building Docker image.
 
 
 ## 1.0.0alpha2 (2023-07-12)
