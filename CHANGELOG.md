@@ -5,6 +5,7 @@
 Other changes:
 
 - Add `help`, `requirements`, and `requirements-upgrade` targets to `Makefile`.
+- Add pre-commit hooks. Run Ruff and other checks on pre-commit.
 
 
 ## 1.0.0 (2023-07-24)
