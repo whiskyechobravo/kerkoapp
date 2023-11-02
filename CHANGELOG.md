@@ -4,8 +4,9 @@
 
 Other changes:
 
-- Add `help`, `requirements`, and `requirements-upgrade` targets to `Makefile`.
-- Add pre-commit hooks. Run Ruff and other checks on pre-commit.
+- Add `help`, `requirements`, `dependencies-upgrade`, and `upgrade` targets to
+  `Makefile`. These are helpers for KerkoApp development.
+- Add pre-commit hooks. Run Ruff and other code checks on pre-commit.
 
 
 ## 1.0.0 (2023-07-24)
