@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+Other changes:
+
+- Add `help` target to `Makefile`.
+
+
 ## 1.0.0 (2023-07-24)
 
 Bug fixes:

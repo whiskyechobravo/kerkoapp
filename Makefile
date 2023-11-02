@@ -18,6 +18,23 @@ DATA := $(HOST_INSTANCE_PATH)/kerko/index
 # These work if the image exists, either pulled or built locally.
 #
 
+help:
+	@echo 'Usage:'
+	@echo '    make build'
+	@echo '        Build a KerkoApp Docker image locally.'
+	@echo '    make clean_image'
+	@echo '        Remove the KerkoApp Docker image.'
+	@echo '    make clean_kerko'
+	@echo '        Run the "kerko clean" command from within the KerkoApp Docker container.'
+	@echo '    make publish'
+	@echo '        Publish the KerkoApp Docker image on DockerHub.'
+	@echo '    make run'
+	@echo '        Run KerkoApp with Docker.'
+	@echo '    make shell'
+	@echo '        Start an interactive shell within the KerkoApp Docker container.'
+	@echo '    make show_version'
+	@echo '        Print the version that would be used if the KerkoApp Docker image was to be built.'
+
 run: | $(DATA) $(SECRETS) $(CONFIG)
 	docker run --rm -p $(HOST_PORT):80 -v $(HOST_INSTANCE_PATH):/kerkoapp/instance -v $(HOST_DEV_LOG):/dev/log $(NAME)
 
@@ -88,4 +105,4 @@ endif
 	@echo "[ERROR] This target must run from a clone of the KerkoApp Git repository."
 	@exit 1
 
-.PHONY: run shell clean_kerko publish build show_version clean_image
+.PHONY: help run shell clean_kerko publish build show_version clean_image
