@@ -147,7 +147,7 @@ packaging==23.1
     #   pyproject-api
     #   pytoolconfig
     #   tox
-pip-tools==6.13.0
+pip-tools==7.3.0
     # via kerko
 platformdirs==3.5.1
     # via
@@ -240,7 +240,7 @@ typing-extensions==4.6.2
     #   -r requirements/run.txt
     #   mypy
     #   pydantic
-urllib3==2.0.2
+urllib3==2.0.7
     # via
     #   -r requirements/run.txt
     #   requests
@@ -262,7 +262,7 @@ werkzeug==2.3.4
     #   -r requirements/run.txt
     #   flask
     #   kerko
-wheel==0.40.0
+wheel==0.41.3
     # via pip-tools
 whoosh==2.7.4
     # via
@@ -282,7 +282,7 @@ yapf==0.33.0
     # via kerko
 
 # The following packages are considered to be unsafe in a requirements file:
-pip==23.2.1
+pip==23.3.1
     # via pip-tools
 setuptools==68.1.0
     # via
