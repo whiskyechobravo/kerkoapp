@@ -3,13 +3,11 @@ A sample Flask application using the Kerko blueprint.
 """
 
 import os
-import pathlib
 
 import kerko
 from flask import Flask, render_template
 from flask_babel import get_locale
-from kerko.config_helpers import (ConfigModel, KerkoModel, config_update,
-                                  load_toml, parse_config)
+from kerko.config_helpers import config_update, parse_config
 
 from . import logging
 from .config_helpers import KerkoAppModel, load_config_files
