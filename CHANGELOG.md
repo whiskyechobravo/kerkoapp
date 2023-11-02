@@ -4,7 +4,7 @@
 
 Other changes:
 
-- Add `help` target to `Makefile`.
+- Add `help`, `requirements`, and `requirements-upgrade` targets to `Makefile`.
 
 
 ## 1.0.0 (2023-07-24)

@@ -19,21 +19,26 @@ DATA := $(HOST_INSTANCE_PATH)/kerko/index
 #
 
 help:
-	@echo 'Usage:'
-	@echo '    make build'
-	@echo '        Build a KerkoApp Docker image locally.'
-	@echo '    make clean_image'
-	@echo '        Remove the KerkoApp Docker image.'
-	@echo '    make clean_kerko'
-	@echo '        Run the "kerko clean" command from within the KerkoApp Docker container.'
-	@echo '    make publish'
-	@echo '        Publish the KerkoApp Docker image on DockerHub.'
-	@echo '    make run'
-	@echo '        Run KerkoApp with Docker.'
-	@echo '    make shell'
-	@echo '        Start an interactive shell within the KerkoApp Docker container.'
-	@echo '    make show_version'
-	@echo '        Print the version that would be used if the KerkoApp Docker image was to be built.'
+	@echo "Commands for using KerkoApp with Docker:"
+	@echo "    make build"
+	@echo "        Build a KerkoApp Docker image locally."
+	@echo "    make clean_image"
+	@echo "        Remove the KerkoApp Docker image."
+	@echo "    make clean_kerko"
+	@echo "        Run the 'kerko clean' command from within the KerkoApp Docker container."
+	@echo "    make publish"
+	@echo "        Publish the KerkoApp Docker image on DockerHub."
+	@echo "    make run"
+	@echo "        Run KerkoApp with Docker."
+	@echo "    make shell"
+	@echo "        Start an interactive shell within the KerkoApp Docker container."
+	@echo "    make show_version"
+	@echo "        Print the version that would be used if the KerkoApp Docker image was to be built."
+	@echo "\nCommands related to KerkoApp development:"
+	@echo "    make requirements"
+	@echo "        Pin the versions of Python dependencies in requirements files."
+	@echo "    make requirements-upgrade"
+	@echo "        Update Python dependencies to their latest versions in requirements files."
 
 run: | $(DATA) $(SECRETS) $(CONFIG)
 	docker run --rm -p $(HOST_PORT):80 -v $(HOST_INSTANCE_PATH):/kerkoapp/instance -v $(HOST_DEV_LOG):/dev/log $(NAME)
@@ -105,4 +110,20 @@ endif
 	@echo "[ERROR] This target must run from a clone of the KerkoApp Git repository."
 	@exit 1
 
-.PHONY: help run shell clean_kerko publish build show_version clean_image
+requirements/run.txt: requirements/run.in
+	pip-compile --resolver=backtracking requirements/run.in
+
+requirements/docker.txt: requirements/run.txt requirements/docker.in
+	pip-compile --resolver=backtracking requirements/docker.in
+
+requirements/dev.txt: requirements/run.txt requirements/dev.in
+	pip-compile --allow-unsafe --resolver=backtracking requirements/dev.in
+
+requirements: requirements/run.txt requirements/docker.txt requirements/dev.txt
+
+requirements-upgrade:
+	pip-compile --upgrade --resolver=backtracking --rebuild requirements/run.in
+	pip-compile --upgrade --resolver=backtracking --rebuild requirements/docker.in
+	pip-compile --upgrade --allow-unsafe --resolver=backtracking --rebuild requirements/dev.in
+
+.PHONY: help run shell clean_kerko publish build show_version clean_image requirements upgrade-requirements
