@@ -35,10 +35,10 @@ help:
 	@echo "    make show_version"
 	@echo "        Print the version that would be used if the KerkoApp Docker image was to be built."
 	@echo "\nCommands related to KerkoApp development:"
-	@echo "    make dependencies-upgrade"
-	@echo "        Update Python dependencies and pin their latest versions in requirements files."
 	@echo "    make requirements"
 	@echo "        Pin the versions of Python dependencies in requirements files."
+	@echo "    make requirements-upgrade"
+	@echo "        Pin the latest versions of Python dependencies in requirements files."
 	@echo "    make upgrade"
 	@echo "        Update Python dependencies and install the upgraded versions."
 
@@ -123,14 +123,14 @@ requirements/dev.txt: requirements/run.txt requirements/dev.in
 
 requirements: requirements/run.txt requirements/docker.txt requirements/dev.txt
 
-dependencies-upgrade:
+requirements-upgrade:
 	pre-commit autoupdate
 	pip install --upgrade pip pip-tools wheel
 	pip-compile --upgrade --resolver=backtracking --rebuild requirements/run.in
 	pip-compile --upgrade --resolver=backtracking --rebuild requirements/docker.in
 	pip-compile --upgrade --allow-unsafe --resolver=backtracking --rebuild requirements/dev.in
 
-upgrade: | dependencies-upgrade
+upgrade: | requirements-upgrade
 	pip-sync requirements/dev.txt
 
-.PHONY: help run shell clean_kerko publish build show_version clean_image requirements dependencies-upgrade upgrade
+.PHONY: help run shell clean_kerko publish build show_version clean_image requirements requirements-upgrade upgrade
