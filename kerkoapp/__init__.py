@@ -73,7 +73,7 @@ def register_extensions(app: Flask) -> None:
 def register_blueprints(app: Flask) -> None:
     # Setting `url_prefix` is required to distinguish the blueprint's static
     # folder route URL from the app's.
-    app.register_blueprint(kerko.blueprint, url_prefix='/bibliography')
+    app.register_blueprint(kerko.make_blueprint(), url_prefix='/bibliography')
 
 
 def register_errorhandlers(app: Flask) -> None:
