@@ -21,7 +21,7 @@ def create_app() -> Flask:
     Explained here: http://flask.pocoo.org/docs/patterns/appfactories/
     """
     try:
-        app = Flask(__name__, instance_path=os.environ.get('KERKOAPP_INSTANCE_PATH'))
+        app = Flask(__name__, instance_path=os.environ.get("KERKOAPP_INSTANCE_PATH"))
     except ValueError as e:
         raise RuntimeError(f"Unable to initialize the application. {e}") from e
 
@@ -29,20 +29,20 @@ def create_app() -> Flask:
     config_update(app.config, kerko.DEFAULTS)
 
     # Update app configuration from TOML configuration file(s).
-    load_config_files(app, os.environ.get('KERKOAPP_CONFIG_FILES'))
+    load_config_files(app, os.environ.get("KERKOAPP_CONFIG_FILES"))
 
     # Update app configuration from environment variables.
-    app.config.from_prefixed_env(prefix='KERKOAPP')
+    app.config.from_prefixed_env(prefix="KERKOAPP")
 
     # Validate configuration and save its parsed version.
     parse_config(app.config)
 
     # Validate extra configuration model and save its parsed version.
-    if app.config.get('kerkoapp'):
-        parse_config(app.config, 'kerkoapp', KerkoAppModel)
+    if app.config.get("kerkoapp"):
+        parse_config(app.config, "kerkoapp", KerkoAppModel)
 
     # Initialize the Composer object.
-    app.config['kerko_composer'] = kerko.composer.Composer(app.config)
+    app.config["kerko_composer"] = kerko.composer.Composer(app.config)
 
     # ----
     # If you are deriving your own custom application from KerkoApp, here is a
@@ -58,8 +58,8 @@ def create_app() -> Flask:
 
 def register_extensions(app: Flask) -> None:
     # Configure Babel to use both Kerko's translations and the app's.
-    domain = ';'.join([kerko.TRANSLATION_DOMAIN, 'messages'])
-    translation_directories = ';'.join(kerko.TRANSLATION_DIRECTORIES + ['translations'])
+    domain = ";".join([kerko.TRANSLATION_DOMAIN, "messages"])
+    translation_directories = ";".join(kerko.TRANSLATION_DIRECTORIES + ["translations"])
     babel.init_app(
         app,
         default_domain=domain,
@@ -73,17 +73,17 @@ def register_extensions(app: Flask) -> None:
 def register_blueprints(app: Flask) -> None:
     # Setting `url_prefix` is required to distinguish the blueprint's static
     # folder route URL from the app's.
-    app.register_blueprint(kerko.make_blueprint(), url_prefix='/bibliography')
+    app.register_blueprint(kerko.make_blueprint(), url_prefix="/bibliography")
 
 
 def register_errorhandlers(app: Flask) -> None:
     def render_error(error):
         # If a HTTPException, pull the `code` attribute; default to 500.
-        error_code = getattr(error, 'code', 500)
+        error_code = getattr(error, "code", 500)
         context = {
-            'locale': get_locale(),
+            "locale": get_locale(),
         }
-        return render_template(f'kerkoapp/{error_code}.html.jinja2', **context), error_code
+        return render_template(f"kerkoapp/{error_code}.html.jinja2", **context), error_code
 
     for errcode in [400, 403, 404, 500, 503]:
         app.errorhandler(errcode)(render_error)

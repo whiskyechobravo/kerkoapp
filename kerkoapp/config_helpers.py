@@ -3,12 +3,14 @@ from typing import Optional
 
 from flask import Flask
 from kerko.config_helpers import config_update, load_toml
-from pydantic import BaseModel  # pylint: disable=no-name-in-module
-from pydantic import Extra, NonNegativeInt  # pylint: disable=no-name-in-module
+from pydantic import (
+    BaseModel,
+    Extra,
+    NonNegativeInt,
+)
 
 
 class ProxyFixModel(BaseModel):
-
     class Config:
         extra = Extra.forbid
 
@@ -21,7 +23,6 @@ class ProxyFixModel(BaseModel):
 
 
 class KerkoAppModel(BaseModel):
-
     class Config:
         extra = Extra.forbid
 
@@ -51,9 +52,9 @@ def load_config_files(app: Flask, path_spec: Optional[str]):
     try_parents = cwd_parents + [p for p in instance_parents if p not in cwd_parents]
     if not path_spec:
         path_spec = "config.toml;instance.toml;.secrets.toml"
-    for path_item in path_spec.split(';'):
+    for path_item in path_spec.split(";"):
         for parent in try_parents:
             path = parent / path_item.strip()
             if path.is_file():
-                config_update(app.config, load_toml(path, verbose=app.config['DEBUG']))
+                config_update(app.config, load_toml(path, verbose=app.config["DEBUG"]))
                 break

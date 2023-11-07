@@ -9,28 +9,26 @@ from kerkoapp import create_app
 try:
     app = create_app()
 except RuntimeError as e:
-    print(e, file=sys.stderr)
+    print(e, file=sys.stderr)  # noqa: T201
     sys.exit(errno.EINTR)  # This should make the WSGI server exit as well.
 
 
-@app.route('/')
+@app.route("/")
 def home():
-    return redirect(url_for('kerko.search'))
+    return redirect(url_for("kerko.search"))
 
 
 try:
-    proxy_fix_config = config_get(app.config, 'kerkoapp.proxy_fix')
+    proxy_fix_config = config_get(app.config, "kerkoapp.proxy_fix")
 except KeyError:
     pass
 else:
-    if proxy_fix_config.get('enabled'):
+    if proxy_fix_config.get("enabled"):
         from werkzeug.middleware.proxy_fix import ProxyFix
-        app.wsgi_app = ProxyFix(  # type: ignore
+
+        app.wsgi_app = ProxyFix(
             app.wsgi_app,
-            **{
-                kwarg: value
-                for kwarg, value in proxy_fix_config.items() if kwarg != 'enabled'
-            },
+            **{kwarg: value for kwarg, value in proxy_fix_config.items() if kwarg != "enabled"},
         )
 
 
