@@ -1,5 +1,8 @@
 # Changelog
 
+Before doing an upgrade, please check the "How to upgrade" section of the Kerko
+documentation.
+
 ## Unreleased
 
 Other changes:
