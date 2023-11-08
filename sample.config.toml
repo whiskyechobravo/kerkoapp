@@ -33,7 +33,6 @@ results_url_links = true
 [kerko.feeds]
 
 formats = ["atom"]
-fields = ["id", "data"]
 max_days = 0
 
 [kerko.meta]
