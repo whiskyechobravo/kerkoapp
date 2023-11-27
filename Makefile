@@ -89,9 +89,9 @@ endif
 
 build: | .git
 ifeq ($(findstring .,$(VERSION)),.)
-	docker build -t $(NAME) --no-cache --label "org.opencontainers.NAME.version=$(VERSION)" --label "org.opencontainers.NAME.created=$(shell date --rfc-3339=seconds)" $(MAKEFILE_DIR)
+	docker build -t $(NAME) --no-cache --label "org.opencontainers.image.version=$(VERSION)" --label "org.opencontainers.image.created=$(shell date --rfc-3339=seconds)" $(MAKEFILE_DIR)
 else
-	docker build -t $(NAME) --no-cache --label "org.opencontainers.NAME.version=$(HASH)" --label "org.opencontainers.NAME.created=$(shell date --rfc-3339=seconds)" $(MAKEFILE_DIR)
+	docker build -t $(NAME) --no-cache --label "org.opencontainers.image.revision=$(HASH)" --label "org.opencontainers.image.created=$(shell date --rfc-3339=seconds)" $(MAKEFILE_DIR)
 endif
 
 show_version: | .git
