@@ -5,6 +5,10 @@ documentation.
 
 ## Unreleased
 
+Bug fixes:
+
+- Fix incorrect Docker image labels.
+
 Other changes:
 
 - Add `help`, `requirements`, `requirements-upgrade`, and `upgrade` targets to
@@ -12,6 +16,7 @@ Other changes:
 - Replace Yapf with Ruff formatter. Reformat whole code base.
 - Add pre-commit hooks. Run Ruff and other code checks on pre-commit.
 - Update the versions of pinned dependencies.
+- Set container name on docker run.
 
 
 ## 1.0.0 (2023-07-24)

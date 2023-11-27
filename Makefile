@@ -1,8 +1,9 @@
 # This Makefile contains targets for building and running the KerkoApp Docker image.
 
-# Change NAME if you wish to build your own image.
-NAME := whiskyechobravo/kerkoapp
+# Change IMAGE_NAME if you wish to build your own image.
+IMAGE_NAME := whiskyechobravo/kerkoapp
 
+CONTAINER_NAME := kerkoapp
 MAKEFILE_DIR := $(dir $(CURDIR)/$(lastword $(MAKEFILE_LIST)))
 HOST_PORT := 8080
 HOST_INSTANCE_PATH := $(MAKEFILE_DIR)instance
@@ -43,17 +44,17 @@ help:
 	@echo "        Update Python dependencies and install the upgraded versions."
 
 run: | $(DATA) $(SECRETS) $(CONFIG)
-	docker run --rm -p $(HOST_PORT):80 -v $(HOST_INSTANCE_PATH):/kerkoapp/instance -v $(HOST_DEV_LOG):/dev/log $(NAME)
+	docker run --name $(CONTAINER_NAME) --rm -p $(HOST_PORT):80 -v $(HOST_INSTANCE_PATH):/kerkoapp/instance -v $(HOST_DEV_LOG):/dev/log $(IMAGE_NAME)
 
 shell:
-	docker run -it --rm -p $(HOST_PORT):80 -v $(HOST_INSTANCE_PATH):/kerkoapp/instance -v $(HOST_DEV_LOG):/dev/log $(NAME) bash
+	docker run --name $(CONTAINER_NAME) -it --rm -p $(HOST_PORT):80 -v $(HOST_INSTANCE_PATH):/kerkoapp/instance -v $(HOST_DEV_LOG):/dev/log $(IMAGE_NAME) bash
 
 clean_kerko: | $(SECRETS) $(CONFIG)
-	docker run --rm -p $(HOST_PORT):80 -v $(HOST_INSTANCE_PATH):/kerkoapp/instance -v $(HOST_DEV_LOG):/dev/log $(NAME) flask kerko clean everything
+	docker run --name $(CONTAINER_NAME) --rm -p $(HOST_PORT):80 -v $(HOST_INSTANCE_PATH):/kerkoapp/instance -v $(HOST_DEV_LOG):/dev/log $(IMAGE_NAME) flask kerko clean everything
 
 $(DATA): | $(SECRETS) $(CONFIG)
 	@echo "[INFO] It looks like you have not run the 'flask kerko sync' command. Running it for you now!"
-	docker run --rm -p $(HOST_PORT):80 -v $(HOST_INSTANCE_PATH):/kerkoapp/instance -v $(HOST_DEV_LOG):/dev/log $(NAME) flask kerko sync
+	docker run --name $(CONTAINER_NAME) --rm -p $(HOST_PORT):80 -v $(HOST_INSTANCE_PATH):/kerkoapp/instance -v $(HOST_DEV_LOG):/dev/log $(IMAGE_NAME) flask kerko sync
 
 $(SECRETS):
 	@echo "[ERROR] You must create '$(SECRETS)'."
@@ -78,10 +79,10 @@ ifneq ($(shell git status --porcelain 2> /dev/null),)
 	@exit 1
 endif
 ifeq ($(findstring .,$(VERSION)),.)
-	docker tag $(NAME) $(NAME):$(VERSION)
-	docker push $(NAME):$(VERSION)
-	docker tag $(NAME) $(NAME):latest
-	docker push $(NAME):latest
+	docker tag $(IMAGE_NAME) $(IMAGE_NAME):$(VERSION)
+	docker push $(IMAGE_NAME):$(VERSION)
+	docker tag $(IMAGE_NAME) $(IMAGE_NAME):latest
+	docker push $(IMAGE_NAME):latest
 else
 	@echo "[ERROR] A proper version tag on the Git HEAD is required to publish."
 	@exit 1
@@ -89,9 +90,9 @@ endif
 
 build: | .git
 ifeq ($(findstring .,$(VERSION)),.)
-	docker build -t $(NAME) --no-cache --label "org.opencontainers.image.version=$(VERSION)" --label "org.opencontainers.image.created=$(shell date --rfc-3339=seconds)" $(MAKEFILE_DIR)
+	docker build -t $(IMAGE_NAME) --no-cache --label "org.opencontainers.image.version=$(VERSION)" --label "org.opencontainers.image.created=$(shell date --rfc-3339=seconds)" $(MAKEFILE_DIR)
 else
-	docker build -t $(NAME) --no-cache --label "org.opencontainers.image.revision=$(HASH)" --label "org.opencontainers.image.created=$(shell date --rfc-3339=seconds)" $(MAKEFILE_DIR)
+	docker build -t $(IMAGE_NAME) --no-cache --label "org.opencontainers.image.revision=$(HASH)" --label "org.opencontainers.image.created=$(shell date --rfc-3339=seconds)" $(MAKEFILE_DIR)
 endif
 
 show_version: | .git
@@ -103,9 +104,9 @@ endif
 
 clean_image: | .git
 ifeq ($(findstring .,$(VERSION)),.)
-	docker rmi $(NAME):$(VERSION)
+	docker rmi $(IMAGE_NAME):$(VERSION)
 else
-	docker rmi $(NAME)
+	docker rmi $(IMAGE_NAME)
 endif
 
 .git:
