@@ -43,8 +43,12 @@ help:
 	@echo "    make upgrade"
 	@echo "        Update Python dependencies and install the upgraded versions."
 
+# On some systems, extended privileges are required for Gunicorn to launch within the container,
+# hence the use of the --privileged option below. For production use, you may want to verify whether
+# this option is really required for your system, or grant finer grained privileges. See
+# https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities
 run: | $(DATA) $(SECRETS) $(CONFIG)
-	docker run --name $(CONTAINER_NAME) --rm -p $(HOST_PORT):80 -v $(HOST_INSTANCE_PATH):/kerkoapp/instance -v $(HOST_DEV_LOG):/dev/log $(IMAGE_NAME)
+	docker run --privileged --name $(CONTAINER_NAME) --rm -p $(HOST_PORT):80 -v $(HOST_INSTANCE_PATH):/kerkoapp/instance -v $(HOST_DEV_LOG):/dev/log $(IMAGE_NAME)
 
 shell:
 	docker run --name $(CONTAINER_NAME) -it --rm -p $(HOST_PORT):80 -v $(HOST_INSTANCE_PATH):/kerkoapp/instance -v $(HOST_DEV_LOG):/dev/log $(IMAGE_NAME) bash
