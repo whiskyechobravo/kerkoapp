@@ -3,11 +3,17 @@
 Before doing an upgrade, please check the "How to upgrade" section of the Kerko
 documentation.
 
-## Unreleased
+## 1.1.0 (2023-12-23)
+
+Features:
+
+- Add Spanish translation. Thanks to [Albert
+  Ormazabal](https://github.com/aormazabal).
 
 Bug fixes:
 
 - Fix incorrect Docker image labels.
+- Fix Docker run error, container lacking sufficient privileges (#43).
 
 Other changes:
 
