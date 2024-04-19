@@ -57,13 +57,17 @@ def create_app() -> Flask:
 
 
 def register_extensions(app: Flask) -> None:
-    # Configure Babel to use both Kerko's translations and the app's.
-    domain = ";".join([kerko.TRANSLATION_DOMAIN, "messages"])
-    translation_directories = ";".join(kerko.TRANSLATION_DIRECTORIES + ["translations"])
+    # Initialize Babel to use translations from both Kerko and the app. Config
+    # parameters BABEL_DOMAIN and BABEL_TRANSLATION_DIRECTORIES may override
+    # these defaults. When multiple translation directories are used, a domain
+    # MUST be specified for each directory. Thus, both lists must have the same
+    # number of items (separated by semi-colons).
+    domain = f"{kerko.TRANSLATION_DOMAIN};messages"
+    directories = f"{kerko.TRANSLATION_DIRECTORY};translations"
     babel.init_app(
         app,
         default_domain=domain,
-        default_translation_directories=translation_directories,
+        default_translation_directories=directories,
     )
 
     logging.init_app(app)

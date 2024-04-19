@@ -3,6 +3,13 @@
 Before doing an upgrade, please check the "How to upgrade" section of the Kerko
 documentation.
 
+## Unreleased changes
+
+Changes:
+
+- Adapt KerkoApp for Kerko API changes.
+
+
 ## 1.1.0 (2023-12-23)
 
 Features:
