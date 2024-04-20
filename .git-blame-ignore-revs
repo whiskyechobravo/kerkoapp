@@ -1,2 +1,4 @@
 # Reformat code with Ruff.
 fd27fb034433fc2dc13ab6f420b10e2e23c36c56
+# Enable more Ruff rules.
+2417a252efa431cdce46c8a7f1336cf76b7e0f90
