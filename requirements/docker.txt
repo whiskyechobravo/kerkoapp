@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements/docker.in
 #
-babel==2.13.1
+babel==2.14.0
     # via
     #   -r requirements/run.txt
     #   flask-babel
@@ -17,11 +17,11 @@ blinker==1.7.0
     # via
     #   -r requirements/run.txt
     #   flask
-bootstrap-flask==2.3.2
+bootstrap-flask==2.4.0
     # via
     #   -r requirements/run.txt
     #   kerko
-certifi==2023.7.22
+certifi==2024.2.2
     # via
     #   -r requirements/run.txt
     #   requests
@@ -38,11 +38,11 @@ dpath==2.1.6
     # via
     #   -r requirements/run.txt
     #   kerko
-feedparser==6.0.10
+feedparser==6.0.11
     # via
     #   -r requirements/run.txt
     #   pyzotero
-flask==3.0.0
+flask==3.0.3
     # via
     #   -r requirements/run.txt
     #   bootstrap-flask
@@ -57,18 +57,18 @@ flask-wtf==1.2.1
     # via
     #   -r requirements/run.txt
     #   kerko
-gunicorn==21.2.0
+gunicorn==22.0.0
     # via -r requirements/docker.in
-idna==3.4
+idna==3.7
     # via
     #   -r requirements/run.txt
     #   requests
-itsdangerous==2.1.2
+itsdangerous==2.2.0
     # via
     #   -r requirements/run.txt
     #   flask
     #   flask-wtf
-jinja2==3.1.2
+jinja2==3.1.3
     # via
     #   -r requirements/run.txt
     #   flask
@@ -76,27 +76,27 @@ jinja2==3.1.2
     #   kerko
 kerko @ git+https://github.com/whiskyechobravo/kerko.git
     # via -r requirements/run.txt
-markupsafe==2.1.3
+markupsafe==2.1.5
     # via
     #   -r requirements/run.txt
     #   jinja2
     #   werkzeug
     #   wtforms
-packaging==23.2
+packaging==24.0
     # via gunicorn
-pydantic==1.10.13
+pydantic==1.10.15
     # via
     #   -r requirements/run.txt
     #   kerko
-pyparsing==3.1.1
+pyparsing==3.1.2
     # via
     #   -r requirements/run.txt
     #   bibtexparser
-python-dotenv==1.0.0
+python-dotenv==1.0.1
     # via
     #   -r requirements/run.txt
     #   kerko
-pytz==2023.3.post1
+pytz==2024.1
     # via
     #   -r requirements/run.txt
     #   flask-babel
@@ -122,11 +122,11 @@ tomli-w==1.0.0
     # via
     #   -r requirements/run.txt
     #   kerko
-typing-extensions==4.8.0
+typing-extensions==4.11.0
     # via
     #   -r requirements/run.txt
     #   pydantic
-urllib3==2.0.7
+urllib3==2.2.1
     # via
     #   -r requirements/run.txt
     #   requests
@@ -134,7 +134,7 @@ w3lib==2.1.2
     # via
     #   -r requirements/run.txt
     #   kerko
-werkzeug==3.0.1
+werkzeug==3.0.2
     # via
     #   -r requirements/run.txt
     #   flask
@@ -143,11 +143,11 @@ whoosh==2.7.4
     # via
     #   -r requirements/run.txt
     #   kerko
-wrapt==1.15.0
+wrapt==1.16.0
     # via
     #   -r requirements/run.txt
     #   kerko
-wtforms==3.1.1
+wtforms==3.1.2
     # via
     #   -r requirements/run.txt
     #   bootstrap-flask
