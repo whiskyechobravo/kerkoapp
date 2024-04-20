@@ -35,4 +35,4 @@ else:
 @app.shell_context_processor
 def make_shell_context():
     """Return context dict for a shell session, giving access to variables."""
-    return dict(app=app)
+    return {"app": app}
