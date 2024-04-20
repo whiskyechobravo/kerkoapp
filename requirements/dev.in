@@ -1,2 +1,2 @@
 -r run.txt
-kerko[dev,docs,tests] @ git+https://github.com/whiskyechobravo/kerko.git
+kerko[dev,docs,tests]
