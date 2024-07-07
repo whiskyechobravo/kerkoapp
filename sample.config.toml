@@ -115,6 +115,17 @@ whoosh_language = "en"
     initial_limit_leeway = 2
     sort_by = ["label"]
 
+    [kerko.facets.language]
+    enabled = true
+    weight = 320
+    initial_limit = 10
+    initial_limit_leeway = 2
+    sort_by = ["label"]
+    values_separator_re = ";"
+    normalize = true
+    locale = "en"
+    allow_invalid = true
+
     [kerko.facets.link]
     enabled = false
     weight = 400

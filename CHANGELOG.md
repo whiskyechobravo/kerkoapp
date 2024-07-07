@@ -5,6 +5,10 @@ documentation.
 
 ## Unreleased changes
 
+Features:
+
+- Add sample configuration for the "Language" facet.
+
 Changes:
 
 - Adapt KerkoApp for Kerko API changes.
