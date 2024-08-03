@@ -130,7 +130,7 @@ requirements: requirements/run.txt requirements/docker.txt requirements/dev.txt
 
 requirements-upgrade:
 	pre-commit autoupdate
-	pip install --upgrade pip pip-tools wheel
+	pip install --upgrade pip pip-tools
 	pip-compile --upgrade --resolver=backtracking --rebuild requirements/run.in
 	pip-compile --upgrade --resolver=backtracking --rebuild requirements/docker.in
 	pip-compile --upgrade --allow-unsafe --resolver=backtracking --rebuild requirements/dev.in
