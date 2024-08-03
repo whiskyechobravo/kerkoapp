@@ -7,7 +7,7 @@ documentation.
 
 Features:
 
-- Add sample configuration for the "Language" facet.
+- Add sample configuration for the "Resource language" facet.
 
 Changes:
 
