@@ -1,3 +1,11 @@
+[project]
+name = "KerkoApp"
+description = "A web application that provides a faceted search interface for bibliographies based on Zotero."
+authors = [
+    {name = "David Lesieur", email="kerko@whiskyechobravo.com"},
+]
+requires-python = ">= 3.9"
+
 [tool.ruff]
 line-length = 100
 
@@ -34,7 +42,7 @@ select = [
     "SIM",  # flake8-simplify
     "SLOT", # flake8-slots
     "TID",  # flake8-tidy-imports
-    "TCH",  # flake8-type-checking
+    "TC",   # flake8-type-checking
     "ARG",  # flake8-unused-arguments
     "PTH",  # flake8-use-pathlib
     "ERA",  # eradicate
