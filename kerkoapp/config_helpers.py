@@ -3,16 +3,11 @@ from typing import Optional
 
 from flask import Flask
 from kerko.config_helpers import config_update, load_toml
-from pydantic import (
-    BaseModel,
-    Extra,
-    NonNegativeInt,
-)
+from pydantic import BaseModel, ConfigDict, NonNegativeInt
 
 
 class ProxyFixModel(BaseModel):
-    class Config:
-        extra = Extra.forbid
+    model_config = ConfigDict(extra="forbid")
 
     enabled: bool = False
     x_for: NonNegativeInt = 1
@@ -23,10 +18,9 @@ class ProxyFixModel(BaseModel):
 
 
 class KerkoAppModel(BaseModel):
-    class Config:
-        extra = Extra.forbid
+    model_config = ConfigDict(extra="forbid")
 
-    proxy_fix: Optional[ProxyFixModel]
+    proxy_fix: Optional[ProxyFixModel] = None
 
 
 def load_config_files(app: Flask, path_spec: Optional[str]):

@@ -4,6 +4,10 @@
 #
 #    pip-compile --allow-unsafe requirements/dev.in
 #
+annotated-types==0.7.0
+    # via
+    #   -r requirements/run.txt
+    #   pydantic
 babel==2.17.0
     # via
     #   -r requirements/run.txt
@@ -174,10 +178,14 @@ pycountry==24.6.1
     # via
     #   -r requirements/run.txt
     #   kerko
-pydantic==1.10.22
+pydantic==2.11.5
     # via
     #   -r requirements/run.txt
     #   kerko
+pydantic-core==2.33.2
+    # via
+    #   -r requirements/run.txt
+    #   pydantic
 pygments==2.19.1
     # via mkdocs-material
 pymdown-extensions==10.15
@@ -253,6 +261,12 @@ tomli-w==1.2.0
 tox==4.26.0
     # via kerko
 typing-extensions==4.13.2
+    # via
+    #   -r requirements/run.txt
+    #   pydantic
+    #   pydantic-core
+    #   typing-inspection
+typing-inspection==0.4.1
     # via
     #   -r requirements/run.txt
     #   pydantic

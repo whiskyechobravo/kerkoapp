@@ -4,6 +4,8 @@
 #
 #    pip-compile requirements/run.in
 #
+annotated-types==0.7.0
+    # via pydantic
 babel==2.17.0
     # via
     #   flask-babel
@@ -57,8 +59,10 @@ markupsafe==3.0.2
     #   wtforms
 pycountry==24.6.1
     # via kerko
-pydantic==1.10.22
+pydantic==2.11.5
     # via kerko
+pydantic-core==2.33.2
+    # via pydantic
 pyparsing==3.2.3
     # via bibtexparser
 python-dotenv==1.1.0
@@ -79,6 +83,11 @@ tomli==2.2.1
 tomli-w==1.2.0
     # via kerko
 typing-extensions==4.13.2
+    # via
+    #   pydantic
+    #   pydantic-core
+    #   typing-inspection
+typing-inspection==0.4.1
     # via pydantic
 urllib3==2.4.0
     # via requests
