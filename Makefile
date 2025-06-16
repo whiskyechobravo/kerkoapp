@@ -19,6 +19,7 @@ DATA := $(HOST_INSTANCE_PATH)/kerko/index
 # These work if the image exists, either pulled or built locally.
 #
 
+.PHONY: help
 help:
 	@echo "Commands for using KerkoApp with Docker:"
 	@echo "    make build"
@@ -47,12 +48,15 @@ help:
 # hence the use of the --privileged option below. For production use, you may want to verify whether
 # this option is really required for your system, or grant finer grained privileges. See
 # https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities
+.PHONY: run
 run: | $(DATA) $(SECRETS) $(CONFIG)
 	docker run --privileged --name $(CONTAINER_NAME) --rm -p $(HOST_PORT):80 -v $(HOST_INSTANCE_PATH):/kerkoapp/instance -v $(HOST_DEV_LOG):/dev/log $(IMAGE_NAME)
 
+.PHONY: shell
 shell:
 	docker run --name $(CONTAINER_NAME) -it --rm -p $(HOST_PORT):80 -v $(HOST_INSTANCE_PATH):/kerkoapp/instance -v $(HOST_DEV_LOG):/dev/log $(IMAGE_NAME) bash
 
+.PHONY: clean_kerko
 clean_kerko: | $(SECRETS) $(CONFIG)
 	docker run --name $(CONTAINER_NAME) --rm -p $(HOST_PORT):80 -v $(HOST_INSTANCE_PATH):/kerkoapp/instance -v $(HOST_DEV_LOG):/dev/log $(IMAGE_NAME) flask kerko clean everything
 
@@ -77,6 +81,7 @@ $(CONFIG):
 HASH = $(shell git rev-parse HEAD 2>/dev/null)
 VERSION = $(shell git describe --exact-match --tags HEAD 2>/dev/null)
 
+.PHONY: publish
 publish: | .git build
 ifneq ($(shell git status --porcelain 2> /dev/null),)
 	@echo "[ERROR] The Git working directory has uncommitted changes."
@@ -92,6 +97,7 @@ else
 	@exit 1
 endif
 
+.PHONY: build
 build: | .git
 ifeq ($(findstring .,$(VERSION)),.)
 	docker build -t $(IMAGE_NAME) --no-cache --label "org.opencontainers.image.version=$(VERSION)" --label "org.opencontainers.image.created=$(shell date --rfc-3339=seconds)" $(MAKEFILE_DIR)
@@ -99,6 +105,7 @@ else
 	docker build -t $(IMAGE_NAME) --no-cache --label "org.opencontainers.image.revision=$(HASH)" --label "org.opencontainers.image.created=$(shell date --rfc-3339=seconds)" $(MAKEFILE_DIR)
 endif
 
+.PHONY: show_version
 show_version: | .git
 ifeq ($(findstring .,$(VERSION)),.)
 	@echo "$(VERSION)"
@@ -106,6 +113,7 @@ else
 	@echo "$(HASH)"
 endif
 
+.PHONY: clean_image
 clean_image: | .git
 ifeq ($(findstring .,$(VERSION)),.)
 	docker rmi $(IMAGE_NAME):$(VERSION)
@@ -129,9 +137,11 @@ requirements/dev.txt: requirements/run.txt requirements/dev.in
 	pip-compile --allow-unsafe --resolver=backtracking requirements/dev.in
 	sed -i -E 's|(\s*#\s+-r\s+).*/(requirements/.+\.txt)|\1\2|' requirements/dev.txt
 
+.PHONY: requirements
 requirements: requirements/run.txt requirements/docker.txt requirements/dev.txt
 
 # Note: The sed command works around issue https://github.com/jazzband/pip-tools/issues/2131
+.PHONY: requirements-upgrade
 requirements-upgrade:
 	pre-commit autoupdate
 	pip install --upgrade pip pip-tools
@@ -140,7 +150,6 @@ requirements-upgrade:
 	pip-compile --upgrade --allow-unsafe --resolver=backtracking --rebuild requirements/dev.in
 	sed -i -E 's|(\s*#\s+-r\s+).*/(requirements/.+\.txt)|\1\2|' requirements/*.txt
 
+.PHONY: upgrade
 upgrade: | requirements-upgrade
 	pip-sync requirements/dev.txt
-
-.PHONY: help run shell clean_kerko publish build show_version clean_image requirements requirements-upgrade upgrade
