@@ -79,7 +79,7 @@ jinja2==3.1.6
     #   flask-babel
     #   kerko
 kerko @ git+https://github.com/whiskyechobravo/kerko.git
-    # via -r /home/david/p/kerko.p/kerkoapp/requirements/run.txt
+    # via -r requirements/run.txt
 markupsafe==3.0.2
     # via
     #   -r requirements/run.txt

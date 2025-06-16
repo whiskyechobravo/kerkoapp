@@ -127,15 +127,15 @@ endif
 
 requirements/run.txt: requirements/run.in
 	pip-compile --resolver=backtracking requirements/run.in
-	sed -i -E 's|(\s*#\s+-r\s+).*/(requirements/.+\.txt)|\1\2|' requirements/run.txt
+	sed -i -E 's|(\s*#\s+(via\s+)?-r\s+).*/(requirements/.+\.txt)|\1\3|' requirements/run.txt
 
 requirements/docker.txt: requirements/run.txt requirements/docker.in
 	pip-compile --resolver=backtracking requirements/docker.in
-	sed -i -E 's|(\s*#\s+-r\s+).*/(requirements/.+\.txt)|\1\2|' requirements/docker.txt
+	sed -i -E 's|(\s*#\s+(via\s+)?-r\s+).*/(requirements/.+\.txt)|\1\3|' requirements/docker.txt
 
 requirements/dev.txt: requirements/run.txt requirements/dev.in
 	pip-compile --allow-unsafe --resolver=backtracking requirements/dev.in
-	sed -i -E 's|(\s*#\s+-r\s+).*/(requirements/.+\.txt)|\1\2|' requirements/dev.txt
+	sed -i -E 's|(\s*#\s+(via\s+)?-r\s+).*/(requirements/.+\.txt)|\1\3|' requirements/dev.txt
 
 .PHONY: requirements
 requirements: requirements/run.txt requirements/docker.txt requirements/dev.txt
@@ -148,7 +148,7 @@ requirements-upgrade:
 	pip-compile --upgrade --resolver=backtracking --rebuild requirements/run.in
 	pip-compile --upgrade --resolver=backtracking --rebuild requirements/docker.in
 	pip-compile --upgrade --allow-unsafe --resolver=backtracking --rebuild requirements/dev.in
-	sed -i -E 's|(\s*#\s+-r\s+).*/(requirements/.+\.txt)|\1\2|' requirements/*.txt
+	sed -i -E 's|(\s*#\s+(via\s+)?-r\s+).*/(requirements/.+\.txt)|\1\3|' requirements/*.txt
 
 .PHONY: upgrade
 upgrade: | requirements-upgrade
