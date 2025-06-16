@@ -16,7 +16,7 @@ blinker==1.9.0
     # via flask
 bootstrap-flask==2.5.0
     # via kerko
-certifi==2025.4.26
+certifi==2025.6.15
     # via requests
 charset-normalizer==3.4.2
     # via requests
@@ -59,7 +59,7 @@ markupsafe==3.0.2
     #   wtforms
 pycountry==24.6.1
     # via kerko
-pydantic==2.11.5
+pydantic==2.11.7
     # via kerko
 pydantic-core==2.33.2
     # via pydantic
@@ -74,7 +74,7 @@ pytz==2025.2
     #   pyzotero
 pyzotero==1.5.20
     # via kerko
-requests==2.32.3
+requests==2.32.4
     # via pyzotero
 sgmllib3k==1.0.0
     # via feedparser
@@ -82,7 +82,7 @@ tomli==2.2.1
     # via kerko
 tomli-w==1.2.0
     # via kerko
-typing-extensions==4.13.2
+typing-extensions==4.14.0
     # via
     #   pydantic
     #   pydantic-core
