@@ -119,21 +119,26 @@ endif
 
 requirements/run.txt: requirements/run.in
 	pip-compile --resolver=backtracking requirements/run.in
+	sed -i -E 's|(\s*#\s+-r\s+).*/(requirements/.+\.txt)|\1\2|' requirements/run.txt
 
 requirements/docker.txt: requirements/run.txt requirements/docker.in
 	pip-compile --resolver=backtracking requirements/docker.in
+	sed -i -E 's|(\s*#\s+-r\s+).*/(requirements/.+\.txt)|\1\2|' requirements/docker.txt
 
 requirements/dev.txt: requirements/run.txt requirements/dev.in
 	pip-compile --allow-unsafe --resolver=backtracking requirements/dev.in
+	sed -i -E 's|(\s*#\s+-r\s+).*/(requirements/.+\.txt)|\1\2|' requirements/dev.txt
 
 requirements: requirements/run.txt requirements/docker.txt requirements/dev.txt
 
+# Note: The sed command works around issue https://github.com/jazzband/pip-tools/issues/2131
 requirements-upgrade:
 	pre-commit autoupdate
 	pip install --upgrade pip pip-tools
 	pip-compile --upgrade --resolver=backtracking --rebuild requirements/run.in
 	pip-compile --upgrade --resolver=backtracking --rebuild requirements/docker.in
 	pip-compile --upgrade --allow-unsafe --resolver=backtracking --rebuild requirements/dev.in
+	sed -i -E 's|(\s*#\s+-r\s+).*/(requirements/.+\.txt)|\1\2|' requirements/*.txt
 
 upgrade: | requirements-upgrade
 	pip-sync requirements/dev.txt
