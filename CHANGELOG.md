@@ -3,11 +3,12 @@
 Before doing an upgrade, please check the "How to upgrade" section of the Kerko
 documentation.
 
-## Unreleased
+
+## 1.3.0 (2025-06-17)
 
 Changes:
 
-- Update the pinned versions of dependencies.
+- Upgrade many dependencies.
 
 
 ## 1.2.0 (2024-08-03)
