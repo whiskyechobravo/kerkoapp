@@ -1,2 +1,2 @@
 -r run.txt
-kerko[dev,docs,tests]==1.3.0
+kerko[dev,docs,tests]
