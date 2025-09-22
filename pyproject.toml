@@ -4,7 +4,7 @@ description = "A web application that provides a faceted search interface for bi
 authors = [
     {name = "David Lesieur", email="kerko@whiskyechobravo.com"},
 ]
-requires-python = ">= 3.9"
+requires-python = ">= 3.11"
 
 [tool.ruff]
 line-length = 100
