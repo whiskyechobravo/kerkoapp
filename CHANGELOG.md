@@ -3,6 +3,16 @@
 Before doing an upgrade, please check the "How to upgrade" section of the Kerko
 documentation.
 
+## Unreleased
+
+Backwards incompatible changes:
+
+- Drop support for Python 3.9 and 3.10 (not supported by Karboni).
+
+Other changes:
+
+- Slightly changed the format of log messages.
+
 
 ## 1.3.0 (2025-06-17)
 

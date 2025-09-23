@@ -3,14 +3,19 @@ from logging.config import dictConfig
 
 from flask.logging import default_handler
 
+LOGGING_FORMAT = "[%(asctime)s] %(levelname)s %(name)s - %(message)s"
+LOGGING_DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
+
 # Set root logger to log to sys.stderr.
 # Note: this must be set before the Flask app gets created.
 dictConfig(
     {
         "version": 1,
+        "disable_existing_loggers": False,
         "formatters": {
             "default": {
-                "format": "[%(asctime)s] %(levelname)s in %(module)s: %(message)s",
+                "format": LOGGING_FORMAT,
+                "datefmt": LOGGING_DATE_FORMAT,
             }
         },
         "handlers": {
@@ -18,6 +23,11 @@ dictConfig(
                 "class": "logging.StreamHandler",
                 "stream": "ext://flask.logging.wsgi_errors_stream",
                 "formatter": "default",
+            }
+        },
+        "loggers": {
+            "httpcore": {
+                "propagate": False,
             }
         },
         "root": {"level": "INFO", "handlers": ["wsgi"]},
@@ -32,11 +42,7 @@ def init_app(app):
 
         syslog_handler = SysLogHandler(app.config.get("LOGGING_ADDRESS", "/dev/log"))
         syslog_handler.setFormatter(
-            logging.Formatter(
-                app.config.get(
-                    "LOGGING_FORMAT", "[%(asctime)s] %(levelname)s in %(module)s: %(message)s"
-                )
-            )
+            logging.Formatter(app.config.get("LOGGING_FORMAT", LOGGING_FORMAT))
         )
         root.addHandler(syslog_handler)
     if "LOGGING_LEVEL" in app.config:
