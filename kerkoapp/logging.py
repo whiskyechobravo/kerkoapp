@@ -3,7 +3,7 @@ from logging.config import dictConfig
 
 from flask.logging import default_handler
 
-LOGGING_FORMAT = "[%(asctime)s] %(levelname)s %(name)s - %(message)s"
+LOGGING_FORMAT = "[%(asctime)s] %(levelname)s in %(name)s - %(message)s"
 LOGGING_DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
 
 # Set root logger to log to sys.stderr.
@@ -45,6 +45,8 @@ def init_app(app):
             logging.Formatter(app.config.get("LOGGING_FORMAT", LOGGING_FORMAT))
         )
         root.addHandler(syslog_handler)
+
+    # Set logging level from config.
     if "LOGGING_LEVEL" in app.config:
         default_handler.setLevel(app.config["LOGGING_LEVEL"])
         app.logger.setLevel(app.config["LOGGING_LEVEL"])
