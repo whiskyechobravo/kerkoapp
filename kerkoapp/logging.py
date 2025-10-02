@@ -4,7 +4,6 @@ from logging.config import dictConfig
 from flask.logging import default_handler
 
 LOGGING_FORMAT = "[%(asctime)s] %(levelname)s in %(name)s - %(message)s"
-LOGGING_DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
 
 # Set root logger to log to sys.stderr.
 # Note: this must be set before the Flask app gets created.
@@ -15,7 +14,6 @@ dictConfig(
         "formatters": {
             "default": {
                 "format": LOGGING_FORMAT,
-                "datefmt": LOGGING_DATE_FORMAT,
             }
         },
         "handlers": {
