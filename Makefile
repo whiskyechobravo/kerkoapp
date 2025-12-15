@@ -1,5 +1,7 @@
 # This Makefile contains targets for building and running the KerkoApp Docker image.
 
+.DEFAULT_GOAL := help
+
 # Change IMAGE_NAME if you wish to build your own image.
 IMAGE_NAME := whiskyechobravo/kerkoapp
 
