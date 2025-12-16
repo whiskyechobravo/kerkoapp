@@ -11,7 +11,8 @@ Backwards incompatible changes:
 
 Other changes:
 
-- Slightly changed the format of log messages.
+- Change the format of log messages.
+- Update the versions of pinned dependencies.
 
 
 ## 1.3.0 (2025-06-17)
