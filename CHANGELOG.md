@@ -13,6 +13,9 @@ Other changes:
 
 - Change the format of log messages.
 - Update the versions of pinned dependencies.
+- `LOGGING_FORMAT` now defaults to
+  `"[%(asctime)s] %(levelname)s in %(name)s - %(message)s"`
+  instead of `"[%(asctime)s] %(levelname)s in %(module)s: %(message)s"`.
 
 
 ## 1.3.0 (2025-06-17)

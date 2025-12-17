@@ -3,7 +3,7 @@ from logging.config import dictConfig
 
 from flask.logging import default_handler
 
-LOGGING_FORMAT = "[%(asctime)s] %(levelname)s in %(name)s - %(message)s"
+DEFAULT_LOGGING_FORMAT = "[%(asctime)s] %(levelname)s in %(name)s - %(message)s"
 
 # Set root logger to log to sys.stderr.
 # Note: this must be set before the Flask app gets created.
@@ -13,7 +13,7 @@ dictConfig(
         "disable_existing_loggers": False,
         "formatters": {
             "default": {
-                "format": LOGGING_FORMAT,
+                "format": DEFAULT_LOGGING_FORMAT,
             }
         },
         "handlers": {
@@ -40,7 +40,7 @@ def init_app(app):
 
         syslog_handler = SysLogHandler(app.config.get("LOGGING_ADDRESS", "/dev/log"))
         syslog_handler.setFormatter(
-            logging.Formatter(app.config.get("LOGGING_FORMAT", LOGGING_FORMAT))
+            logging.Formatter(app.config.get("LOGGING_FORMAT", DEFAULT_LOGGING_FORMAT))
         )
         root.addHandler(syslog_handler)
 
