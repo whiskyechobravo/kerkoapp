@@ -67,7 +67,7 @@ jinja2==3.1.6
     #   kerko
 karboni==0.1.0a1
     # via kerko
-kerko @ git+https://github.com/whiskyechobravo/kerko.git@experimental/2.x
+kerko @ git+https://github.com/whiskyechobravo/kerko.git@experimental/1.4.x
     # via -r requirements/run.in
 markupsafe==3.0.2
     # via

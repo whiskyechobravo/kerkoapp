@@ -143,7 +143,7 @@ karboni==0.1.0a1
     # via
     #   -r requirements/run.txt
     #   kerko
-kerko[dev,docs,tests] @ git+https://github.com/whiskyechobravo/kerko.git@experimental/2.x
+kerko[dev,docs,tests] @ git+https://github.com/whiskyechobravo/kerko.git@experimental/1.4.x
     # via
     #   -r requirements/run.txt
     #   -r requirements/dev.in
