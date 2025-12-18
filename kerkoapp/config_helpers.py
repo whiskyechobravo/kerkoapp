@@ -1,5 +1,4 @@
 import pathlib
-from typing import Optional
 
 from flask import Flask
 from kerko.config_helpers import config_update, load_toml
@@ -20,10 +19,10 @@ class ProxyFixModel(BaseModel):
 class KerkoAppModel(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    proxy_fix: Optional[ProxyFixModel] = None
+    proxy_fix: ProxyFixModel | None = None
 
 
-def load_config_files(app: Flask, path_spec: Optional[str]):
+def load_config_files(app: Flask, path_spec: str | None):
     """
     Load configuration files from a semicolon-separated list of paths.
 
