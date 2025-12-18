@@ -14,19 +14,14 @@ dictConfig(
         "formatters": {
             "default": {
                 "format": DEFAULT_LOGGING_FORMAT,
-            }
+            },
         },
         "handlers": {
             "wsgi": {
                 "class": "logging.StreamHandler",
                 "stream": "ext://flask.logging.wsgi_errors_stream",
                 "formatter": "default",
-            }
-        },
-        "loggers": {
-            "httpcore": {
-                "propagate": False,
-            }
+            },
         },
         "root": {"level": "INFO", "handlers": ["wsgi"]},
     }
@@ -49,3 +44,7 @@ def init_app(app):
         default_handler.setLevel(app.config["LOGGING_LEVEL"])
         app.logger.setLevel(app.config["LOGGING_LEVEL"])
         root.setLevel(app.config["LOGGING_LEVEL"])
+
+    if not app.config["DEBUG"]:
+        # Override logging level for httpx to reduce noise.
+        logging.getLogger("httpx").setLevel(logging.WARNING)
