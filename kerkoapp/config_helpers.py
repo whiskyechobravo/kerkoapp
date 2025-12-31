@@ -49,5 +49,5 @@ def load_config_files(app: Flask, path_spec: str | None):
         for parent in try_parents:
             path = parent / path_item.strip()
             if path.is_file():
-                config_update(app.config, load_toml(path, verbose=app.config["DEBUG"]))
+                config_update(app.config, load_toml(path, logger=app.logger))
                 break
