@@ -8,6 +8,7 @@ import kerko
 from flask import Flask, render_template
 from flask_babel import get_locale
 from kerko.config_helpers import config_update, parse_config
+from kerko.hooks import create_plugin_manager
 
 from . import logging
 from .config_helpers import KerkoAppModel, load_config_files
@@ -25,6 +26,9 @@ def create_app() -> Flask:
     except ValueError as e:
         msg = f"Unable to initialize the application. {e}"
         raise RuntimeError(msg) from e
+
+    # Initialize the plugin system.
+    app.plugin_manager = create_plugin_manager()
 
     # Initialize app configuration with Kerko's defaults.
     config_update(app.config, kerko.DEFAULTS)
@@ -49,6 +53,9 @@ def create_app() -> Flask:
     # If you are deriving your own custom application from KerkoApp, here is a
     # good place to alter the Composer object, perhaps adding facets.
     # ----
+
+    # Call plugins' init_app hook implementations.
+    app.plugin_manager.hook.init_app(app=app)
 
     register_extensions(app)
     register_blueprints(app)
