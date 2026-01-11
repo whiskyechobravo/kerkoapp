@@ -49,17 +49,12 @@ def create_app() -> Flask:
     # Initialize the Composer object.
     app.config["kerko_composer"] = kerko.composer.Composer(app.config)
 
-    # ----
-    # If you are deriving your own custom application from KerkoApp, here is a
-    # good place to alter the Composer object, perhaps adding facets.
-    # ----
-
-    # Call plugins' init_app hook implementations.
-    app.plugin_manager.hook.init_app(app=app)
-
     register_extensions(app)
     register_blueprints(app)
     register_errorhandlers(app)
+
+    # Call init_app hook implementations in plugins.
+    app.plugin_manager.hook.init_app(app=app)
 
     return app
 
