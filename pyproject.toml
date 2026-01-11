@@ -4,6 +4,7 @@ description = "A web application that provides a faceted search interface for bi
 authors = [
     {name = "David Lesieur", email="kerko@whiskyechobravo.com"},
 ]
+license = "BSD-3-Clause"
 requires-python = ">= 3.11"
 
 [tool.ruff]
