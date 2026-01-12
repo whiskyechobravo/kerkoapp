@@ -8,11 +8,10 @@ import kerko
 from flask import Flask, render_template
 from flask_babel import get_locale
 from kerko.config_helpers import config_update, parse_config
-from kerko.hooks import create_plugin_manager
 
 from . import logging
 from .config_helpers import KerkoAppModel, load_config_files
-from .extensions import babel, bootstrap
+from .extensions import babel, bootstrap, plugin_manager
 
 
 def create_app() -> Flask:
@@ -26,9 +25,6 @@ def create_app() -> Flask:
     except ValueError as e:
         msg = f"Unable to initialize the application. {e}"
         raise RuntimeError(msg) from e
-
-    # Initialize the plugin system.
-    app.plugin_manager = create_plugin_manager()
 
     # Initialize app configuration with Kerko's defaults.
     config_update(app.config, kerko.DEFAULTS)
@@ -53,9 +49,6 @@ def create_app() -> Flask:
     register_blueprints(app)
     register_errorhandlers(app)
 
-    # Call init_app hook implementations in plugins.
-    app.plugin_manager.hook.init_app(app=app)
-
     return app
 
 
@@ -75,6 +68,7 @@ def register_extensions(app: Flask) -> None:
 
     logging.init_app(app)
     bootstrap.init_app(app)
+    plugin_manager.init_app(app)
 
 
 def register_blueprints(app: Flask) -> None:
