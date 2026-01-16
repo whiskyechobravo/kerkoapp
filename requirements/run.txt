@@ -34,6 +34,8 @@ colorlog==6.10.1
     # via karboni
 dpath==2.2.0
     # via kerko
+filelock==3.20.3
+    # via kerko
 flask==3.1.1
     # via
     #   bootstrap-flask
@@ -67,7 +69,7 @@ jinja2==3.1.6
     #   kerko
 karboni==0.1.0a1
     # via kerko
-kerko @ git+https://github.com/whiskyechobravo/kerko.git@experimental/1.4.x
+kerko @ git+https://github.com/whiskyechobravo/kerko.git
     # via -r requirements/run.in
 markupsafe==3.0.2
     # via
@@ -75,6 +77,8 @@ markupsafe==3.0.2
     #   jinja2
     #   werkzeug
     #   wtforms
+pluggy==1.6.0
+    # via kerko
 pycountry==24.6.1
     # via kerko
 pydantic==2.11.7
@@ -91,8 +95,6 @@ pytz==2025.2
     #   kerko
 sqlalchemy==2.0.45
     # via karboni
-tomli==2.2.1
-    # via kerko
 tomli-w==1.2.0
     # via kerko
 typing-extensions==4.14.0
@@ -105,7 +107,7 @@ typing-inspection==0.4.1
     # via pydantic
 w3lib==2.3.1
     # via kerko
-werkzeug==3.1.3
+werkzeug==3.1.5
     # via
     #   flask
     #   kerko
