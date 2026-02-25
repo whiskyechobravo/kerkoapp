@@ -3,6 +3,8 @@ from logging.config import dictConfig
 
 from flask.logging import default_handler
 
+from .extensions import plugin_manager
+
 DEFAULT_LOGGING_FORMAT = "[%(asctime)s] %(levelname)s in %(name)s - %(message)s"
 
 # Set root logger to log to sys.stderr.
@@ -29,6 +31,16 @@ dictConfig(
 
 
 def init_app(app):
+    if app.config["DEBUG"]:
+        # Set DEBUG logging level for registered plugins.
+        for plugin in plugin_manager.get_plugins():
+            plugin_module = plugin.__module__
+            plugin_logger = logging.getLogger(plugin_module)
+            plugin_logger.setLevel(logging.DEBUG)
+    else:
+        # Override logging level for httpx to reduce noise.
+        logging.getLogger("httpx").setLevel(logging.WARNING)
+
     root = logging.getLogger()
     if app.config.get("LOGGING_HANDLER") == "syslog":
         from logging.handlers import SysLogHandler
@@ -39,12 +51,8 @@ def init_app(app):
         )
         root.addHandler(syslog_handler)
 
-    # Set logging level from config.
     if "LOGGING_LEVEL" in app.config:
+        # Set logging level from config.
         default_handler.setLevel(app.config["LOGGING_LEVEL"])
         app.logger.setLevel(app.config["LOGGING_LEVEL"])
         root.setLevel(app.config["LOGGING_LEVEL"])
-
-    if not app.config["DEBUG"]:
-        # Override logging level for httpx to reduce noise.
-        logging.getLogger("httpx").setLevel(logging.WARNING)
