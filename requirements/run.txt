@@ -6,11 +6,11 @@
 #
 annotated-types==0.7.0
     # via pydantic
-anyio==4.12.0
+anyio==4.12.1
     # via
     #   httpx
     #   karboni
-babel==2.17.0
+babel==2.18.0
     # via
     #   flask-babel
     #   kerko
@@ -18,11 +18,11 @@ blinker==1.9.0
     # via flask
 bootstrap-flask==2.5.0
     # via kerko
-certifi==2025.6.15
+certifi==2026.2.25
     # via
     #   httpcore
     #   httpx
-click==8.2.1
+click==8.3.1
     # via
     #   click-option-group
     #   flask
@@ -34,9 +34,9 @@ colorlog==6.10.1
     # via karboni
 dpath==2.2.0
     # via kerko
-filelock==3.20.3
+filelock==3.24.3
     # via kerko
-flask==3.1.1
+flask==3.1.3
     # via
     #   bootstrap-flask
     #   flask-babel
@@ -46,7 +46,7 @@ flask-babel==4.0.0
     # via kerko
 flask-wtf==1.2.2
     # via kerko
-greenlet==3.3.0
+greenlet==3.3.2
     # via sqlalchemy
 h11==0.16.0
     # via httpcore
@@ -54,7 +54,7 @@ httpcore==1.0.9
     # via httpx
 httpx==0.28.1
     # via karboni
-idna==3.10
+idna==3.11
     # via
     #   anyio
     #   httpx
@@ -71,7 +71,7 @@ karboni==0.1.0a1
     # via kerko
 kerko @ git+https://github.com/whiskyechobravo/kerko.git
     # via -r requirements/run.in
-markupsafe==3.0.2
+markupsafe==3.0.3
     # via
     #   flask
     #   jinja2
@@ -79,11 +79,11 @@ markupsafe==3.0.2
     #   wtforms
 pluggy==1.6.0
     # via kerko
-pycountry==24.6.1
+pycountry==26.2.16
     # via kerko
-pydantic==2.11.7
+pydantic==2.12.5
     # via kerko
-pydantic-core==2.33.2
+pydantic-core==2.41.5
     # via pydantic
 python-dotenv==1.2.1
     # via
@@ -93,27 +93,27 @@ pytz==2025.2
     # via
     #   flask-babel
     #   kerko
-sqlalchemy==2.0.45
+sqlalchemy==2.0.47
     # via karboni
 tomli-w==1.2.0
     # via kerko
-typing-extensions==4.14.0
+typing-extensions==4.15.0
     # via
     #   pydantic
     #   pydantic-core
     #   sqlalchemy
     #   typing-inspection
-typing-inspection==0.4.1
+typing-inspection==0.4.2
     # via pydantic
-w3lib==2.3.1
+w3lib==2.4.0
     # via kerko
-werkzeug==3.1.5
+werkzeug==3.1.6
     # via
     #   flask
     #   kerko
 whoosh==2.7.4
     # via kerko
-wrapt==1.17.2
+wrapt==2.1.1
     # via kerko
 wtforms==3.2.1
     # via
