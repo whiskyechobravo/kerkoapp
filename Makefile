@@ -91,7 +91,7 @@ else
 endif
 
 .PHONY: docker-image-publish
-docker-image-publish: | .git build
+docker-image-publish: | .git docker-image-build
 ifneq ($(shell git status --porcelain 2> /dev/null),)
 	@echo "[ERROR] The Git working directory has uncommitted changes."
 	@exit 1
