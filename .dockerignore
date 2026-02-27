@@ -1,11 +1,22 @@
-.git
-.gitignore
-.dockerignore
-
 # Byte-compiled / optimized / caches.
-.cache
-.mypy_cache/
+.*cache/
 __pycache__/
+*.py[cod]
+.npm/
+
+# Distribution / packaging.
+.Python
+env/
+venv/
+.venv/
+build/
+eggs/
+.eggs/
+*.egg
+*.egg-info/
+.tool-versions
+**/dist/
+**/node_modules/
 
 # Unit test / coverage reports.
 htmlcov/
@@ -18,6 +29,14 @@ coverage.xml
 
 # Logs.
 *.log
+
+# Docker / build tools / source control.
+.dockerignore
+Dockerfile
+docker-compose.yml
+Makefile
+.git*
+.pre-commit-config.yaml
 
 # Development tools / IDEs.
 .idea

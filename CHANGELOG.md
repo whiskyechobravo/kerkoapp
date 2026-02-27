@@ -14,8 +14,11 @@ Other changes:
 - Change the format of log messages.`LOGGING_FORMAT` now defaults to
   `"[%(asctime)s] %(levelname)s in %(name)s - %(message)s"` instead of
   `"[%(asctime)s] %(levelname)s in %(module)s: %(message)s"`.
-- Initialize the plugin system.
-- Update the versions of pinned dependencies.
+- Adapt application to initialize the plugin system.
+- Upgrade the versions of dependencies.
+- Upgrade the Docker image to Python 3.14.
+- Remove superfluous directory from Docker image.
+- Restructure Docker-related Makefile targets.
 
 
 ## 1.3.0 (2025-06-17)
